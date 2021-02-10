@@ -18,7 +18,7 @@ class rmpfexpressam {
 
 		global $order, $total_weight;
 
-		$this->version = '3.4.1';
+		$this->version = '3.5.0';
 		$this->code = 'rmpfexpressam';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
@@ -75,7 +75,7 @@ class rmpfexpressam {
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'2:19.74, 5:20.7, 10:24.18, 15:30.96, 20:36.42, 25:47.64, 30:51.28\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'2:19.74, 5:20.7, 10:24.18, 15:30.96, 20:36.42, 25:47.64, 30:51.84\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')){

@@ -13,7 +13,7 @@ class rmspecialdeliverysat {
 	function __construct() {
 		global $order, $total_weight;
 
-		$this->version = '3.4.1';
+		$this->version = '3.5.0';
 		$this->code = 'rmspecialdeliverysat';
 		$this->num_zones = 1;
 		require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php');
@@ -80,7 +80,7 @@ class rmspecialdeliverysat {
 		}
 
 		if (! defined ( 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1' )) {
-		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'0.1:11.04, 0.5:12, 1:13.56, 2:16.2, 10:34.92, 20:52.44\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'0.1:11.22, 0.5:12.18, 1:13.74, 2:16.38, 10:35.1, 20:52.62\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 
 		if (! defined ( 'MODULE_SHIPPING_' . $module . '_ZONES_INSURE' )) {

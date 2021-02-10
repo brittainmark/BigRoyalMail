@@ -18,7 +18,7 @@ class rmpfgexpress {
 
 		global $order, $total_weight;
 
-		$this->version = '3.4.1';
+		$this->version = '3.5.0';
 		$this->code = 'rmpfgexpress';
 		$this->num_zones = 9;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
