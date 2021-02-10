@@ -24,17 +24,17 @@ class rm1stsmlparcel {
 			$messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on '.@constant('MODULE_SHIPPING_RM_EXPIRES').'. Please check your rates<br /><a href="http://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
 		}
 
-		$this->version = '3.2.2';
+		$this->version = '3.3.0';
 		$this->code = 'rm1stsmlparcel';
 		$this->num_zones = 1;
-		require(DIR_FS_CATALOG.DIR_WS_MODULES."shipping/BigRoyalMail/main.php");
+		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
 
 	}
 
 	// class methods
 	function quote($method = '') {
 		global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
-		$postage_check=20;
+		$postage_check = array(20);
 		require(DIR_FS_CATALOG.DIR_WS_MODULES."shipping/BigRoyalMail/quote.php");
 		if (@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True' && $error > 0) {
 			return ;
@@ -62,6 +62,7 @@ class rm1stsmlparcel {
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order values).', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('Tax Class', 'MODULE_SHIPPING_" . $module . "_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'zen_get_tax_class_title', 'zen_cfg_pull_down_tax_classes(', now())");
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '60', 'Sort order of display.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Attribute Exact Match', 'MODULE_SHIPPING_" . $module . "_ATTRIBUTE_MATCH', 'False', 'Used to only display this shipping method if the attribute shipping is and exact match', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
 
 		$handling_test = $db->Execute("SELECT configuration_key FROM " . TABLE_CONFIGURATION . " WHERE configuration_key IN ( 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', 'MODULE_SHIPPING_" . (strtoupper($this->code)) . "_ZONES_HANDLING_1' ) " );
@@ -80,7 +81,7 @@ class rm1stsmlparcel {
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '1:3.2, 2:5.45', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '1:3.3, 2:5.45', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 		/*
 		 * Add the expires date if it does not exist
@@ -104,6 +105,7 @@ class rm1stsmlparcel {
 		$keys = array('MODULE_SHIPPING_RM_EXPIRES',
 				'MODULE_SHIPPING_' . $module . '_STATUS',
 				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS',
+				'MODULE_SHIPPING_' . $module . '_ATTRIBUTE_MATCH',
 				'MODULE_SHIPPING_' . $module . '_TAX_CLASS',
 				'MODULE_SHIPPING_' . $module . '_SORT_ORDER',
 				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE',

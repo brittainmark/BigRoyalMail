@@ -1,5 +1,5 @@
 /*
- * Clear configuration file of Insured surface mail signe for enries
+ * Clear configuration file of Insured surface mail signed for enries
  * Add in Air mail signed for Euroup EU
  * 
  * to run this script

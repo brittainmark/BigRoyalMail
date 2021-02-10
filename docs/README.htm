@@ -2,12 +2,12 @@
 <html>
 
 <head>
-<title>Update Big royal Mail for Zen Cart</title>
+<title>Read Me Big royal Mail for Zen Cart</title>
 <style media="screen" type="text/css">
-.l1 {
+.l2 {
 	list-style-type: lower-alpha;
 }
-.l2 {
+.l1 {
 	list-style-type: decimal;
 	margin-left: 10px;
 }
@@ -27,7 +27,12 @@
 	position: fixed;
 	top: 0px;
 	height: 7em;
-	background-color: white;
+	background-color: #eee;
+	border: solid #000 1px;
+}
+h1,h2,p {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 #main {
 	margin-top: 7em;
@@ -49,7 +54,7 @@
 	</p>
 	<h2>INSTALLATION</h2>
 	<ol class="l1">
-		<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and BigRoyalMail_V3.2.2/images/* 
+		<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and BigRoyalMail_V3.3.0/images/* 
 		onto your server into:
 		<ul>
 			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
@@ -80,7 +85,7 @@
 		<ol class="l2">
 			<li>Login to your zen cart admin</li>
 			<li>Use Catalog&gt;Categories/Products&gt; then navigate to your products</li>
-			<li>Then click on the A in a circle.</li>
+			<li>settin attributes for the product (click on the A in a circle).</li>
 			<li>Select Minimum Delivery Method: [Read only]...</li>
 			<li>Select the appropriate option value.<br />
 			The order is:<br />
@@ -92,7 +97,7 @@
 			</ol>
 			Therefore if you select Large letter only standard letter will be excluded.<br />
 			If you select Medium Parcel then standard letter, Large Letter and Small 
-			Parcel will be excluded. </li>
+			Parcel will be excluded. For more information see <a href="HowToUseAttributePricing.htm">HowToUseAttributePricing.htm</a></li>
 		</ol>
 		</li>
 	</ol>
@@ -106,7 +111,7 @@
 		does not take into account multiple items that when packed together would 
 		make the parcel larger than the size set. Therefore you may still need to 
 		consider which modules you install.</li>
-		<li>All pricing information is based on Kg not Lbs. if you are using Lbs 
+		<li>All pricing information is based on Kg not Lbs. If you are using Lbs 
 		as your weight measure you will either have to adjust your product weights 
 		to Kg or recalculate the weights to Lbs.</li>
 		<li>If you are using Kg and have not already done so adjust the <strong>

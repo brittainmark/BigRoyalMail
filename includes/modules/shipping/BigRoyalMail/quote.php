@@ -79,6 +79,9 @@ if ($dest_zone == 0) {
 		// attributes prevent postage
 		$error=2;
 
+	} else if (@constant('MODULE_SHIPPING_' . $module . '_ATTRIBUTE_MATCH') == 'True' && in_array($attribute_postage,$postage_check) == False ){
+		// attributes prevent postage as not exact match
+		$error=2;
 	} else {
 
 		// Check for insurence

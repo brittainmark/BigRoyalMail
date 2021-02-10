@@ -33,7 +33,13 @@
 	position: fixed;
 	top: 0px;
 	height: 7em;
-	background-color: white;
+	background-color: #eee;
+	border: solid #000 1px;
+}
+
+h1,h2,p {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #main {
@@ -61,6 +67,8 @@ h2 {
 		<h1>How to upgrade to the latest Version of Big Royal Mail</h1>
 		<p>Choose your current version</p>
 		<ul>
+			<li><a href="#3.2.3">3.2.3</a></li>
+			<li><a href="#3.2.3">3.2.2</a></li>
 			<li><a href="#3.2.1">3.2.1</a></li>
 			<li><a href="#3.2">3.2.0</a></li>
 			<li><a href="#3.1">3.1. any</a></li>
@@ -71,11 +79,72 @@ h2 {
 			<li><strong>NB. If you are using Zen cart Version 1.3.8 and you are required to run Install3.2.sql you will
 					need to use the script in 1.3.8_scripts and not the one in the top level.</strong>
 		</ul>
+		<p id="3.2.3">&nbsp;</p>
+		<h2>From Version 3.2.3 &amp; 3.2.2</h2>
+		<ol class="l1">
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and
+				BigRoyalMail_V3.3.0/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Run 2015Update.sql to Update rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2015Update.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						2015Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Turn on Royal Mail airmail letter and large letter modules if
+				required
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
+		</ol>
 		<p id="3.2.1">&nbsp;</p>
 		<h2>From Version 3.2.1</h2>
 		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
-				BigRoyalMail_V3.2.2/images/* onto your server into:<br />
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Run 2015Update.sql to Update rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2015Update.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						2015Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and
+				BigRoyalMail_V3.3.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
@@ -113,8 +182,18 @@ h2 {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
-				BigRoyalMail_V3.2.2/images/* onto your server into:<br />
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and
+				BigRoyalMail_V3.3.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
@@ -130,13 +209,13 @@ h2 {
 						install.</li>
 				</ol>
 			</li>
-			<li>Run 2014Update.sql to Update rates.
+			<li>Run 2015Update.sql to Update rates.
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2014Update.sql and paste into the
+					<li>Copy the contents of 2015Update.sql and paste into the
 						text window<br /> or<br /> User the Browse button to load
-						2014Update.sql into zen cart.
+						2015Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -197,8 +276,18 @@ h2 {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
-				BigRoyalMail_V3.2.2/images/* onto your server into:
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and
+				BigRoyalMail_V3.3.0/images/* onto your server into:
 				<ol class="ul">
 					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
 					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
@@ -226,14 +315,14 @@ h2 {
 						install.</li>
 				</ol>
 			</li>
-			<li>Run 2014Update.sql to remove the entries from the
+			<li>Run 2015Update.sql to remove the entries from the
 				configuration file.
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2014Update.sql and paste into the
+					<li>Copy the contents of 2015Update.sql and paste into the
 						text window<br>or<br>User the Browse button to load
-						2014Update.sql into zen cart.
+						2015Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -295,7 +384,17 @@ h2 {
 				/includes/languages/english/modules/shipping/ and make any changes
 				necessary
 			</li>
-
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			
 			<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and
 				BigRoyalMail_V3.1.0/images/* onto your server into:
 				<ol class="ul">
@@ -334,14 +433,14 @@ h2 {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2014Update.sql to update the rates. You must run this or
+			<li>Run 2015Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2014Update.sql and paste into the
+					<li>Copy the contents of 2015Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2014Update.sql into zen cart.
+						2015Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -431,6 +530,16 @@ h2 {
 					</li>
 				</ol>
 			</li>
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
 			<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and
 				BigRoyalMail_V3.1.0/images/* onto your server into:
 				<ol class="ul">
@@ -448,14 +557,14 @@ h2 {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2014Update.sql to update the rates. You must run this or
+			<li>Run 2015Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2014Update.sql and paste into the
+					<li>Copy the contents of 2015Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2014Update.sql into zen cart.
+						2015Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -536,9 +645,18 @@ h2 {
 				/includes/languages/english/modules/shipping/ and make any changes
 				necessary
 			</li>
-
-			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
-				BigRoyalMail_V3.2.2/images/* onto your server into:
+			<li>Run UpdateFrom3.2.sql
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						UpdateFrom3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and
+				BigRoyalMail_V3.3.0/images/* onto your server into:
 				<ol class="ul">
 					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
 					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
@@ -584,14 +702,14 @@ h2 {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2014Update.sql to update the rates. You must run this or
+			<li>Run 2015Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2014Update.sql and paste into the
+					<li>Copy the contents of 2015Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2014Update.sql into zen cart.
+						2015Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
