@@ -10,5 +10,5 @@
  *    User the Browse button to load RemoveSurface.sql into zen cart.
  */
 
-DELETE FROM configuration WHERE configuration_key like "MODULE_SHIPPING_RMSMPARCELSF";
-DELETE FROM configuration WHERE configuration_key like "MODULE_SHIPPING_RMAMASPARCEL";
+DELETE FROM configuration WHERE configuration_key like 'MODULE_SHIPPING_RMSMPARCELSF';
+DELETE FROM configuration WHERE configuration_key like 'MODULE_SHIPPING_RMAMASPARCEL';

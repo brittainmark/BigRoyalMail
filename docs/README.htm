@@ -7,142 +7,183 @@
 .l2 {
 	list-style-type: lower-alpha;
 }
+
 .l1 {
 	list-style-type: decimal;
 	margin-left: 10px;
 }
+
 .ul {
 	list-style-type: disc;
 }
+
 .l1 li {
 	padding-top: 6px;
 }
+
 .ul li {
 	padding-top: 0;
 }
+
 .l2 li {
 	padding-top: 0px;
 }
+
 #donate {
 	position: fixed;
 	top: 0px;
-	height: 7em;
+	height: 8em;
 	background-color: #eee;
 	border: solid #000 1px;
+	overflow: auto;
 }
-h1,h2,p {
+
+h1, h2, p {
 	margin-left: 5px;
 	margin-right: 5px;
 }
+
 #main {
-	margin-top: 7em;
+	top: 8.1em;
+	position: fixed;
+	overflow-x: auto;
+	overfloy-y: scroll;
+	height: calc(99% - 8em);
 }
 </style>
 </head>
 
 <body>
 
-<div id="donate">
-	<h1>Big royal Mail</h1>
-	<p>If you have found this useful and would like to reward the maintainer you 
-	can make a donation through paypal sending your donation to info@inner-light.co.uk 
-	or follow this link <a href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"</p>
-</div>
-<div id="main">
-	<h1>How to Install Big Royal Mail.</h1>
-	<p>See <a href="CREDITS.htm">CREDITS.htm</a> for licence and contributors.
-	</p>
-	<h2>INSTALLATION</h2>
-	<ol class="l1">
-		<li>Copy the files from BigRoyalMail_V3.3.0/includes/* and BigRoyalMail_V3.3.0/images/* 
-		onto your server into:
-		<ul>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		</ul>
-		</li>
-		<li>Set up the modules you want
-		<ol class="l2">
-			<li>Login to your zen cart admin.</li>
-			<li>Go to admin-&gt;Modules-&gt;Shipping</li>
-			<li>Select the modules you want to install by clicking on it then clicking 
-			install.</li>
-			<li>Modify any of the settings then click Update.</li>
-			<li>Repeat steps 3) and 4) for all the modules you wish to install.</li>
+	<div id="donate">
+		<h1>Big royal Mail</h1>
+		<p>
+			If you have found this useful and would like to reward the maintainer
+			you can make a donation through paypal sending your donation to
+			info@inner-light.co.uk or follow this link <a
+				href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"
+		</p>
+	</div>
+	<div id="main">
+		<h1>How to Install Big Royal Mail.</h1>
+		<p>
+			See <a href="CREDITS.htm">CREDITS.htm</a> for licence and
+			contributors.
+		</p>
+		<h2>INSTALLATION</h2>
+		<ol class="l1">
+			<li>Copy the files from BigRoyalMail_V3.3.5/includes/* and
+				BigRoyalMail_V3.3.5/images/* onto your server into:
+				<ul>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+				</ul>
+			</li>
+			<li>Set up the modules you want
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
+			<li>Run Install3.2.sql to add the entries to the configuration
+				file.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of Install3.2.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						Install3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>If you want to force a minimum delivery method then set the
+				appropriate attributes for each product. This can be done by
+				visiting the product
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Catalog&gt;Categories/Products&gt; then navigate to
+						your products</li>
+					<li>setting attributes for the product (click on the A in a
+						circle).</li>
+					<li>Select Minimum Delivery Method: [Read only]...</li>
+					<li>Select the appropriate option value.<br /> The order is:<br />
+						<ol class="l1">
+							<li>Large Letter</li>
+							<li>Small Parcel</li>
+							<li>Medium Parcel</li>
+							<li>Special Delivery or Parcel Force</li>
+						</ol> Therefore if you select Large letter only standard letter will be
+						excluded.<br /> If you select Medium Parcel then standard letter,
+						Large Letter and Small Parcel will be excluded. For more
+						information see <a href="HowToUseAttributePricing.htm">HowToUseAttributePricing.htm</a></li>
+				</ol>
+			</li>
+			<li>Check the default shipping and packing configuration.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Configuration&gt;Shipping/Packaging</li>
+					<li>Check the value of Package Tare Small to Medium - added percentage:weight.<br />
+					The default is 0:3 which will add 3kg to the shipping weight.<br />I use 0:0.05 which adds 50g.</li>
+					<li>Check the value of Larger packages - added packaging percentage:weight<br />
+					The default is 10:0 which will add 10% to the shipping weight.</li>
+				</ol>
+			</li>
 		</ol>
-		</li>
-		<li>Run Install3.2.sql to add the entries to the configuration file.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of Install3.2.sql and paste into the text window<br />
-			or<br />
-			User the Browse button to load Install3.2.sql into zen cart.</li>
+		<p></p>
+		<hr>
+		<p></p>
+		<p>NB.</p>
+		<ol class="l1">
+			<li>I have now change the modules to allow you to use attributes
+				to determine the minimum delivery method for items (take some size
+				into account). This does not take into account multiple items that
+				when packed together would make the parcel larger than the size set.
+				Therefore you may still need to consider which modules you install.</li>
+			<li>All pricing information is based on Kg not Lbs. If you are
+				using Lbs as your weight measure you will either have to adjust your
+				product weights to Kg or recalculate the weights to Lbs.</li>
+			<li>If you are using Kg and have not already done so adjust the
+				<strong> TEXT_PRODUCTS_WEIGHT_UNIT</strong> to Kg to display the
+				correct information in zen cart admin. This can be found in <strong>YOUR_SHOPPING_CART_DIRECTORY&gt;YOUR_ADMIN&gt;include&gt;language&gt;english.php</strong>
+			</li>
+			<li>As for 3) adjust the weight to TEXT_PRODUCTS_WEIGHT_UNIT to
+				Kg. this should be found in <strong>CATALOG_SITE&gt;include&gt;language&gt;english.php</strong>
+				or <strong>YOUR_SHOPPING_CART_DIRECTORY&gt;include&gt;language&gt;YOUR_TEMPLATE&gt;english.php</strong>.
+				you should always save the changes to the second location to avoid
+				them being lost on update.
+			</li>
 		</ol>
-		</li>
-		<li>If you want to force a minimum delivery method then set the appropriate 
-		attributes for each product. This can be done by visiting the product
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Catalog&gt;Categories/Products&gt; then navigate to your products</li>
-			<li>settin attributes for the product (click on the A in a circle).</li>
-			<li>Select Minimum Delivery Method: [Read only]...</li>
-			<li>Select the appropriate option value.<br />
-			The order is:<br />
-			<ol class="l1">
-				<li>Large Letter</li>
-				<li>Small Parcel</li>
-				<li>Medium Parcel</li>
-				<li>Special Delivary or Parcel Force</li>
-			</ol>
-			Therefore if you select Large letter only standard letter will be excluded.<br />
-			If you select Medium Parcel then standard letter, Large Letter and Small 
-			Parcel will be excluded. For more information see <a href="HowToUseAttributePricing.htm">HowToUseAttributePricing.htm</a></li>
-		</ol>
-		</li>
-	</ol>
-	<p></p>
-	<hr>
-	<p></p>
-	<p>NB.</p>
-	<ol class="l1">
-		<li>I have now change the modules to allow you to use attributes to determin 
-		the minimum delivery method for items (take some size into accont). This 
-		does not take into account multiple items that when packed together would 
-		make the parcel larger than the size set. Therefore you may still need to 
-		consider which modules you install.</li>
-		<li>All pricing information is based on Kg not Lbs. If you are using Lbs 
-		as your weight measure you will either have to adjust your product weights 
-		to Kg or recalculate the weights to Lbs.</li>
-		<li>If you are using Kg and have not already done so adjust the <strong>
-		TEXT_PRODUCTS_WEIGHT_UNIT</strong> to Kg to display the correct information 
-		in zen cart admin. This can be found in <strong>YOUR_SHOPPING_CART_DIRECTORY&gt;YOUR_ADMIN&gt;include&gt;language&gt;english.php</strong>
-		</li>
-		<li>As for 3) adjust the weight to TEXT_PRODUCTS_WEIGHT_UNIT to Kg. this 
-		should be found in <strong>CATALOG_SITE&gt;include&gt;language&gt;english.php</strong> 
-		or <strong>YOUR_SHOPPING_CART_DIRECTORY&gt;include&gt;language&gt;YOUR_TEMPLATE&gt;english.php</strong>. 
-		you should always save the changes to the second location to avoid them 
-		being lost on update.</li>
-	</ol>
-	<p>If you wish to modify any of the text in the language files please use the 
-	template overrides system. Copy the file to your template folder in the
-	<strong>includes&gt;language&gt;english&gt;modules&gt;shipping&gt;YOUR_TEMPLATE</strong> 
-	this way you will not loose any changes if you install updates.</p>
-	<p></p>
-	<hr>
-	<p></p>
-	<p>If you are upgrading please read the file <a href="UPGRADES.htm">UPGRADES.htm</a>.</p>
-	<p></p>
-	<hr>
-	<p></p>
-	<p>If you are using printer papers you can ship upto 5kg overseas. The upgrade 
-	Sql PrintedPapers.sql will apply the rates.</p>
-	<p><strong>NOTE:</strong> It will not differentiate between printed papers and 
-	other types of post so do not use this unless you know you are shipping printed 
-	papers.<br>Additionally you must have installed the full package before applying 
-	this update as it only changes the rates. See <strong>PrintedPapers.sql</strong> 
-	for how to apply. </p>
-</div>
+		<p>
+			If you wish to modify any of the text in the language files please
+			use the template overrides system. Copy the file to your template
+			folder in the <strong>includes&gt;language&gt;english&gt;modules&gt;shipping&gt;YOUR_TEMPLATE</strong>
+			this way you will not loose any changes if you install updates.
+		</p>
+		<p></p>
+		<hr>
+		<p></p>
+		<p>
+			If you are upgrading please read the file <a href="UPGRADES.htm">UPGRADES.htm</a>.
+		</p>
+		<p></p>
+		<hr>
+		<p></p>
+		<p>If you are using printer papers you can ship upto 5kg overseas.
+			The upgrade Sql PrintedPapers.sql will apply the rates.</p>
+		<p>
+			<strong>NOTE:</strong> It will not differentiate between printed
+			papers and other types of post so do not use this unless you know you
+			are shipping printed papers.<br>Additionally you must have
+			installed the full package before applying this update as it only
+			changes the rates. See <strong>PrintedPapers.sql</strong> for how to
+			apply.
+		</p>
+	</div>
 
 </body>
 

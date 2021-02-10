@@ -5,7 +5,7 @@
  * or 
  * User the Browse button to load the file into zencart.
  * 
- * If you do not want to change the the sort order remove the last UPDATE section "UPDATE the sort order for all modules"
+ * If you do not want to change the the sort order remove the last UPDATE section 'UPDATE the sort order for all modules'
  * 
  * 
  * Also the expiry date will become invalid.
@@ -14,11 +14,11 @@
 /* 
  * Delete the old packet shipping configuration entries
  */
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM1STPACKET_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM1STPACKETSF_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPACKET_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPACKETSF_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS_%";
+DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STPACKET_%';
+DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STPACKETSF_%';
+DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM2NDPACKET_%';
+DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM2NDPACKETSF_%';
+DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RMSTDPARCELS_%';
 
 
 		

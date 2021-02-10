@@ -1,7 +1,7 @@
 <?php
 /*
 
-GPL released as part of the big_royalmail_v3.2 package
+GPL released as part of the big_royalmail_v3.3 package
 
 see CREDITS.txt for the contributors and support forum.
 

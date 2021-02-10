@@ -22,7 +22,7 @@ for ($i=1; $i<=$this->num_zones; $i++) {
 		$country_zones = preg_split("/,/", preg_replace('/\s*/', '', $countries_table) );
 
 		if (in_array($dest_country_code, $country_zones)) {
-			//found contry
+			//found country
 
 			$dest_zone = $i;
 			break;
@@ -66,16 +66,16 @@ if ($dest_zone == 0) {
 	$products_list = $_SESSION['cart']->get_product_id_list();
 
 */
-	$attribute_postage_select = 'SELECT ifnull(max(pov.products_options_values_sort_order), 0) as postage_attribute FROM '.TABLE_PRODUCTS_OPTIONS_VALUES.' pov INNER JOIN '.
-			TABLE_PRODUCTS_ATTRIBUTES.' pa ON pov.products_options_values_id = pa.options_values_id INNER JOIN '.
-			TABLE_PRODUCTS_OPTIONS.' po ON po.products_options_id = pa.options_id WHERE pa.products_id IN ('.$products_list.
-			') AND po.products_options_name = "Minimum Delivery Method:"';
+	$attribute_postage_select = 'SELECT ifnull(max(pov.products_options_values_sort_order), 0) as postage_attribute
+			FROM ' . TABLE_PRODUCTS_OPTIONS_VALUES . ' pov INNER JOIN ' . TABLE_PRODUCTS_ATTRIBUTES . ' pa ON pov.products_options_values_id = pa.options_values_id
+			INNER JOIN ' . TABLE_PRODUCTS_OPTIONS . ' po ON po.products_options_id = pa.options_id
+			WHERE pa.products_id IN (' . $products_list . ') AND po.products_options_name = \'Minimum Delivery Method:\'';
 
 
 	$attribute_postage_query = $db->Execute($attribute_postage_select);
 	$attribute_postage = $attribute_postage_query->fields['postage_attribute'];
-
-	if ($postage_check < $attribute_postage){
+	$postage_max = max($postage_check);
+	if ($postage_max < $attribute_postage){
 		// attributes prevent postage
 		$error=2;
 
