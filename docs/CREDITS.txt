@@ -1,0 +1,113 @@
+Support thread is at http://www.zen-cart.com/forum/showthread.php?t=???
+
+BigRoyalMail version 3.0 Updated by Mark Brittain
+
+Releases under GPL, Please send donations via paypal to info@inner-light.co.uk, Thanks.
+
+Version 3.0.0
+Renamed modules to create a consistent naming convention.
+adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display weight units (note all prices are based on Kg)
+Update prices to April 2012
+Added exclusion of CHAD "TD" to surface mail
+Made all modules consistent in using Module_name "removed all hard coded names from modules"
+removed weight unit from language file
+added icon to language file to allow you to use your own icon
+changed all modules to use one expiry date.
+changed all modules to allow the expiry date to be edited.
+changed expiry date to readable format.
+Reduced all UK delivery to single field for costs.
+Standardised all overseas modules.
+
+Special delivery Saturday has been removed as I have not had time to test it.
+
+All the modules are now created from 4 standard modules. 
+One for UK internal mail using single zone.
+One for Airsure using 3 zones (Europe and rest of world zone 1 and 2)
+One for all other Airmail using 3 zones (Europe and rest of world zone 1 and 2)
+One for overseas Surface mail using 1 zone for Europe and and exception list for zone 2 the rest of the world.
+
+------------------------------------------------------------------------------------
+
+big_royalmail version 2.3.x - originally authored by Philip Mohan-Clarke aka Philip Clarke
+
+Released under the GPL.
+
+version 2.3.8
+06/07/2009
+Added Royal Mail Surface Mail and Royal Mail Surface Mail International Signed For Modules.
+03/06/2009
+Standard parcels (all 4 insurance versions) had a bug with the minimum weight for Guests using the shipping estimator so it would quote inappropriate rates and then when they logged in the rates would disappear.
+
+version 2.3.7
+18/05/2009
+Airsure bug fixed where it was not detecting the "rest of the world countries"
+International Signed for upgraded to be able to exclude countries.
+
+version 2.3.6
+17/05/2009
+Bug fixes to royal mail standard parcels modules.
+Undefined constants errors removed in all Airmail modules.
+Beta - ability to exclude countries added to Airmail Small Packets
+Beta - Server Time correction now added to Special Delivery Saturday.
+
+version 2.3.5
+13/05/2009
+Bug fixes to royal mail standard parcels modules.
+optional shipping estimator code now upgraded to Zen Cart version 1.3.8a and re-arranged in directory to enable easier installation.
+
+version 2.3.4
+06/04/2009
+Minor bug fix to Airmail Small Packets, when uninstalled and error was displayed in admin.
+Major change in that parcelforce and all courier modules have now been removed and are to be found under ParcelForce shipping modules.
+
+version 2.3.3
+29/03/2009 :
+Major change - all modules when installed are now "disabled" by default. The majority of "shop owners" are installing on live sites and so if they install a module it would appear on a customer's shopping trolley and checkout before the owner had a chance to check the figures or that the handling fees are correct.
+New Modules - ukcourier, this is a very basic module for shop owners that want a basic courier module without going to the trouble of setting up zones and placing the Scottish Higlands in a separate pricing zone.
+specialdeliverysat - This is BETA CODE, this module will appear to the customer after the post office has shut on a Thursday through to when it closes on a Friday, giving the option of Saturday Special Delivery, but it does rely on the server having the correct time and being in the UK, in the next release this will be corrected.
+Module Update - Standard Parcels now has a minimum weight setting. THe royal mail calculates the price in a band from 0 to 2Kg, whereas some shop owners may prefer to send items by 1st Class up to a kilo and then offer standard parcels, this new setting enables this scenario and will be migrated across all modules.
+Removals - the sql that removed all the royal mail details from the database adn the sql for when peopl upbraded version that were 2~3 years old has been removed from the optional section after a newbie ran it on his live site by mistake and damaged his installation.
+
+version 2.3.2
+15/03/2009 - All airmail countries have been altered to move from Royal Mail's 2006 definitions to 2009. Airsure countries have been corrected, The code base for Airmail and International Signed has been altered to create a cleaner more accurate code, reflecting the Royal Mail's change from Europe, World Zone 1 & World Zone 2, to Europe & the Rest of the World.
+12/03/2009 - International Datapost, International Standard and Eurozone 48 all have to be upgraded because or a bug in the filename and bigroyal mail will not work unless the old files are removed before installing this release. See INSTALL.txt for the files to remove.
+
+version 2.3.1
+11/03/2009 - Airsure £500 insurance had debugging information left in it that caused the zone tabels to appear on the pages in Heading 2 format.
+
+version 2.3
+9/03/2009 - 2009 (c) Philip Clarke (original author), Bouncing Ltd T/a ExploitingIt.co.uk 
+	Rates correct to April 5 2009, SQL patch will be released for the 2009 rate increase,
+	Works with Zen Cart version 1.3.5 to 1.3.8
+	Airmail, Airsure, Airsure 500, International Signed for, ISF 500 Rates all corrected.
+	Standard Parcels, 100, 250 and 500 corrected and cleaned up.
+Security update
+	Prior to this release, optional components for shipping estimator had XSS and possible SQL insertion flaws
+New for 2.3
+	Added Special delivery £1000 and £2500 insurance options.
+	confirmed working with ZC versions 1.3.0 to 1.3.8
+
+2009 Works with cart verion 1.3.8 - Robert @ HappyClili.com
+
+2008 rates Added by Robert (@) happychili.com
+
+2007 May Couple of edits to fix errors/omissions CR Kudos to TFB for dedicated proofreading
+
+2007 rates Added April 2007 Chuck Redman -E&OE.
+
+Copyright (c) 2006  Dave (Pixxi), Philip Clarke, Jim Barrington (JollyJim), Stewart Faulkner
+
+Portions Copyright (c) 2004 Josh Dechant
+
+Portions Copyright (c) 2004 Merlin Beedell
+
+Portions Copyright (c) 2004 The zen-cart developers
+
+Portions Copyright (c) 2003 osCommerce
+
+Special Mention to JSR for spotting a serious flaw in the standard parcels modules.
+
+Support thread at:
+
+http://www.zen-cart.com/forum/showthread.php?t=46450
+
