@@ -15,11 +15,33 @@ YOUR_SHOPPING_CART_DIRECTORY/images/
 4) Modify any of the settings then click Update.
 
 5) Repeat steps 3) and 4) for all the modules you wish to install.
+
+6) Run Install3.2.sql to add the entries to the configuration file.
+  1) Login to your zen cart admin
+  2) Use Tools>Install SQL Patches
+  3) Copy the contents of Install3.2.sql and paste into the text window
+     or 
+     User the Browse button to load Install3.2.sql into zen cart.
+ 
+7) If you want to force a minimum delivery method then set the appropriate attributes for each product. This can be done by visiting the product 
+   1) Login to your zen cart admin
+   2) Use Catalog>Categories/Products> then navidate to your products
+   3) Then click on the A in a circle.
+   4) Select Minimum Delivery Method: [Read only]...
+   5) Select the appropriate option value.
+      The order is
+      a) Large Letter
+      b) Small Parcel
+      c) Medium Parcel
+      d) Special Delivary or Parcel Force
+      Therefore if you select Large letter only standard letter will be excluded.
+      If you select Medium Parcel then standard letter, Large Letter and Small Parcel will be excluded. 
+      
  
 NB.
-1) These modules only take into account weight and not the size of your items. Therefore I would recommend that you either 
-   install the letter modules or the others not both. Note that there is now a seperation in parcel size as well so you may need to consider if you 
-   want to use small and medium parcels. 
+1) I have now change the modules to allow you to use attributes to determin the minimum delivery method for items (take some size into accont). 
+   This does not take into account multiple items that when packed together would make the parcel larger than the size set.
+   Therefor you may still need to consider which modules you install.
 2) All pricing information is based on Kg not Lbs. if you are using Lbs as your weight measure you will either have to adjust 
    your product weights to Kg or recalculate the weights to Lbs.
 3) If you are using Kg and have not already done so adjust the TEXT_PRODUCTS_WEIGHT_UNIT to Kg to display the correct information 

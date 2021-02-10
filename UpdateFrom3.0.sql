@@ -20,6 +20,7 @@ DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPA
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPACKETSF_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS_%";
 
+
 		
 /*
  * UPDATE the sort order for all modules
@@ -43,15 +44,3 @@ UPDATE configuration SET configuration_value = '150' WHERE configuration_group_i
 UPDATE configuration SET configuration_value = '160' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STMEDPARCELSF_SORT_ORDER' ;
 UPDATE configuration SET configuration_value = '170' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_SORT_ORDER' ;
 UPDATE configuration SET configuration_value = '190' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '200' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY1000_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '210' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM1000_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '220' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY2500_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '230' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM2500_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '300' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKET_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '310' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKET_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '320' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMASSMALLPACKET_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '330' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '340' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '350' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '360' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF500_SORT_ORDER' ;
-UPDATE configuration SET configuration_value = '370' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMASSMALLPACKET500_SORT_ORDER' ;

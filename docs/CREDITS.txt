@@ -1,23 +1,32 @@
-Support thread is at http://www.zen-cart.com/forum/showthread.php?t=???
+﻿Support thread is at http://www.zen-cart.com/showthread.php?198005-Big-Royal-Mail-3-0
 
-BigRoyalMail version 3.0 Updated by Mark Brittain
+BigRoyalMail version 3.2 Updated by Mark Brittain
 
 Releases under GPL, Please send donations via paypal to info@inner-light.co.uk, Thanks.
+
+Version 3.2
+Added read only Minimum Delivery Method attributes to allow items to exclude lower delivery methods.
+Seperated out main function and quote function.
+Added Parcel Force delivery methods for uk.
+Added Parcel Force delivery methods for worldwide.
+Changed insurance to be included when required in the special delivery and air mail methods.
+Changed "Confirmed" back to "Signed For" in delivery method descriptions.
+Standardised all modules.
 
 Version 3.1.1
 Corrected bug that forced icons to be present.
 
 Version 3.1.0
 Renamed modules to create a consistent naming convention.
-adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display weight units (note all prices are based on Kg)
+Adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display weight units (note all prices are based on Kg)
 Update prices to April 2012
 Added exclusion of CHAD "TD" to surface mail
 Made all modules consistent in using Module_name "removed all hard coded names from modules"
-removed weight unit from language file
-added icon to language file to allow you to use your own icon
-changed all modules to use one expiry date.
-changed all modules to allow the expiry date to be edited.
-changed expiry date to readable format.
+Removed weight unit from language file
+Added icon to language file to allow you to use your own icon
+Changed all modules to use one expiry date.
+Changed all modules to allow the expiry date to be edited.
+Changed expiry date to readable format.
 Reduced all UK delivery to single field for costs.
 Standardised all overseas modules.
 
@@ -31,7 +40,7 @@ One for overseas Surface mail using 1 zone for Europe and and exception list for
 
 ------------------------------------------------------------------------------------
 
-big_royalmail version 2.3.x - originally authored by Philip Mohan-Clarke aka Philip Clarke
+Big_royalmail version 2.3.x - originally authored by Philip Mohan-Clarke aka Philip Clarke
 
 Released under the GPL.
 

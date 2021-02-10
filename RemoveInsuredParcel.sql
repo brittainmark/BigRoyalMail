@@ -13,3 +13,8 @@
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS100_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS250_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS500_%";
+DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM1STPACKET_%";
+DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM1STPACKETSF_%";
+DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPACKET_%";
+DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDPACKETSF_%";
+DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS_%";
