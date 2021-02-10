@@ -18,7 +18,7 @@ class rm1stsmlparcelsf {
 
 		global $order, $total_weight;
 
-		$this->version = '3.4.0';
+		$this->version = '3.4.1';
 		$this->code = 'rm1stsmlparcelsf';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');

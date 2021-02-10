@@ -1,19 +1,19 @@
-/* 
- * If you are upgrading FROM any 3.0.x release
- * Login to your zen cart admin AND use Tools>Install SQL Patches
- * Copy the contents of this file AND paste into the text window
- * or 
- * User the Browse button to load the file into zencart.
- * 
- * If you do not want to change the the sort order remove the last UPDATE section 'UPDATE the sort order for all modules'
- * 
- * 
- * Also the expiry date will become invalid.
- */
+#  
+# If you are upgrading FROM any 3.0.x release
+# Login to your zen cart admin AND use Tools>Install SQL Patches
+# Copy the contents of this file AND paste into the text window
+# or 
+# User the Browse button to load the file into zencart.
+# 
+# If you do not want to change the the sort order remove the last UPDATE section 'UPDATE the sort order for all modules'
+# 
+# 
+# Also the expiry date will become invalid.
+#
 
-/* 
- * Delete the old packet shipping configuration entries
- */
+#  
+# Delete the old packet shipping configuration entries
+#
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STPACKET_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STPACKETSF_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM2NDPACKET_%';
@@ -22,9 +22,9 @@ DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RMSTDPA
 
 
 		
-/*
- * UPDATE the sort order for all modules
- */
+# 
+# UPDATE the sort order for all modules
+#
 
 UPDATE configuration SET configuration_value = '10' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM2NDLETTER_SORT_ORDER' ;
 UPDATE configuration SET configuration_value = '20' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLETTER_SORT_ORDER' ;

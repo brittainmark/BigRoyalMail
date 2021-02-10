@@ -56,8 +56,7 @@ if ($dest_zone == 0) {
 	//check to see attributes allow this method
 	$products_list = '';
 	if (is_array($_SESSION['cart']->contents)) {
-		reset($_SESSION['cart']->contents);
-		while (list($products_id, ) = each($_SESSION['cart']->contents)) {
+		foreach(array_keys($_SESSION['cart']->contents) as $products_id) {
 			$products_list .= ', ' . zen_get_prid(zen_db_input($products_id));
 		}
 	}

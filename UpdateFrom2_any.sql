@@ -1,47 +1,47 @@
-/* 
- * If you are upgrading FROM any 2.x.x release
- * Login to your zen cart admin AND use Tools>Install SQL Patches
- * Copy the contents of this file AND paste into the text window
- * or 
- * User the Browse button to load the file into zencart.
- * 
- * If you do not want to change the the sort order remove the last UPDATE section "UPDATE the sort order for all modules"
- * 
- * 
- * Also the expiry date will become invalid.
- */
+#  
+# If you are upgrading FROM any 2.x.x release
+# Login to your zen cart admin AND use Tools>Install SQL Patches
+# Copy the contents of this file AND paste into the text window
+# or 
+# User the Browse button to load the file into zencart.
+# 
+# If you do not want to change the the sort order remove the last UPDATE section "UPDATE the sort order for all modules"
+# 
+# 
+# Also the expiry date will become invalid.
+#
 
-/*
- * Delete the Expires dates as all modules now use the same one
- */
+# 
+# Delete the Expires dates as all modules now use the same one
+#
 
 DELETE FROM configuration WHERE configuration_key = 'MODULE_SHIPPING_RMAM_EXPIRES';
 DELETE FROM configuration WHERE configuration_key = 'MODULE_SHIPPING_RMSM_EXPIRES';
 
-/* 
- * Delete the old insured parcel shipping configuration entries
- */
+#  
+# Delete the old insured parcel shipping configuration entries
+#
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RMSTDPARCELS100_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RMSTDPARCELS250_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RMSTDPARCELS500_%';
-/*
- * Delete the surface mail signed for
- */
+# 
+# Delete the surface mail signed for
+#
 DELETE FROM configuration WHERE configuration_key like 'MODULE_SHIPPING_RMSMSMALLPACKETISF_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_';
-/*
- *add configuration expires date if not exist else update.
- */  
+# 
+#add configuration expires date if not exist else update.
+#  
 SET @expires = 0;
 SELECT (@expires:=configuration_value) FROM configuration WHERE configuration_key = 'MODULE_SHIPPING_RM_EXPIRES';
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) 
 		VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2013-04-29 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2012-04-02 00:00:01 or 2012-04-02<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())
-ON DUPLICATE KEY UPDATE configuration_value =FROM_UNIXTIME(@expires,'%Y-%m-%d %H:%i:%s'), configuration_description = 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2012-04-02 00:00:01 or 2012-04-02<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.' ;
+ON DUPLICATE KEY UPDATE configuration_value = FROM_UNIXTIME(@expires,'%Y-%m-%d %H:%i:%s'), configuration_description = 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2012-04-02 00:00:01 or 2012-04-02<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.' ;
 
 
-/*
- * Delete the extra costs as single cost for UK postage 
- */
+# 
+# Delete the extra costs as single cost for UK postage 
+#
 
 DELETE FROM configuration WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTER_ZONES_COST1_1';
 DELETE FROM configuration WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTER_ZONES_COST2_1';
@@ -96,9 +96,9 @@ DELETE FROM configuration WHERE configuration_group_id = 6 AND configuration_key
 DELETE FROM configuration  WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET500_ZONES_COUNTRIES_EXCLUDE';
 
 
-/*
- * Rename the keys for consistance now all "MODULE_SHIPPING_RM [delivery][Signfor][Insurance]"
- */
+# 
+# Rename the keys for consistance now all "MODULE_SHIPPING_RM [delivery][Signfor][Insurance]"
+#
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_HIDE_SHIPPING_ERRORS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_SPECIALDELIVERY_HIDE_SHIPPING_ERRORS';
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_MAX_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_SPECIALDELIVERY_MAX_ORDERVALUE';
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_MIN_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_SPECIALDELIVERY_MIN_ORDERVALUE';
@@ -189,9 +189,9 @@ UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF_
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF_ZONES_COST5_2', configuration_description = '&quot;Rest of World&quot; Zone 1 Rates cont''d (6)' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET_ZONES_COST5_2';
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF_ZONES_HANDLING_2', configuration_title = '&quot;Rest of World&quot; Zone 1 Handling Fee' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET_ZONES_HANDLING_2';
 
-/*
- * Update the remaining descriptions
- */
+# 
+# Update the remaining descriptions
+#
 UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', set_function = 'zen_cfg_textarea(' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTER_ZONES_COST0_1';
 UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', set_function = 'zen_cfg_textarea(' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTERSF_ZONES_COST0_1';
 UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', set_function = 'zen_cfg_textarea(' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLETTER_ZONES_COST0_1';
@@ -205,18 +205,18 @@ UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means we
 UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM2NDPACKET_ZONES_COST0_1';
 UPDATE configuration SET configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM2NDPACKETSF_ZONES_COST0_1';
 
-/*
- * Set minimum order values
- */
+# 
+# Set minimum order values
+#
 UPDATE configuration SET configuration_value = 500.01 WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY1000_MIN_ORDERVALUE';
 UPDATE configuration SET configuration_value = 1000.01 WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY2500_MIN_ORDERVALUE';
 UPDATE configuration SET configuration_value = 500.01 WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM1000_MIN_ORDERVALUE';
 UPDATE configuration SET configuration_value = 1000.01 WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM2500_MIN_ORDERVALUE';
 
 
-/*
- * UPDATE the sort order for all modules
- */
+# 
+# UPDATE the sort order for all modules
+#
 
 UPDATE configuration SET configuration_value = '10' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM2NDLETTER_SORT_ORDER' ;
 UPDATE configuration SET configuration_value = '20' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RM1STLETTER_SORT_ORDER' ;
