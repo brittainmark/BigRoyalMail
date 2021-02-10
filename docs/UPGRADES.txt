@@ -1,10 +1,71 @@
 *
+******Version 3.1.0
+*
+a) Copy/overwrite the files from BigRoyalMail_V3.1.0/includes/modules/shipping/*  
+   onto your server into:
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/
+*
+******Version 3.0.1
+*
+a) Remove the following files after you are ready to ues the new rates. 2nd April 2013 is when the new rates go live
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php
+  
+b)  Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/* 
+   onto your server into:
+
+  YOUR_SHOPPING_CART_DIRECTORY/includes/
+  YOUR_SHOPPING_CART_DIRECTORY/images/
+
+c)Run UpdateFrom3.0.sql to remove the entries from the configuration file.
+  1) Login to your zen cart admin
+  2) Use Tools>Install SQL Patches
+  3) Copy the contents of UpdateFrom3.0.sql and paste into the text window
+     or 
+     User the Browse button to load UpdateFrom3.0.sql into zen cart.  
+
+d) install the uk 1st and 2nd class small and or medium parcle modules if required. 
+  1) Login to your zen cart admin
+  2) Use Modules>Shipping
+  3) Highlight the required module
+  4) Click Install
+  5) Enable the option and adjust any parameters as necessary
+  6) Click Update
+
+e) Run 2013Update.sql to update the rates. You must run this or you will have a mixture of old and new rates.
+  1) Login to your zen cart admin
+  2) Use Tools>Install SQL Patches
+  3) Copy the contents of 2013Update.sql and paste into the text window
+     or 
+     User the Browse button to load 2013Update.sql into zen cart.
+      
+
+
+*
 ******Version 3.0.0 or 3.0.0a
 *
-a) Remove the following files
+a) Remove the following files  after you are ready to ues the new rates. 2nd April 2013 is when the new rates go live
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels100.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels250.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels500.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php
@@ -16,7 +77,35 @@ b) Run RemoveInsuredParcel.sql to remove the entries from the configuration file
   3) Copy the contents of RemoveInsuredParcel.sql and paste into the text window
      or 
      User the Browse button to load RemoveInsuredParcel.sql into zen cart.
+
+c) Run UpdateFrom3.0.sql to remove the entries from the configuration file.
+  1) Login to your zen cart admin
+  2) Use Tools>Install SQL Patches
+  3) Copy the contents of RemoveUKPacket.sql and paste into the text window
+     or 
+     User the Browse button to load RemoveInsuredParcel.sql into zen cart. 
      
+d) Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/* 
+   onto your server into:
+
+  YOUR_SHOPPING_CART_DIRECTORY/includes/
+  YOUR_SHOPPING_CART_DIRECTORY/images/
+  
+e) install the uk 1st and 2nd class small and or medium parcle modules if required. 
+  1) Login to your zen cart admin
+  2) Use Modules>Shipping
+  3) Highlight the required module
+  4) Click Install
+  5) Enable the option and adjust any parameters as necessary
+  6) Click Update
+  
+f) Run 2013Update.sql to update the rates. You must run this or you will have a mixture of old and new rates.
+  1) Login to your zen cart admin
+  2) Use Tools>Install SQL Patches
+  3) Copy the contents of 2013Update.sql and paste into the text window
+     or 
+     User the Browse button to load 2013Update.sql into zen cart.
+
      
 *
 ******Version 2.+
@@ -46,6 +135,7 @@ a) Remove the following files
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf500.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php
+  YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php
   YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php
  
@@ -65,7 +155,7 @@ b) if you have made changes using the template overrides system method then rena
   	
   compare the files with those in /includes/languages/english/modules/shipping/ and make any changes necessary
 
-c) Copy the files from BigRoyalMail_V3.0.0/includes/* and BigRoyalMail_V3.0.0/images/* 
+c) Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/* 
    onto your server into:
 
   YOUR_SHOPPING_CART_DIRECTORY/includes/
@@ -78,14 +168,22 @@ d) Run the sql update UpdateFrom2_any.sql please backup you database before runn
   3) Copy the contents of UpdateFrom2_any.sql and paste into the text window
      or 
      User the Browse button to load UpdateFrom2_any.sql into zen cart.
+
+e) install the uk 1st and 2nd class small and or medium parcle modules if required. 
+  1) Login to your zen cart admin
+  2) Use Modules>Shipping
+  3) Highlight the required module
+  4) Click Install
+  5) Enable the option and adjust any parameters as necessary
+  6) Click Update
    
-e) Run 2012Update.sql to update the rates. You must run this or you will have a mixture of old and new rates.
+f) Run 2013Update.sql to update the rates. You must run this or you will have a mixture of old and new rates.
   1) Login to your zen cart admin
   2) Use Tools>Install SQL Patches
-  3) Copy the contents of 2012Update.sql and paste into the text window
+  3) Copy the contents of 2013Update.sql and paste into the text window
      or 
-     User the Browse button to load 2012Update.sql into zen cart.
+     User the Browse button to load 2013Update.sql into zen cart.
 
-f) Check the countries you are delivering to are correct. Remove any world zone 2 countries 
+g) Check the countries you are delivering to are correct. Remove any world zone 2 countries 
    (AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS) 
    from world zone 1 delivery if necessary. (I think I have them covered but please make sure!)

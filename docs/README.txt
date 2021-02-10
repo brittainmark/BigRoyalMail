@@ -2,7 +2,7 @@ see CREDITS.txt for licence and contributors.
 
 INSTALLATION
 
-Copy the files from BigRoyalMail_V3.0.1/includes/* and BigRoyalMail_V3.0.1/images/*
+Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/*
 onto your server into:
 
 YOUR_SHOPPING_CART_DIRECTORY/includes/
@@ -18,7 +18,8 @@ YOUR_SHOPPING_CART_DIRECTORY/images/
  
 NB.
 1) These modules only take into account weight and not the size of your items. Therefore I would recommend that you either 
-   install the letter modules or the others not both.
+   install the letter modules or the others not both. Note that there is now a seperation in parcel size as well so you may need to consider if you 
+   want to use small and medium parcels. 
 2) All pricing information is based on Kg not Lbs. if you are using Lbs as your weight measure you will either have to adjust 
    your product weights to Kg or recalculate the weights to Lbs.
 3) If you are using Kg and have not already done so adjust the TEXT_PRODUCTS_WEIGHT_UNIT to Kg to display the correct information 

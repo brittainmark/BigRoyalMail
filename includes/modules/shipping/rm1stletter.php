@@ -18,13 +18,14 @@ class rm1stletter {
 
 		global $order, $total_weight;
 
-		$this->version = '3.0.0';
+		$this->version = '3.1.0';
 		$this->code = 'rm1stletter';
 		$module = strtoupper($this->code);
 		$this->title = ( (defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true) ? @constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE'). ' <b style="color:#ff4000">ver. '.$this->version.'</b>' : constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE') );
 		$this->description = @constant('MODULE_SHIPPING_' . $module . '_TEXT_DESCRIPTION');
 		$this->sort_order = @constant('MODULE_SHIPPING_' . $module . '_SORT_ORDER');
-		$this->icon = (( defined('DIR_WS_ICONS') ? DIR_WS_ICONS : 'images/icons/' ) .  @constant('MODULE_SHIPPING_' . $module . '_ICON'));
+		$this->icon = @constant('MODULE_SHIPPING_' . $module . '_ICON');
+		if (zen_not_null($this->icon)) $this->icon = (( defined('DIR_WS_ICONS') ? DIR_WS_ICONS : 'images/icons/' ) .  @constant('MODULE_SHIPPING_' . $module . '_ICON'));
 		$this->tax_class = @constant('MODULE_SHIPPING_' . $module . '_TAX_CLASS');
 		$this->enabled = ((@constant('MODULE_SHIPPING_' . $module . '_STATUS') == 'True') ? true : false);
 
@@ -142,6 +143,7 @@ class rm1stletter {
 
 			$zones_table = preg_split("/[:,]/" , preg_replace('/\s*/','',$zones_cost) );
 			$size = sizeof($zones_table);
+			
 			for ($i=0; $i<$size; $i+=2) {
 				if ($shipping_weight <= $zones_table[$i]) {
 					$shipping = $zones_table[$i+1];
@@ -170,6 +172,10 @@ class rm1stletter {
 			}
 
 			if ($shipping == -1) {
+				if(@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True') {
+					$this->enabled = false;
+					return ;
+				}
 				$shipping_cost = 0;
 				$shipping_method = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
 				//$shipping_method = $zones_cost; 	   //12 FEB 04 MBeedell	useful for debug-print out the rates list!
@@ -216,6 +222,10 @@ class rm1stletter {
 		}
 
 		if ($shipping == -1) {
+			if(@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True') {
+				$this->enabled = false;
+				return ;
+			}
 			$this->quotes['error'] = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
 		}
 
@@ -252,7 +262,7 @@ class rm1stletter {
 		if(!$handling_test->RecordCount()){
 
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '0.00', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '60.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '20.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())");
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for ".@constant('MODULE_SHIPPING_' . (strtoupper($this->code)) . '_TEXT_TITLE' ) . " delivery.', '6', '0', now())");
 
 		}

@@ -9,17 +9,23 @@ see CREDITS.txt for the contributors and support forum.
 
 
 
-class rm2ndlargeletter {
+class rm1stmedparcel {
 	var $code, $title, $description, $enabled, $num_zones ;
 
 
 	// class constructor
-	function rm2ndlargeletter() {
+	function rm1stmedparcel() {
 
-		global $order, $total_weight;
+		global $order, $total_weight,$messageStack;
+/*
+ *Only in this module to check the expires date and report if the rates have expired 
+ */		
+		if(defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true && (@constant('MODULE_SHIPPING_RM_EXPIRES') <= date('Y-m-d H:i:s') || !defined('MODULE_SHIPPING_RM_EXPIRES')) ){
+			$messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on '.@constant('MODULE_SHIPPING_RM_EXPIRES').'. Please check your rates<br /><a href="http://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
+		}
 
 		$this->version = '3.1.0';
-		$this->code = 'rm2ndlargeletter';
+		$this->code = 'rm1stmedparcel';
 		$module = strtoupper($this->code);
 		$this->title = ( (defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true) ? @constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE'). ' <b style="color:#ff4000">ver. '.$this->version.'</b>' : constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE') );
 		$this->description = @constant('MODULE_SHIPPING_' . $module . '_TEXT_DESCRIPTION');
@@ -177,7 +183,6 @@ class rm2ndlargeletter {
 				}
 				$shipping_cost = 0;
 				$shipping_method = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
-				//$shipping_method = $zones_cost; 	   //12 FEB 04 MBeedell	useful for debug-print out the rates list!
 			} else {
 				$shipping_cost = ($shipping * $shipping_num_boxes) + constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $dest_zone);
 			}
@@ -245,15 +250,15 @@ class rm2ndlargeletter {
 
 	function install() {
 		global $db;
-
-		$module = strtoupper($this->code);
 		
+		$module = strtoupper($this->code);
+
 		$this->remove();
 
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Enable this shipping option', 'MODULE_SHIPPING_" . $module . "_STATUS', 'False', 'If you need to adjust your shipping rates, you can use this option to disable it in your shop, instead of re-installing', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order values).', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('Tax Class', 'MODULE_SHIPPING_" . $module . "_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'zen_get_tax_class_title', 'zen_cfg_pull_down_tax_classes(', now())");
-		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '30', 'Sort order of display.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '80', 'Sort order of display.', '6', '0', now())");
 
 
 		$handling_test = $db->Execute("SELECT configuration_key FROM " . TABLE_CONFIGURATION . " WHERE configuration_key IN ( 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', 'MODULE_SHIPPING_" . (strtoupper($this->code)) . "_ZONES_HANDLING_1' ) " );
@@ -266,13 +271,13 @@ class rm2ndlargeletter {
 
 		}
 
-
+		
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1')) {
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'GB', 'two character ISO country codes for Great Britain and Northern Ireland ', '6', '0', now())");
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '0.1:0.69, 0.25:1.10, 0.5:1.40, 0.75:1.90', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '1:5.65, 2:8.9, 5:15.1, 10:21.25, 20:32.4', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 		/*
 		 * Add the expires date if it does not exist

@@ -17,13 +17,14 @@ class rmsmsmallpacketsf500 {
 	function rmsmsmallpacketsf500() {
 
 		global $order, $total_weight;
-		$this->version = '3.0.0';
+		$this->version = '3.1.0';
 		$this->code = 'rmsmsmallpacketsf500';
 		$module=strtoupper($this->code);
 		$this->title = ( (defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true) ? @constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE'). ' <b style="color:#ff4000">ver. '.$this->version.'</b>' : constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE') );
 		$this->description = @constant('MODULE_SHIPPING_' . $module . '_TEXT_DESCRIPTION');
 		$this->sort_order = @constant('MODULE_SHIPPING_' . $module . '_SORT_ORDER');
-		$this->icon = (( defined('DIR_WS_ICONS') ? DIR_WS_ICONS : 'images/icons/' ) .  @constant('MODULE_SHIPPING_' . $module . '_ICON'));
+		$this->icon = @constant('MODULE_SHIPPING_' . $module . '_ICON');
+		if (zen_not_null($this->icon)) $this->icon = (( defined('DIR_WS_ICONS') ? DIR_WS_ICONS : 'images/icons/' ) .  @constant('MODULE_SHIPPING_' . $module . '_ICON'));
 		$this->tax_class = @constant('MODULE_SHIPPING_' . $module . '_TAX_CLASS');
 		$this->enabled = ((@constant('MODULE_SHIPPING_' . $module . '_STATUS') == 'True') ? true : false);
 
@@ -230,6 +231,10 @@ class rmsmsmallpacketsf500 {
 			}
 
 			if ($shipping == -1) {
+				if(@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True') {
+					$this->enabled = false;
+					return ;
+				}
 				$shipping_cost = 0;
 				$shipping_method = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
 				//$shipping_method = $zones_cost; 	   //12 FEB 04 MBeedell	useful for debug-print out the rates list!
@@ -278,6 +283,10 @@ class rmsmsmallpacketsf500 {
 		}
 
 		if ($shipping == -1) {
+			if(@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True') {
+				$this->enabled = false;
+				return ;
+			}
 			$this->quotes['error'] = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
 		}
 
@@ -311,7 +320,7 @@ class rmsmsmallpacketsf500 {
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE')){
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '60.01', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '50.01', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())");
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '500.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())");
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('European Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for European Surface Mail delivery.', '6', '1', now())");
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('&quot;Rest of World&quot; Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_2', '0', 'The amount it costs you to package the items for &quot;Rest of World&quot; Surface Mail delivery.', '6', '2', now())");
@@ -338,21 +347,21 @@ class rmsmsmallpacketsf500 {
 
 			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined European Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'two character ISO country codes for Europe.', '6', '1', 'zen_cfg_textarea(', now())");
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('European rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_1', '0.1:9.95, 0.15:10.29, 0.2:10.63', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST1_1', '0.25:10.97, 0.3:11.31, 0.4:11.96', 'European Rates cont\'d (2):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST2_1', '0.5:12.61, 0.6:13.26, 0.7:13.91, 0.8:14.56', 'European Rates cont\'d (3):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST3_1', '0.9:15.21, 1:15.86, 1.1:16.51, 1.2:17.16', 'European Rates cont\'d (4):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST4_1', '1.3:17.81, 1.4:18.46, 1.5:19.11, 1.6:19.76', 'European Rates cont\'d (5):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST5_1', '1.7:20.41, 1.8:21.06, 1.9:21.71, 2:22.36', 'European Rates cont\'d (6):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('European rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_1', '0.1:10.5, 0.25:11.15', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST1_1', '0.5:12.75, 0.75:14.35', 'European Rates cont\'d (2):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST2_1', '0.1:15.95, 0.125:17.55', 'European Rates cont\'d (3):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST3_1', '1.5:19.15', 'European Rates cont\'d (4):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST4_1', '1.75:20.75', 'European Rates cont\'d (5):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST5_1', '2:22.35', 'European Rates cont\'d (6):', '6', '1', 'zen_cfg_textarea(', now())");
 				
 			//Rest of world Rates
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_2', '0.1:9.95, 0.15:10.29, 0.2:10.63', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST1_2', '0.25:10.97, 0.3:11.31, 0.4:11.96', '&quot;Rest of World&quot; Rates cont\'d (2):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST2_2', '0.5:12.61, 0.6:13.26, 0.7:13.91, 0.8:14.56', '&quot;Rest of World&quot; Rates cont\'d (3):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST3_2', '0.9:15.21, 1:15.86, 1.1:16.51, 1.2:17.16', '&quot;Rest of World&quot; Rates cont\'d (4):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST4_2', '1.3:17.81, 1.4:18.46, 1.5:19.11, 1.6:19.76', '&quot;Rest of World&quot; Rates cont\'d (5):', '6', '1', 'zen_cfg_textarea(', now())");
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST5_2', '1.7:20.41, 1.8:21.06, 1.9:21.71, 2:22.36', '&quot;Rest of World&quot; Rates cont\'d (6):', '6', '1', 'zen_cfg_textarea(', now())");
-
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_2', '0.1:10.5, 0.25:11.15', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST1_2', '0.5:12.75, 0.75:14.35', '&quot;Rest of World&quot; Rates cont\'d (2):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST2_2', '0.1:15.95, 0.125:17.55', '&quot;Rest of World&quot; Rates cont\'d (3):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST3_2', '1.5:19.15', '&quot;Rest of World&quot; Rates cont\'d (4):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST4_2', '1.75:20.75', '&quot;Rest of World&quot; Rates cont\'d (5):', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('', 'MODULE_SHIPPING_".$module."_ZONES_COST5_2', '2:22.35', '&quot;Rest of World&quot; Rates cont\'d (6):', '6', '1', 'zen_cfg_textarea(', now())");
+			
 		}
 		/*
 		 * Add the expires date if it does not exist

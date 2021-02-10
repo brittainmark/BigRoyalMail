@@ -4,7 +4,10 @@ BigRoyalMail version 3.0 Updated by Mark Brittain
 
 Releases under GPL, Please send donations via paypal to info@inner-light.co.uk, Thanks.
 
-Version 3.0.0
+Version 3.1.1
+Corrected bug that forced icons to be present.
+
+Version 3.1.0
 Renamed modules to create a consistent naming convention.
 adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display weight units (note all prices are based on Kg)
 Update prices to April 2012
@@ -73,7 +76,7 @@ version 2.3.2
 12/03/2009 - International Datapost, International Standard and Eurozone 48 all have to be upgraded because or a bug in the filename and bigroyal mail will not work unless the old files are removed before installing this release. See INSTALL.txt for the files to remove.
 
 version 2.3.1
-11/03/2009 - Airsure £500 insurance had debugging information left in it that caused the zone tabels to appear on the pages in Heading 2 format.
+11/03/2009 - Airsure ï¿½500 insurance had debugging information left in it that caused the zone tabels to appear on the pages in Heading 2 format.
 
 version 2.3
 9/03/2009 - 2009 (c) Philip Clarke (original author), Bouncing Ltd T/a ExploitingIt.co.uk 
@@ -84,7 +87,7 @@ version 2.3
 Security update
 	Prior to this release, optional components for shipping estimator had XSS and possible SQL insertion flaws
 New for 2.3
-	Added Special delivery £1000 and £2500 insurance options.
+	Added Special delivery ï¿½1000 and ï¿½2500 insurance options.
 	confirmed working with ZC versions 1.3.0 to 1.3.8
 
 2009 Works with cart verion 1.3.8 - Robert @ HappyClili.com

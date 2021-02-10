@@ -29,16 +29,16 @@ SET @Expires_date = "2014-04-05";
  */
  
 /* Handling fee for uk orders */
-SET @UKHandling = "0.00"; 
+SET @UKHandling = "1.00"; 
 
 /* Handling fee for European orders */
-SET @EuropeHandling = "0.00"; 
+SET @EuropeHandling = "2.00"; 
 
 /* Handling fee for rest of world Zone 1 orders */
-SET @ROWHandling = "0.00"; 
+SET @ROWHandling = "2.00"; 
 
 /* Handling fee for rest of world Zone 2 orders */
-SET @ROWHandlingZ2 = "0.00"; 
+SET @ROWHandlingZ2 = "2.00"; 
 
 
 /* SET the reminder date */
