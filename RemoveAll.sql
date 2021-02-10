@@ -24,7 +24,6 @@ DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDMI
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDSMLPARCEL_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RM2NDSMLPARCELSF_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMAMASPARCEL_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMAMASPARCEL500_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMAMPARCEL_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMAMPARCELSF_%";	
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMPFEXPRESS10_%";	
@@ -38,6 +37,5 @@ DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMPFGPR
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMPFGVALUE_%";	
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMPFIEXPRESS_%";	
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSMPARCEL_%";
-DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSMPARCELSF_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSPECIALDELIVERY_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSPECIALDELIVERY9AM_%";

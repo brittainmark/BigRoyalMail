@@ -54,18 +54,8 @@ if ($dest_zone == 0) {
 	$error = 4;
 } else {
 	//check to see attributes allow this method
-	$products_list = '';
-	if (is_array($_SESSION['cart']->contents)) {
-		reset($_SESSION['cart']->contents);
-		while (list($products_id, ) = each($_SESSION['cart']->contents)) {
-			$products_list .= ', ' . zen_get_prid(zen_db_input($products_id));
-		}
-	}
-	$products_list = substr($products_list, 2);
-/*
 	$products_list = $_SESSION['cart']->get_product_id_list();
 
-*/
 	$attribute_postage_select = 'SELECT ifnull(max(pov.products_options_values_sort_order), 0) as postage_attribute FROM '.TABLE_PRODUCTS_OPTIONS_VALUES.' pov INNER JOIN '.
 			TABLE_PRODUCTS_ATTRIBUTES.' pa ON pov.products_options_values_id = pa.options_values_id INNER JOIN '.
 			TABLE_PRODUCTS_OPTIONS.' po ON po.products_options_id = pa.options_id WHERE pa.products_id IN ('.$products_list.

@@ -18,7 +18,7 @@ class rmpfiexpress {
 
 		global $order, $total_weight;
 
-		$this->version = '3.2.0';
+		$this->version = '3.2.1';
 		$this->code = 'rmpfiexpress';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES."shipping/BigRoyalMail/main.php");
@@ -71,21 +71,21 @@ class rmpfiexpress {
 
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1')) {
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 5 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'IE', 'two character ISO country codes for Zone 5 ', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 5 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'IE', 'Two character ISO country codes for Zone 5 ', '6', '0', now())");
 		}
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to Zone 5 Republic of Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '0.5:22.98, 1:22.98, 1.5:22.98, 2:22.98, 2.5:22.98, 3:22.98, 3.5:22.98, 4:22.98, 4.5:22.98, 5:22.98, 5.5:24.3, 6:25.62, 6.5:26.94, 7:28.26, 7.5:29.58, 8:30.9, 8.5:32.22, 9:33.54, 9.5:34.86, 10:36.18, 10.5:37.14, 11:38.1, 11.5:39.06, 12:40.02, 12.5:40.98, 13:41.94, 13.5:42.9, 14:43.86, 14.5:44.82, 15:45.78, .5+:0.96', 'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to Zone 5 Republic of Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '0.5:16.49, 1:16.49, 1.5:16.49, 2:16.49, 2.5:17.48, 3:17.48, 3.5:17.48, 4:17.48, 4.5:17.48, 5:17.48, 5.5:20.9, 6:20.9, 6.5:20.9, 7:20.9, 7.5:20.9, 8:20.9, 8.5:20.9, 9:20.9, 9.5:20.9, 10:20.9', 'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Insurance rates', 'MODULE_SHIPPING_" . $module . "_ZONES_INSURE', '200:0, 300:1.2, 100+:4.5', 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Insurance rates', 'MODULE_SHIPPING_" . $module . "_ZONES_INSURE', '200:0, 300:1.8, 100+:4.5', 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 
 		/*
 		 * Add the expires date if it does not exist
 		*/
 		if(!defined('MODULE_SHIPPING_RM_EXPIRES')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2013-04-29 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-29 00:00:01 or 2013-04-29<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2015-03-30 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2015-03-30 00:00:01 or 2013-04-29<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 		}
 	}
 

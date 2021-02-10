@@ -17,7 +17,7 @@ class rmamparcelsf {
 	function rmamparcelsf() {
 
 		global $order, $total_weight;
-		$this->version = '3.2.0';
+		$this->version = '3.2.1';
 		$this->code = 'rmamparcelsf';
 		// CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
 		//Currently Europe and the rest of the world
@@ -77,35 +77,35 @@ class rmamparcelsf {
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1')){
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined European Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'two character ISO country codes for Europe.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined European Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'Two character ISO country codes for Europe.', '6', '1', 'zen_cfg_textarea(', now())");
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('European rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_1', '0.1:8.3, 0.25:8.8, 0.5:10.25, 0.75:11.7, 1:13.15, 1.25:14.6, 1.5:16.05, 1.75:17.5, 2:18.95', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('European rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_1', '0.1:8.2, 0.25:8.7, 0.5:10.15, 0.75:11.6, 1:13.05, 1.25:14.5, 1.5:15.95, 1.75:17.4, 2:18.85', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '1', 'zen_cfg_textarea(', now())");
 		}
 
 
 		// Rest of World Zone 1 RATES
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_2')){
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', 'AX, AF, DZ, AO, AI, AQ, AG, AR, AW, BS, BH, BD, BB, BZ, BJ, BM, BT, BO, BW, BV, BR, BN, BF, BI, KH, CM, CA, CV, KY, CF, TD, CL, CN, CO, KM, CG, CR, CI, CU, DJ, DM, DO, TL, EC, EG, SV, GQ, ER, ET, FK, GF, GA, GM, GH, GD, GP, GU, GT, GN, GW, GY, HT, HM, HN, HK, IN, ID, IR, IQ, IE, IL, JM, JP, JO, KE, KP, KR, KW, LB, LS, LR, LY, MG, MW, MY, MV, ML, MH, MQ, MR, MU, YT, MX, FM, MN, MS, MA, MZ, MM, NA, NP, AN, NI, NE, NG, MP, OM, PK, PA, PY, PE, PH, PR, QA, RE, RW, KN, LC, VC, ST, SA, SN, SC, SL, SO, ZA, GS, LK, SH, PM, SD, SR, SJ, SZ, SY, TW, TZ, TH, TG, TT, TN, TC, UG, AE, US, UM, UY, VU, VE, VN, VG, VI, WF, EH, YE, ZM, ZW', 'two character ISO country codes for Zone 1.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', 'AX, AF, DZ, AO, AI, AQ, AG, AR, AW, BS, BH, BD, BB, BZ, BJ, BM, BT, BO, BW, BV, BR, BN, BF, BI, KH, CM, CA, CV, KY, CF, TD, CL, CN, CO, KM, CG, CR, CI, CU, DJ, DM, DO, TL, EC, EG, SV, GQ, ER, ET, FK, GF, GA, GM, GH, GD, GP, GU, GT, GN, GW, GY, HT, HM, HN, HK, IN, ID, IR, IQ, IE, IL, JM, JP, JO, KE, KP, KR, KW, LB, LS, LR, LY, MG, MW, MY, MV, ML, MH, MQ, MR, MU, YT, MX, FM, MN, MS, MA, MZ, MM, NA, NP, AN, NI, NE, NG, MP, OM, PK, PA, PY, PE, PH, PR, QA, RE, RW, KN, LC, VC, ST, SA, SN, SC, SL, SO, ZA, GS, LK, SH, PM, SD, SR, SJ, SZ, SY, TW, TZ, TH, TG, TT, TN, TC, UG, AE, US, UM, UY, VU, VE, VN, VG, VI, WF, EH, YE, ZM, ZW', 'Two character ISO country codes for Zone 1.', '6', '1', 'zen_cfg_textarea(', now())");
 		}
 		// to cope with old royal mail version
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_2' )){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; Zone 1 rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_2', '0.1:8.8, 0.25:9.8, 0.5:12.5, 0.75:15.2, 1:17.9, 1.25:20.6, 1.5:23.3, 1.75:26, 2:28.7', 'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.', '6', '2', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; Zone 1 rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_2', '0.1:8.8, 0.25:9.75, 0.5:12.45, 0.75:15.15, 1:17.85, 1.25:20.55, 1.5:23.25, 1.75:25.95, 2:28.65', 'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.', '6', '2', 'zen_cfg_textarea(', now())");
 		}
 
 		// Rest of World Zone 2 RATES
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_3')){
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_3', 'AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS', 'two character ISO country codes for Zone 2.', '6', '1', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_3', 'AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS', 'Two character ISO country codes for Zone 2.', '6', '1', 'zen_cfg_textarea(', now())");
 
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; Zone 2 rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_3', '0.1:8.8, 0.25:10, 0.5:12.85, 0.75:15.7, 1:18.55, 1.25:21.4, 1.5:24.25, 1.75:27.1, 2:29.95', 'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.', '6', '2', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('&quot;Rest of World&quot; Zone 2 rates from GB &amp; Northern Ireland', 'MODULE_SHIPPING_".$module."_ZONES_COST0_3', '0.1:9, 0.25:10.05, 0.5:12.9, 0.75:15.75, 1:18.6, 1.25:21.45, 1.5:24.3, 1.75:27.15, 2:30', 'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.', '6', '2', 'zen_cfg_textarea(', now())");
 		}
 
 		/*
 		 * Add insureance rates
 		*/
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Insurance rates', 'MODULE_SHIPPING_" . $module . "_ZONES_INSURE', '50:0, 500:2.6', 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Insurance rates', 'MODULE_SHIPPING_" . $module . "_ZONES_INSURE', '50:0, 250:2.5', 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 
 
@@ -129,13 +129,13 @@ class rmamparcelsf {
 
 		$module=strtoupper($this->code);
 
-		$keys = array('MODULE_SHIPPING_RM_EXPIRES', 
-				'MODULE_SHIPPING_' . $module . '_STATUS', 
-				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS', 
-				'MODULE_SHIPPING_' . $module . '_TAX_CLASS', 
-				'MODULE_SHIPPING_' . $module . '_SORT_ORDER', 
-				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE', 
-				'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE', 
+		$keys = array('MODULE_SHIPPING_RM_EXPIRES',
+				'MODULE_SHIPPING_' . $module . '_STATUS',
+				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS',
+				'MODULE_SHIPPING_' . $module . '_TAX_CLASS',
+				'MODULE_SHIPPING_' . $module . '_SORT_ORDER',
+				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE',
+				'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE',
 				'MODULE_SHIPPING_' . $module . '_ZONES_INSURE');
 
 		for ($i=1; $i<=$this->num_zones; $i++) {

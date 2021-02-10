@@ -18,7 +18,7 @@ class rm1stsmlparcelsf {
 
 		global $order, $total_weight;
 
-		$this->version = '3.2.0';
+		$this->version = '3.2.1';
 		$this->code = 'rm1stsmlparcelsf';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES."shipping/BigRoyalMail/main.php");
@@ -70,17 +70,17 @@ class rm1stsmlparcelsf {
 
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1')) {
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'GB', 'two character ISO country codes for Great Britain and Northern Ireland ', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'GB', 'Two character ISO country codes for Great Britain and Northern Ireland ', '6', '0', now())");
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '1:4.1, 2:7.95', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '1:4.3, 2:6.55', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
 		}
 		/*
 		 * Add the expires date if it does not exist
 		*/
 		if(!defined('MODULE_SHIPPING_RM_EXPIRES')){
-			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2013-04-29 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-29 00:00:01 or 2013-04-29<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
+			$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2015-03-30 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2015-03-30 00:00:01 or 2013-04-29<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 		}
 	}
 
@@ -95,12 +95,12 @@ class rm1stsmlparcelsf {
 
 		$module = strtoupper($this->code);
 
-		$keys = array('MODULE_SHIPPING_RM_EXPIRES', 
-				'MODULE_SHIPPING_' . $module . '_STATUS', 
-				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS', 
-				'MODULE_SHIPPING_' . $module . '_TAX_CLASS', 
-				'MODULE_SHIPPING_' . $module . '_SORT_ORDER', 
-				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE', 
+		$keys = array('MODULE_SHIPPING_RM_EXPIRES',
+				'MODULE_SHIPPING_' . $module . '_STATUS',
+				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS',
+				'MODULE_SHIPPING_' . $module . '_TAX_CLASS',
+				'MODULE_SHIPPING_' . $module . '_SORT_ORDER',
+				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE',
 				'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE');
 
 		$keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_1';

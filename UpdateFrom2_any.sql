@@ -25,6 +25,11 @@ DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPA
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS250_%";
 DELETE FROM configuration WHERE configuration_key like "MODULES_SHIPPING_RMSTDPARCELS500_%";
 /*
+ * Delete the surface mail signed for
+ */
+DELETE FROM configuration WHERE configuration_key like "MODULE_SHIPPING_RMSMSMALLPACKETISF_%";
+DELETE FROM configuration WHERE configuration_key like "MODULE_SHIPPING_RMSMSMALLPACKETISF500_";
+/*
  *add configuration expires date if not exist else update.
  */  
 SET @expires = 0;
@@ -205,52 +210,6 @@ UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF5
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF500_ZONES_COST4_2', configuration_description = '&quot;Rest of World&quot; Zone 1 Rates cont''d (5)' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET500_ZONES_COST4_2';
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF500_ZONES_COST5_2', configuration_description = '&quot;Rest of World&quot; Zone 1 Rates cont''d (6)' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET500_ZONES_COST5_2';
 UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMAMSMALLPACKETSF500_ZONES_HANDLING_2', configuration_title = '&quot;Rest of World&quot; Zone 1 Handling Fee' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMAMISFSMALLPACKET500_ZONES_HANDLING_2';
-
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_HIDE_SHIPPING_ERRORS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_HIDE_SHIPPING_ERRORS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_MAX_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_MAX_ORDERVALUE';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_MIN_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_MIN_ORDERVALUE';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_SORT_ORDER' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_SORT_ORDER';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_STATUS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_STATUS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_TAX_CLASS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_TAX_CLASS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST0_1', configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST0_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST1_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST1_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST2_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST2_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST3_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST3_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST4_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST4_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST5_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST5_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COUNTRIES_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COUNTRIES_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_HANDLING_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_HANDLING_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST0_2', configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST0_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST1_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST1_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST2_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST2_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST3_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST3_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST4_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST4_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COST5_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COST5_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_HANDLING_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_HANDLING_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF_ZONES_COUNTRIES_EXCLUDE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF_ZONES_COUNTRIES_EXCLUDE';
-
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_HIDE_SHIPPING_ERRORS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_HIDE_SHIPPING_ERRORS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_MAX_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_MAX_ORDERVALUE';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_MIN_ORDERVALUE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_MIN_ORDERVALUE';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_SORT_ORDER' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_SORT_ORDER';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_STATUS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_STATUS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_TAX_CLASS' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_TAX_CLASS';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST0_1', configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST0_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST1_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST1_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST2_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST2_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST3_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST3_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST4_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST4_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST5_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST5_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COUNTRIES_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COUNTRIES_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_HANDLING_1' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_HANDLING_1';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST0_2', configuration_description = 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST0_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST1_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST1_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST2_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST2_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST3_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST3_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST4_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST4_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COST5_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COST5_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_HANDLING_2' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_HANDLING_2';
-UPDATE configuration SET configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETSF500_ZONES_COUNTRIES_EXCLUDE' WHERE configuration_group_id = 6 AND configuration_key = 'MODULE_SHIPPING_RMSMSMALLPACKETISF500_ZONES_COUNTRIES_EXCLUDE';
 
 /*
  * Update the remaining descriptions
