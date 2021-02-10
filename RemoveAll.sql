@@ -1,11 +1,11 @@
-/* 
- * Remove all royal mail configuration from database
- * 
- * Only run this if you want to completely remove big royal mail 3.3.0 as it will delete all your rates handeling fees
- * and changes you have made to country codes.
- * 
- * Author Mark Brittain
- */
+# 
+#  Remove all royal mail configuration from database   
+#    
+#  Only run this if you want to completely remove big royal mail 3.4.1 as it will delete all your rates handeling fees  
+#  and changes you have made to country codes.  
+#    
+#  Author Mark Brittain  
+#   
 
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STLARGELETTER_%';
 DELETE FROM configuration WHERE configuration_key like 'MODULES_SHIPPING_RM1STLARGELETTERSF_%';
