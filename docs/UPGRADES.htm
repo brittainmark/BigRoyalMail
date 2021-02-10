@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML >
 <html>
 
 <head>
@@ -61,23 +61,26 @@ h1, h2, p {
 			If you have found this useful and would like to reward the maintainer
 			you can make a donation through paypal sending your donation to
 			messages@inner-light.co.uk or follow this link <a
-				href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"
+				href="https://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"
 		</p>
 	</div>
 	<div id="main">
 		<h1>How to upgrade to the latest Version of Big Royal Mail</h1>
-		
+
 		<p>Choose your current version</p>
 		<ul>
-			<li><a href="#3.3.6">3.3.6</a></li>
-			<li><a href="#3.3.5">3.3.5</a></li>
-			<li><a href="#3.3.4">3.3.4</a></li>
-			<li><a href="#3.3.3">3.3.3</a></li>
+			<li><a href="#3.3.2">3.3.9</a></li>
+			<li><a href="#3.3.2">3.3.8</a></li>
+			<li><a href="#3.3.2">3.3.7</a></li>
+			<li><a href="#3.3.2">3.3.6</a></li>
+			<li><a href="#3.3.2">3.3.5</a></li>
+			<li><a href="#3.3.2">3.3.4</a></li>
+			<li><a href="#3.3.2">3.3.3</a></li>
 			<li><a href="#3.3.2">3.3.2</a></li>
-			<li><a href="#3.3.1">3.3.1</a></li>
+			<li><a href="#3.3.0">3.3.1</a></li>
 			<li><a href="#3.3.0">3.3.0</a></li>
-			<li><a href="#3.2.3">3.2.3</a></li>
-			<li><a href="#3.2.3">3.2.2</a></li>
+			<li><a href="#3.2.2">3.2.3</a></li>
+			<li><a href="#3.2.2">3.2.2</a></li>
 			<li><a href="#3.2.1">3.2.1</a></li>
 			<li><a href="#3.2">3.2.0</a></li>
 			<li><a href="#3.1">3.1. any</a></li>
@@ -89,22 +92,51 @@ h1, h2, p {
 					and you are required to run Install3.2.sql you will need to use the
 					script in 1.3.8_scripts and not the one in the top level.</strong>
 		</ul>
-		<h2 id="3.3.6">From Version 3.3.6</h2>
+		<h2 id="3.3.2">From Version 3.3.2 to 3.3.9</h2>
 		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
-			<li>Run 2018Update.sql
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
 				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
 					</li>
 				</ol>
 			</li>
@@ -119,133 +151,53 @@ h1, h2, p {
 				</ol>
 			</li>
 		</ol>
-		<h2 id="3.3.5">From Version 3.3.5</h2>
+		<h2 id="3.3.0">From Version 3.3.1 Or 3.3.0</h2>
 		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
-			<li>Run 2018Update.sql
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
 				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
 					</li>
 				</ol>
-			</li>
-			<li>If you use printed paper rates<br>Run PrintedPapers.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of PrintedPapers.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						PrintedPapers.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-		</ol>
-		<h2 id="3.3.4">From Version 3.3.4</h2>
-		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
-				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-				YOUR_SHOPPING_CART_DIRECTORY/images/
-			</li>
-			<li>Run 2018Update.sql
-				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-			<li>If you use printed paper rates<br>Run PrintedPapers.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of PrintedPapers.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						PrintedPapers.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-		</ol>
-		
-		<h2 id="3.3.3">From Version 3.3.3</h2>
-		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
-				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-				YOUR_SHOPPING_CART_DIRECTORY/images/
-			</li>
-			<li>Run 2018Update.sql
-				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-			<li>If you use printed paper rates<br>Run PrintedPapers.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of PrintedPapers.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						PrintedPapers.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-		</ol>
-		<h2 id="3.3.2">From Version 3.3.2</h2>
-		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
-				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-				YOUR_SHOPPING_CART_DIRECTORY/images/
-			</li>
-			<li>Run 2018Update.sql
-				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-			<li>If you use printed paper rates<br>Run PrintedPapers.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of PrintedPapers.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						PrintedPapers.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-		</ol>
-		<h2 id="3.3.1">From Version 3.3.1</h2>
-		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
-				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
 			<li>Run Update3.3.2.sql
 				<ol class="l2">
@@ -257,18 +209,6 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql
-				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
-					</li>
-				</ol>
-			</li>
 			<li>If you use printed paper rates<br>Run PrintedPapers.sql
 				<ol class="l2">
 					<li>Login to your zen cart admin</li>
@@ -280,47 +220,7 @@ h1, h2, p {
 				</ol>
 			</li>
 		</ol>
-		<h2 id="3.3.0">From Version 3.3.0</h2>
-		<ol class="l1">
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
-				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-				YOUR_SHOPPING_CART_DIRECTORY/images/
-			</li>
-			<li>Run Update3.3.2.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of Update3.3.2.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						Update3.3.2.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-			<li>Run 2018Update.sql
-				<ol class="l2">
-					<li>If you use handling fees use the editor of your choice to
-						set the correct handling fees. Save the changes</li>
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-			<li>If you use printed paper rates<br>Run PrintedPapers.sql
-				<ol class="l2">
-					<li>Login to your zen cart admin</li>
-					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of PrintedPapers.sql and paste into the
-						text window<br /> or<br /> User the Browse button to load
-						PrintedPapers.sql into zen cart.
-					</li>
-				</ol>
-			</li>
-		</ol>
-		<h2 id="3.2.3">From Version 3.2.3 &amp; 3.2.2</h2>
+		<h2 id="3.2.2">From Version 3.2.3 &amp; 3.2.2</h2>
 		<ol class="l1">
 			<li>Run UpdateFrom3.2.sql
 				<ol class="l2">
@@ -332,10 +232,51 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
+				</ol>
 			</li>
 			<li>Run Update3.3.2.sql
 				<ol class="l2">
@@ -347,15 +288,15 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to Update rates.
+			<li>Run 2020Update.sql to Update rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -384,15 +325,15 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to Update rates.
+			<li>Run 2020Update.sql to Update rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -406,10 +347,51 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
+				</ol>
 			</li>
 			<li>Turn on Royal Mail special delivery next day Saturday if
 				required
@@ -464,10 +446,51 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:<br />
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
 				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
 				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
+				</ol>
 			</li>
 			<li>Turn on International Tracked and International Tracked and
 				Signed if required
@@ -481,15 +504,15 @@ h1, h2, p {
 						install.</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to Update rates.
+			<li>Run 2020Update.sql to Update rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br /> or<br /> User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -559,11 +582,50 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:
-				<ol class="ul">
-					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
 				</ol>
 			</li>
 			<li>Run Install3.2.sql to add the Attributes and insurnance
@@ -599,16 +661,16 @@ h1, h2, p {
 						install.</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to remove the entries from the
+			<li>Run 2020Update.sql to remove the entries from the
 				configuration file.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes.</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br>or<br>User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -679,11 +741,50 @@ h1, h2, p {
 				</ol>
 			</li>
 
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:
-				<ol class="ul">
-					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
 				</ol>
 			</li>
 			<li>Run UpdateFrom3.0.sql to remove the entries from the
@@ -727,16 +828,16 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to update the rates. You must run this or
+			<li>Run 2020Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -835,11 +936,50 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:
-				<ol class="ul">
-					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
 				</ol>
 			</li>
 			<li>Run Install3.2.sql to add the Attributes.
@@ -862,16 +1002,16 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to update the rates. You must run this or
+			<li>Run 2020Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
@@ -961,11 +1101,50 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Copy the files from BigRoyalMail_V3.3.7/includes/* and
-				BigRoyalMail_V3.3.7/images/* onto your server into:
-				<ol class="ul">
-					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+			<li>Run RemoveUSA.sql<br />This removes the two letter country
+				code 'US' from all Royal mail modules (not parcel force)<br />NB.
+				International Signed for is no longer valid to USA.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveUSA.sql and paste into the text
+						window and click Send<br /> or<br /> User the Browse button to
+						load RemoveUSA.sql into zen cart and click Upload.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.4.0/includes/* and
+				BigRoyalMail_V3.4.0/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Uninstall and reinstall all the Royal mail shipping modules
+				you are using.
+				<ol class="l2">
+					<li>Use Modules&gt;Shipping</li>
+					<li>For each of the modules installed.<br />Green dot in
+						sort order: installed and in use. <br />Yellow dot in sort order:
+						Installed not in use.
+					</li>
+					<li>Highlight by clicking the module line.</li>
+					<li>Click Remove Module</li>
+					<li>Click Delete on the confirmation message</li>
+					<li>Click Install Module<br />NB. If the dot after status was
+						Yellow you do not need to reinstall as you were not using it so
+						skip remaining steps for that module.
+					</li>
+					<li>Modify Enable this shipping option to True to turn the
+						module on</li>
+					<li>If you do not want to display invalid shipping options<br />Modify
+						Hide Invalid Shipping to True
+					</li>
+					<li>Check the Handling fee/s and modify if necessary</li>
+					<li>Click Update</li>
+					<li>Strictly speaking it is only necessary to perform these
+						steps for modules that post to USA<br />(rmamlargeletter,
+						rmamletter, rmamparcel, rmamtlargeletter, rmamtletter,
+						rmamtparcel, rmamtslargeletter, rmamtsletter, rmamtsparcel)
+					</li>
 				</ol>
 			</li>
 			<li>Run the sql update UpdateFrom2_any.sql please backup you
@@ -1018,16 +1197,16 @@ h1, h2, p {
 					</li>
 				</ol>
 			</li>
-			<li>Run 2018Update.sql to update the rates. You must run this or
+			<li>Run 2020Update.sql to update the rates. You must run this or
 				you will have a mixture of old and new rates.
 				<ol class="l2">
 					<li>If you use handling fees use the editor of your choice to
 						set the correct handling fees. Save the changes</li>
 					<li>Login to your zen cart admin</li>
 					<li>Use Tools&gt;Install SQL Patches</li>
-					<li>Copy the contents of 2018Update.sql and paste into the
+					<li>Copy the contents of 2020Update.sql and paste into the
 						text window<br> or<br>User the Browse button to load
-						2018Update.sql into zen cart.
+						2020Update.sql into zen cart.
 					</li>
 				</ol>
 			</li>
