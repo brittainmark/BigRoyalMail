@@ -18,7 +18,7 @@ class rm1stlargelettersf {
 
 		global $order, $total_weight;
 
-		$this->version = '3.3.5';
+		$this->version = '3.3.7';
 		$this->code = 'rm1stlargelettersf';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
@@ -74,7 +74,7 @@ class rm1stlargelettersf {
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'0.1:2.08, 0.25:2.4, 0.5:2.84, 0.75:3.62\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'0.1:2.11, 0.25:2.5, 0.5:2.97, 0.75:3.7\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 		/*
 		 * Add the expires date if it does not exist

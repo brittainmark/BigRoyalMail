@@ -24,7 +24,7 @@ class rm1stsmlparcel {
 			$messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on '.@constant('MODULE_SHIPPING_RM_EXPIRES').'. Please check your rates<br /><a href="http://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
 		}
 
-		$this->version = '3.3.5';
+		$this->version = '3.3.7';
 		$this->code = 'rm1stsmlparcel';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
@@ -80,7 +80,7 @@ class rm1stsmlparcel {
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'1:3.4, 2:5.5\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'1:3.45, 2:5.5\', \'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 		/*
 		 * Add the expires date if it does not exist

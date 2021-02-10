@@ -13,5 +13,5 @@ define('MODULE_SHIPPING_RMAMTEUPARCEL_INVALID_ZONE', 'Not available for this des
 define('MODULE_SHIPPING_RMAMTEUPARCEL_UNDEFINED_RATE', 'The shipping rate cannot be determined at this time');
 define('MODULE_SHIPPING_RMAMTEUPARCEL_TEXT_UNDERMINTOTAL', '<b>International Tracked</b> delivery is only available for orders over &pound;');
 define('MODULE_SHIPPING_RMAMTEUPARCEL_TEXT_OVERMAXTOTAL', '<b>International Tracked</b> delivery is only available for orders under &pound;');
-define('MODULE_SHIPPING_RMAMTEUPARCEL_TEXT_DESCRIPTION', 'Royal Mail International Tracked <span style="font-weight: normal; font-style: italic">&quot;Small Parcel&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . MODULE_SHIPPING_RM_EXPIRES . '</span>');
+define('MODULE_SHIPPING_RMAMTEUPARCEL_TEXT_DESCRIPTION', 'Royal Mail International Tracked <span style="font-weight: normal; font-style: italic">&quot;Small Parcel&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>');
 define('MODULE_SHIPPING_RMAMTEUPARCEL_ICON','shipping_ukrm.jpg');

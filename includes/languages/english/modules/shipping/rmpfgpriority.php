@@ -14,4 +14,4 @@ define('MODULE_SHIPPING_RMPFGPRIORITY_UNDEFINED_RATE', 'The shipping rate cannot
 define('MODULE_SHIPPING_RMPFGPRIORITY_TEXT_UNDERMINTOTAL', '<b>Parcel Force Global Prioriy</b> delivery is only available for orders over &pound;');
 define('MODULE_SHIPPING_RMPFGPRIORITY_TEXT_OVERMAXTOTAL', '<b>Parcel Force Global Prioriy</b> delivery is only available for orders under &pound;');
 define('MODULE_SHIPPING_RMPFGPRIORITY_ICON','shipping_pf.jpg');
-define('MODULE_SHIPPING_RMPFGPRIORITY_TEXT_DESCRIPTION', 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Global Prioriy&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . MODULE_SHIPPING_RM_EXPIRES . '</span>');
+define('MODULE_SHIPPING_RMPFGPRIORITY_TEXT_DESCRIPTION', 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Global Prioriy&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>');

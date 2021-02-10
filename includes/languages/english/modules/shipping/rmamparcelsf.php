@@ -14,5 +14,5 @@ define('MODULE_SHIPPING_RMAMPARCELSF_UNDEFINED_RATE', 'The shipping rate cannot 
 define('MODULE_SHIPPING_RMAMPARCELSF_TEXT_EXCLUDED', 'International Signed shipping is not currently available to ');
 define('MODULE_SHIPPING_RMAMPARCELSF_TEXT_UNDERMINTOTAL', 'International Signed &quot;Small Parcel&quot; delivery is only available for orders over &pound;');
 define('MODULE_SHIPPING_RMAMPARCELSF_TEXT_OVERMAXTOTAL', 'International Signed &quot;Small Parcel&quot; delivery is only available for orders under &pound;');
-define('MODULE_SHIPPING_RMAMPARCELSF_TEXT_DESCRIPTION', 'RM International Signed &quot;Small Parcel&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until ' . MODULE_SHIPPING_RM_EXPIRES . '</span>');
+define('MODULE_SHIPPING_RMAMPARCELSF_TEXT_DESCRIPTION', 'RM International Signed &quot;Small Parcel&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>');
 define('MODULE_SHIPPING_RMAMPARCELSF_ICON','shipping_ukrm.jpg');

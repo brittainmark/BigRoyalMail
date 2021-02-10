@@ -14,4 +14,4 @@ define('MODULE_SHIPPING_RMPFIEXPRESS_UNDEFINED_RATE', 'The shipping rate cannot 
 define('MODULE_SHIPPING_RMPFIEXPRESS_TEXT_UNDERMINTOTAL', '<b>Parcel Force Ireland Express</b> delivery is only available for orders over &pound;');
 define('MODULE_SHIPPING_RMPFIEXPRESS_TEXT_OVERMAXTOTAL', '<b>Parcel Force Ireland Express</b> delivery is only available for orders under &pound;');
 define('MODULE_SHIPPING_RMPFIEXPRESS_ICON','shipping_pf.jpg');
-define('MODULE_SHIPPING_RMPFIEXPRESS_TEXT_DESCRIPTION', 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Ireland Express&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . MODULE_SHIPPING_RM_EXPIRES . '</span>');
+define('MODULE_SHIPPING_RMPFIEXPRESS_TEXT_DESCRIPTION', 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Ireland Express&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>');

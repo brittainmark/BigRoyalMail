@@ -84,7 +84,7 @@ if ($dest_zone == 0) {
 		$error=2;
 	} else {
 
-		// Check for insurence
+		// Check for insurance
 		$insurance = -1;
 
 		$zones_insure = @constant('MODULE_SHIPPING_' . $module . '_ZONES_INSURE');
@@ -183,7 +183,7 @@ if ($dest_zone == 0) {
 			$error = 5;
 
 		} else {
-			//Add on the handeling cost (either the destination zone or generic rate)
+			//Add on the handling cost (either the destination zone or generic rate)
 			$shipping_cost = ($shipping * $shipping_num_boxes) + @constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $dest_zone) +
 			@constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING');
 
