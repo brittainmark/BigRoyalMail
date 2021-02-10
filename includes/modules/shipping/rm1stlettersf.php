@@ -18,7 +18,7 @@ class rm1stlettersf {
 
 		global $order, $total_weight;
 
-		$this->version = '3.2.1';
+		$this->version = '3.2.2';
 		$this->code = 'rm1stlettersf';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES."shipping/BigRoyalMail/main.php");

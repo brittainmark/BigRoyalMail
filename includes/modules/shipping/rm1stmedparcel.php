@@ -24,7 +24,7 @@ class rm1stmedparcel {
 			$messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on '.@constant('MODULE_SHIPPING_RM_EXPIRES').'. Please check your rates<br /><a href="http://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
 		}
 
-		$this->version = '3.2.1';
+		$this->version = '3.2.2';
 		$this->code = 'rm1stmedparcel';
 		// CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
 		$this->num_zones = 1;

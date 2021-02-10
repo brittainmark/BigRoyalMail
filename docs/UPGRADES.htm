@@ -7,31 +7,39 @@
 .l1 {
 	list-style-type: lower-alpha;
 }
+
 .l2 {
 	list-style-type: decimal;
 	margin-left: 10px;
 }
+
 .ul {
 	list-style-type: disc;
 }
+
 .l1 li {
 	padding-top: 6px;
 }
+
 .ul li {
 	padding-top: 0;
 }
+
 .l2 li {
 	padding-top: 0px;
 }
+
 #donate {
 	position: fixed;
 	top: 0px;
 	height: 7em;
 	background-color: white;
 }
+
 #main {
 	margin-top: 7em;
 }
+
 h2 {
 	margin-top: 7em;
 }
@@ -40,490 +48,555 @@ h2 {
 
 <body>
 
-<div id="donate">
-	<h1>Big royal Mail</h1>
-	<p>If you have found this useful and would like to reward the maintainer you 
-	can make a donation through paypal sending your donation to info@inner-light.co.uk 
-	or follow this link <a href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"</p>
-</div>
-<div id="main">
-	<h1>How to upgrade to the latest Version of Big Royal Mail</h1>
-	<p>Choose your current version</p>
-	<ul>
-		<li><a href="#3.2">3.2.0</a></li>
-		<li><a href="#3.1">3.1. any</a></li>
-		<li><a href="#3.0.1">3.0.1</a></li>
-		<li><a href="#3.0">3.0.0 or 3.0.0a</a></li>
-		<li><a href="#2.0">2. any</a></li>
-		<li> </li>
-		<li><strong>NB. If you are using Version 1.3.8 you will need to use the script in 1.3.8_scripts.</strong>
-	</ul>
-	<p id="3.2">&nbsp;</p>
-	<h2 >From Version 3.2.0</h2>
-	<ol class="l1">
-		<li>Remove the following files
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmparcelsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmparcelsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamasparcel.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamasparcel.php</li>
-		</ol>
-		</li>
-		<li>Run RemoveSurface.sql to remove old configuration values.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of RemoveSurface.sql and paste into the text window<br />
-			or <br />
-			User the Browse button to load RemoveSurface.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Copy the files from BigRoyalMail_V3.2.1/includes/* and BigRoyalMail_V3.2.1/images/* 
-		onto your server into:<br />
-		YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
-		YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		<li>Turn on International Tracked and International Tracked and Signed if 
-		required
-		<ol class="l2">
-			<li>Login to your zen cart admin.</li>
-			<li>Go to admin-&gt;Modules-&gt;Shipping</li>
-			<li>Select the modules you want to install by clicking on it then clicking 
-			install.</li>
-			<li>Modify any of the settings then click Update.</li>
-			<li>Repeat steps 3) and 4) for all the modules you wish to install.</li>
-		</ol>
-		</li>
-		<li>Run 2014Update.sql to Update rates.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of 2014Update.sql and paste into the text window<br />
-			or<br />
-			User the Browse button to load 2014Update.sql into zen cart.</li>
-		</ol>
-		</li>
-	</ol>
-	<p id="3.1">&nbsp;</p>
-	<h2 >From Version 3.1.?</h2>
-	<ol class="l1">
-		<li>Remove the following files
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-		</ol>
-		</li>
-		<li>If you have made changes using the template overrides system method 
-		then rename YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
-		<ol class="ul">
-			<li>rmamassmallpacket.php to rmamasparcel.php</li>
-			<li>rmamsmallpacket.php to rmamparcel.php</li>
-			<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
-			<li>rmsmsmallpacket.php to rmsmparcel.php</li>
-		</ol>
-		Compare the files with those in /includes/languages/english/modules/shipping/ 
-		and make any changes necessary
-		</li>
-		
-		<li>Run RemoveSpecial.sql to remove old configuration values.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of RemoveSpecial.sql and paste into the text window<br>
-			or<br>User the Browse button to load RemoveSpecial.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Copy the files from BigRoyalMail_V3.2.1/includes/* and BigRoyalMail_V3.2.1/images/* 
-		onto your server into:
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		</ol>
-		</li>
-		<li>Run Install3.2.sql to add the Attributes and insurnance rates.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of Install3.2.sql and paste into the text window<br>
-			or<br>User the Browse button to load Install3.2.sql into zen cart.</li></ol>
-		<li>Reinstall any airmail or surface mail options and install any parcelforce 
-			delivery methods if required.
-			<ol class="l2">
-				<li>Login to your zen cart admin.</li>
-				<li>Go to admin-&gt;Modules-&gt;Shipping</li>
-				<li>Select the modules you want to install by clicking on it then 
-				clicking install. </li>
-				<li>Modify any of the settings then click Update.</li>
-				<li>Repeat steps 3) and 4) for all the modules you wish to install.</li>
-			</ol>
+	<div id="donate">
+		<h1>Big royal Mail</h1>
+		<p>
+			If you have found this useful and would like to reward the maintainer
+			you can make a donation through paypal sending your donation to
+			info@inner-light.co.uk or follow this link <a
+				href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"
+		</p>
+	</div>
+	<div id="main">
+		<h1>How to upgrade to the latest Version of Big Royal Mail</h1>
+		<p>Choose your current version</p>
+		<ul>
+			<li><a href="#3.2.1">3.2.1</a></li>
+			<li><a href="#3.2">3.2.0</a></li>
+			<li><a href="#3.1">3.1. any</a></li>
+			<li><a href="#3.0.1">3.0.1</a></li>
+			<li><a href="#3.0">3.0.0 or 3.0.0a</a></li>
+			<li><a href="#2.0">2. any</a></li>
+			<li></li>
+			<li><strong>NB. If you are using Zen cart Version 1.3.8 and you are required to run Install3.2.sql you will
+					need to use the script in 1.3.8_scripts and not the one in the top level.</strong>
+		</ul>
+		<p id="3.2.1">&nbsp;</p>
+		<h2>From Version 3.2.1</h2>
+		<ol class="l1">
+			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
+				BigRoyalMail_V3.2.2/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
 			</li>
-			<li>Run 2014Update.sql to remove the entries from the configuration 
-			file.
-			<ol class="l2">
-				<li>Login to your zen cart admin</li>
-				<li>Use Tools&gt;Install SQL Patches</li>
-				<li>Copy the contents of 2014Update.sql and paste into the text 
-				window<br>or<br>User the Browse button to load 2014Update.sql into 
-				zen cart.</li>
-			</ol>
+			<li>Turn on Royal Mail special delivery next day Saturday if
+				required
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
+		</ol>
+		<p id="3.2">&nbsp;</p>
+		<h2>From Version 3.2.0</h2>
+		<ol class="l1">
+			<li>Remove the following files
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmparcelsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmparcelsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamasparcel.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamasparcel.php</li>
+				</ol>
+			</li>
+			<li>Run RemoveSurface.sql to remove old configuration values.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveSurface.sql and paste into the
+						text window<br /> or <br /> User the Browse button to load
+						RemoveSurface.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
+				BigRoyalMail_V3.2.2/images/* onto your server into:<br />
+				YOUR_SHOPPING_CART_DIRECTORY/includes/<br />
+				YOUR_SHOPPING_CART_DIRECTORY/images/
+			</li>
+			<li>Turn on International Tracked and International Tracked and
+				Signed if required
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
+			<li>Run 2014Update.sql to Update rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2014Update.sql and paste into the
+						text window<br /> or<br /> User the Browse button to load
+						2014Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<p id="3.1">&nbsp;</p>
+		<h2>From Version 3.1.?</h2>
+		<ol class="l1">
+			<li>Remove the following files
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+				</ol>
+			</li>
+			<li>If you have made changes using the template overrides system
+				method then rename
+				YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
+				<ol class="ul">
+					<li>rmamassmallpacket.php to rmamasparcel.php</li>
+					<li>rmamsmallpacket.php to rmamparcel.php</li>
+					<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
+					<li>rmsmsmallpacket.php to rmsmparcel.php</li>
+				</ol> Compare the files with those in
+				/includes/languages/english/modules/shipping/ and make any changes
+				necessary
+			</li>
+
+			<li>Run RemoveSpecial.sql to remove old configuration values.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveSpecial.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						RemoveSpecial.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
+				BigRoyalMail_V3.2.2/images/* onto your server into:
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+				</ol>
+			</li>
+			<li>Run Install3.2.sql to add the Attributes and insurnance
+				rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of Install3.2.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						Install3.2.sql into zen cart.
+					</li>
+				</ol>
+			<li>Reinstall any airmail or surface mail options and install
+				any parcelforce delivery methods if required.
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
+			<li>Run 2014Update.sql to remove the entries from the
+				configuration file.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2014Update.sql and paste into the
+						text window<br>or<br>User the Browse button to load
+						2014Update.sql into zen cart.
+					</li>
+				</ol>
 			</li>
 		</ol>
 
-	<p id="3.0.1">&nbsp;</p>
-	<h2 >From Version 3.0.1</h2>
-	<ol class="l1">
-		<li>Remove the following files after you are ready to ues the new rates. 
-		2nd April 2013 is when the new rates go live
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-		</ol>
-		</li>
-		<li>if you have made changes using the template overrides system method 
-		then rename YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
-		<ol class="ul">
-			<li>rmamassmallpacket.php to rmamasparcel.php</li>
-			<li>rmamsmallpacket.php to rmamparcel.php</li>
-			<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
-			<li>rmsmsmallpacket.php to rmsmparcel.php</li>
-		</ol>
-		Compare the files with those in /includes/languages/english/modules/shipping/ 
-		and make any changes necessary
-		</li>
-		
-		<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/* 
-		onto your server into:
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		</ol>
-		</li>
-		<li>Run UpdateFrom3.0.sql to remove the entries from the configuration file.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of UpdateFrom3.0.sql and paste into the text window<br>
-			or<br>User the Browse button to load UpdateFrom3.0.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Run RemoveSpecial.sql to remove old configuration values.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of RemoveSpecial.sql and paste into the text window<br>
-			or<br>User the Browse button to load RemoveSpecial.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Run Install3.2.sql to add the Attributes.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of Install3.2.sql and paste into the text window<br>
-			or<br>User the Browse button to load Install3.2.sql into zen cart.<br>
+		<p id="3.0.1">&nbsp;</p>
+		<h2>From Version 3.0.1</h2>
+		<ol class="l1">
+			<li>Remove the following files after you are ready to ues the
+				new rates. 2nd April 2013 is when the new rates go live
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+				</ol>
+			</li>
+			<li>if you have made changes using the template overrides system
+				method then rename
+				YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
+				<ol class="ul">
+					<li>rmamassmallpacket.php to rmamasparcel.php</li>
+					<li>rmamsmallpacket.php to rmamparcel.php</li>
+					<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
+					<li>rmsmsmallpacket.php to rmsmparcel.php</li>
+				</ol> Compare the files with those in
+				/includes/languages/english/modules/shipping/ and make any changes
+				necessary
+			</li>
+
+			<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and
+				BigRoyalMail_V3.1.0/images/* onto your server into:
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+				</ol>
+			</li>
+			<li>Run UpdateFrom3.0.sql to remove the entries from the
+				configuration file.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom3.0.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						UpdateFrom3.0.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Run RemoveSpecial.sql to remove old configuration values.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveSpecial.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						RemoveSpecial.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Run Install3.2.sql to add the Attributes.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of Install3.2.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						Install3.2.sql into zen cart.<br>
+					</li>
+				</ol>
+			</li>
+			<li>Run 2014Update.sql to update the rates. You must run this or
+				you will have a mixture of old and new rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2014Update.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						2014Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Reinstall any airmail or surface mail options and install
+				any parcelforce delivery methods if required.
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
 			</li>
 		</ol>
-		</li>
-		<li>Run 2014Update.sql to update the rates. You must run this or you will 
-		have a mixture of old and new rates.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of 2014Update.sql and paste into the text window<br>
-			or<br>User the Browse button to load 2014Update.sql into zen cart.</li>
+		<p id="3.0">&nbsp;</p>
+		<h2>From Version 3.0.0 or 3.0.0a</h2>
+		<ol class="l1">
+			<li>Remove the following files after you are ready to ues the
+				new rates. 2nd April 2013 is when the new rates go live
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels100.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels250.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php</li>
+				</ol>
+			</li>
+			<li>if you have made changes using the template overrides system
+				method then rename
+				YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
+				<ol class="ul">
+					<li>rmamassmallpacket.php to rmamasparcel.php</li>
+					<li>rmamsmallpacket.php to rmamparcel.php</li>
+					<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
+					<li>rmsmsmallpacket.php to rmsmparcel.php</li>
+					<li>rmsmsmallpacketsf.php to rmsmparcelsf.php</li>
+				</ol> Compare the files with those in
+				/includes/languages/english/modules/shipping/ and make any changes
+				necessary
+			</li>
+
+			<li>Run RemoveInsuredParcel.sql to remove the entries from the
+				configuration file.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of RemoveInsuredParcel.sql and paste
+						into the text window<br>or<br>User the Browse button to
+						load RemoveInsuredParcel.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and
+				BigRoyalMail_V3.1.0/images/* onto your server into:
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+				</ol>
+			</li>
+			<li>Run Install3.2.sql to add the Attributes.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of Install3.2.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						Install3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Run 2014Update.sql to update the rates. You must run this or
+				you will have a mixture of old and new rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2014Update.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						2014Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Reinstall any airmail or surface mail options and install
+				any parcelforce delivery methods if required.
+				<ol class="l2">
+					<li>Login to your zen cart admin.</li>
+					<li>Go to admin-&gt;Modules-&gt;Shipping</li>
+					<li>Select the modules you want to install by clicking on it
+						then clicking install.</li>
+					<li>Modify any of the settings then click Update.</li>
+					<li>Repeat steps 3) and 4) for all the modules you wish to
+						install.</li>
+				</ol>
+			</li>
 		</ol>
-		</li>
-		<li>Reinstall any airmail or surface mail options and install any parcelforce 
-		delivery methods if required.
-		<ol class="l2">
-			<li>Login to your zen cart admin.</li>
-			<li>Go to admin-&gt;Modules-&gt;Shipping</li>
-			<li>Select the modules you want to install by clicking on it then clicking 
-			install.</li>
-			<li>Modify any of the settings then click Update.</li>
-			<li>Repeat steps 3) and 4) for all the modules you wish to install.</li>
+		<p id="2.0">&nbsp;</p>
+		<h2>From Version 2.+</h2>
+		<ol class="l1">
+			<li>Remove the following files
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamisfsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamisfsmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketisf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketisf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels100.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels250.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamisfsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamisfsmallpacket500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery2500.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am1000.php</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am2500.php</li>
+				</ol>
+			</li>
+			<li>if you have made changes using the template overrides system
+				method then rename
+				YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
+				<ol class="ul">
+					<li>specialdelivery.php to rmspecialdelivery.php</li>
+					<li>specialdelivery9am.php to rmspecialdelivery9am.php</li>
+					<li>rmamisfsmallpacket.php to rmamparcelsf.php</li>
+					<li>rmamassmallpacket.php to rmamasparcel.php</li>
+					<li>rmamsmallpacket.php to rmamparcel.php</li>
+					<li>rmsmsmallpacket.php to rmsmparcel.php</li>
+				</ol> Compare the files with those in
+				/includes/languages/english/modules/shipping/ and make any changes
+				necessary
+			</li>
+
+			<li>Copy the files from BigRoyalMail_V3.2.2/includes/* and
+				BigRoyalMail_V3.2.2/images/* onto your server into:
+				<ol class="ul">
+					<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
+					<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
+				</ol>
+			</li>
+			<li>Run the sql update UpdateFrom2_any.sql please backup you
+				database before running.<br>
+			<strong style="color: red;">Warning!!</strong> You cannot run this
+				script more than once as it will remove your postage costs.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of UpdateFrom2_any.sql and paste into
+						the text window<br>or<br>User the Browse button to load
+						UpdateFrom2_any.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Reinstall any mail options and install any parcelforce
+				delivery methods if required
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Modules&gt;Shipping</li>
+					<li>Highlight the required module</li>
+					<li>Click Install</li>
+					<li>Enable the option and adjust any parameters as necessary</li>
+					<li>Click Update</li>
+				</ol>
+			</li>
+			<li>Check the countries you are delivering to are correct.
+				Remove any world zone 2 countries<br>(AU, IO, CX, CC, CK, FJ,
+				PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO,
+				TV, WS, AS)<br>from world zone 1 delivery if necessary. (I
+				think I have them covered but please make sure!)
+			</li>
+			<li>Run Install3.2.sql to add the Attributes.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of Install3.2.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						Install3.2.sql into zen cart.
+					</li>
+				</ol>
+			</li>
+			<li>Run 2014Update.sql to update the rates. You must run this or
+				you will have a mixture of old and new rates.
+				<ol class="l2">
+					<li>Login to your zen cart admin</li>
+					<li>Use Tools&gt;Install SQL Patches</li>
+					<li>Copy the contents of 2014Update.sql and paste into the
+						text window<br> or<br>User the Browse button to load
+						2014Update.sql into zen cart.
+					</li>
+				</ol>
+			</li>
 		</ol>
-		</li>
-	</ol>
-	<p id="3.0">&nbsp;</p>
-	<h2 >From Version 3.0.0 or 3.0.0a</h2>
-	<ol class="l1">
-		<li>Remove the following files after you are ready to ues the new rates. 
-		2nd April 2013 is when the new rates go live
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm1stpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rm2ndpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels100.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels250.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm1stpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rm2ndpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php</li>
-		</ol>
-		</li>
-		<li>if you have made changes using the template overrides system method 
-		then rename YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
-		<ol class="ul">
-			<li>rmamassmallpacket.php to rmamasparcel.php</li>
-			<li>rmamsmallpacket.php to rmamparcel.php</li>
-			<li>rmamsmallpacketsf.php to rmamparcelsf.php</li>
-			<li>rmsmsmallpacket.php to rmsmparcel.php</li>
-			<li>rmsmsmallpacketsf.php to rmsmparcelsf.php</li>
-		</ol>
-		Compare the files with those in /includes/languages/english/modules/shipping/ 
-		and make any changes necessary
-		</li>
-		
-		<li>Run RemoveInsuredParcel.sql to remove the entries from the configuration 
-		file.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of RemoveInsuredParcel.sql and paste into the 
-			text window<br>or<br>User the Browse button to load RemoveInsuredParcel.sql 
-			into zen cart.</li>
-		</ol>
-		</li>
-		<li>Copy the files from BigRoyalMail_V3.1.0/includes/* and BigRoyalMail_V3.1.0/images/* 
-		onto your server into:
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		</ol>
-		</li>
-		<li>Run Install3.2.sql to add the Attributes.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of Install3.2.sql and paste into the text window<br>
-			or<br>User the Browse button to load Install3.2.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Run 2014Update.sql to update the rates. You must run this or you will 
-		have a mixture of old and new rates.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of 2014Update.sql and paste into the text window<br>
-			or<br>User the Browse button to load 2014Update.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Reinstall any airmail or surface mail options and install any parcelforce 
-		delivery methods if required.
-		<ol class="l2">
-			<li>Login to your zen cart admin.</li>
-			<li>Go to admin-&gt;Modules-&gt;Shipping</li>
-			<li>Select the modules you want to install by clicking on it then clicking 
-			install.</li>
-			<li>Modify any of the settings then click Update.</li>
-			<li>Repeat steps 3) and 4) for all the modules you wish to install.</li>
-		</ol>
-		</li>
-	</ol>
-	<p id="2.0">&nbsp;</p>
-	<h2>From Version 2.+</h2>
-	<ol class="l1">
-		<li>Remove the following files
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamisfsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamisfsmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketisf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketisf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels100.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels250.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmstdparcels500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/specialdelivery9am2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamassmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamisfsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamisfsmallpacket500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacket.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketisf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery2500.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am1000.php</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am2500.php</li>
-		</ol>
-		</li>
-		<li>if you have made changes using the template overrides system method 
-		then rename YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/YOUR_TEMPLATE
-		<ol class="ul">
-			<li>specialdelivery.php to rmspecialdelivery.php</li>
-			<li>specialdelivery9am.php to rmspecialdelivery9am.php</li>
-			<li>rmamisfsmallpacket.php to rmamparcelsf.php</li>
-			<li>rmamassmallpacket.php to rmamasparcel.php</li>
-			<li>rmamsmallpacket.php to rmamparcel.php</li>
-			<li>rmsmsmallpacket.php to rmsmparcel.php</li>
-		</ol>
-		Compare the files with those in /includes/languages/english/modules/shipping/ 
-		and make any changes necessary
-		</li>
-		
-		<li>Copy the files from BigRoyalMail_V3.2.1/includes/* and BigRoyalMail_V3.2.1/images/* 
-		onto your server into:
-		<ol class="ul">
-			<li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
-			<li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
-		</ol>
-		</li>
-		<li>Run the sql update UpdateFrom2_any.sql please backup you database before 
-		running.<br><strong style="color: red;">Warning!!</strong> You cannot run 
-		this script more than once as it will remove your postage costs.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of UpdateFrom2_any.sql and paste into the text 
-			window<br>or<br>User the Browse button to load UpdateFrom2_any.sql into 
-			zen cart.</li>
-		</ol>
-		</li>
-		<li>Reinstall any mail options and install any parcelforce delivery methods 
-		if required
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Modules&gt;Shipping</li>
-			<li>Highlight the required module</li>
-			<li>Click Install</li>
-			<li>Enable the option and adjust any parameters as necessary</li>
-			<li>Click Update</li>
-		</ol>
-		</li>
-		<li>Check the countries you are delivering to are correct. Remove any world 
-		zone 2 countries<br>(AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, 
-		NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS)<br>from world zone 1 
-		delivery if necessary. (I think I have them covered but please make sure!)</li>
-		<li>Run Install3.2.sql to add the Attributes.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of Install3.2.sql and paste into the text window<br>
-			or<br>User the Browse button to load Install3.2.sql into zen cart.</li>
-		</ol>
-		</li>
-		<li>Run 2014Update.sql to update the rates. You must run this or you will 
-		have a mixture of old and new rates.
-		<ol class="l2">
-			<li>Login to your zen cart admin</li>
-			<li>Use Tools&gt;Install SQL Patches</li>
-			<li>Copy the contents of 2014Update.sql and paste into the text window<br>
-			or<br>User the Browse button to load 2014Update.sql into zen cart.</li>
-		</ol>
-		</li>
-	</ol>
-</div>
+	</div>
 
 </body>
 

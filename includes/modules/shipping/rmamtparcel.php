@@ -18,7 +18,7 @@ class rmamtparcel {
 
 		global $order, $total_weight;
 
-		$this->version = '3.2.1';
+		$this->version = '3.2.2';
 		$this->code = 'rmamtparcel';
 		// CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
 		//Currently Europe and the rest of the world

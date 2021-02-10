@@ -7,240 +7,277 @@
 .da {
 	list-style-type: none;
 }
+
 .l1 {
 	list-style-type: lower-alpha;
 }
+
 .l2 {
 	list-style-type: decimal;
 	margin-left: 10px;
 }
+
 .ul {
 	list-style-type: disc;
 }
+
 .l1 li {
 	padding-top: 6px;
 }
+
 .ul li {
 	padding-top: 0;
 }
+
 .l2 li {
 	padding-top: 0px;
 }
+
 #donate {
 	position: fixed;
 	top: 0px;
 	height: 7em;
 	background-color: white;
 }
+
 #main {
 	margin-top: 7em;
 }
-
 </style>
 </head>
 
 <body>
 
-<div id="donate">
-	<h1>Big royal Mail</h1>
-	<p>If you have found this useful and would like to reward the maintainer you 
-	can make a donation through paypal sending your donation to info@inner-light.co.uk 
-	or follow this link <a href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"</p>
-</div>
-<div id="main">
-	<h1>Version History and Credits</h1>
-	<p>The support thread is at
-	<a href="http://www.zen-cart.com/showthread.php?198005-Big-Royal-Mail-3-0">http://www.zen-cart.com/showthread.php?198005-Big-Royal-Mail-3-0</a></p>
-	<h2>BigRoyalMail version 3.2.1 Updated by Mark Brittain </h2>
-	<p>Releases under GPL, Please send donations via paypal to info@inner-light.co.uk, 
-	or click <a href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a> Thanks.</p>
-	<h3>Version 3.2.1</h3>
-	<ul>
-		<li>Added International Tracked and International Tacked and Signed</li>
-		<li>Added International Tracked EU</li>
-		<li>Removed Airsure</li>
-		<li>Removed Surface Mail Signed for</li>
-		<li>Re-branded Surface Mail as International economy</li>
-		<li>Re-branded Airmail as International Standard</li>
-		<li>Re-branded Airmail signed for as International Signed</li>
-		<li>Update all Prices for 2014 prices</li>
-		<li>Provided Sql rate update for printed papers 2014</li>
-	</ul>
-	<h3>Version 3.2</h3>
-	<ul>
-		<li>Added read only Minimum Delivery Method attributes to allow items to 
-		exclude lower delivery methods.</li>
-		<li>Separated out main function and quote function.</li>
-		<li>Added Parcel Force delivery methods for uk.</li>
-		<li>Added Parcel Force delivery methods for worldwide.</li>
-		<li>Changed insurance to be included when required in the special delivery 
-		and air mail methods.</li>
-		<li>Changed "Confirmed" back to "Signed For" in delivery method descriptions.</li>
-		<li>Standardised all modules.</li>
-	</ul>
-	<h3>Version 3.1.1</h3>
-	<ul>
-		<li>Corrected bug that forced icons to be present.</li>
-	</ul>
-	<h3>Version 3.1.0</h3>
-	<ul>
-		<li>Renamed modules to create a consistent naming convention.</li>
-		<li>Adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display weight 
-		units (note all prices are based on Kg)</li>
-		<li>Update prices to April 2012</li>
-		<li>Added exclusion of CHAD "TD" to surface mail</li>
-		<li>Made all modules consistent in using Module_name "removed all hard coded 
-		names from modules"</li>
-		<li>Removed weight unit from language file</li>
-		<li>Added icon to language file to allow you to use your own icon</li>
-		<li>Changed all modules to use one expiry date.</li>
-		<li>Changed all modules to allow the expiry date to be edited.</li>
-		<li>Changed expiry date to readable format.</li>
-		<li>Reduced all UK delivery to single field for costs.</li>
-		<li>Standardised all overseas modules.</li>
-		<li><strong style="color: red">Special delivery Saturday has been removed 
-		as I have not had time to test it.</strong></li>
-		<li>All the modules are now created from 4 standard modules.</li>
-		<li>One for UK internal mail using single zone.</li>
-		<li>One for Airsure using 3 zones (Europe and rest of world zone 1 and 2)</li>
-		<li>One for all other Airmail using 3 zones (Europe and rest of world zone 
-		1 and 2)</li>
-		<li>One for overseas Surface mail using 1 zone for Europe and and exception 
-		list for zone 2 the rest of the world.</li>
-	</ul>
-	<hr />
-	<h2>Big_royalmail version 2.3.x - originally authored by Philip Mohan-Clarke 
-	aka Philip Clarke</h2>
-	<p>Released under the GPL.</p>
-	<h3>version 2.3.8</h3>
-	<ul>
-		<li class="da">06/07/2009</li>
-		<li>Added Royal Mail Surface Mail and Royal Mail Surface Mail International 
-		Signed For Modules.</li>
-		<li class="da">03/06/2009</li>
-		<li>Standard parcels (all 4 insurance versions) had a bug with the minimum 
-		weight for Guests using the shipping estimator so it would quote inappropriate 
-		rates and then when they logged in the rates would disappear.</li>
-	</ul>
-	<h3>version 2.3.7</h3>
-	<ul>
-		<li class="da">18/05/2009</li>
-		<li>Airsure bug fixed where it was not detecting the "rest of the world 
-		countries"</li>
-		<li>International Signed for upgraded to be able to exclude countries.</li>
-	</ul>
-	<h3>version 2.3.6</h3>
-	<ul>
-		<li class="da">17/05/2009</li>
-		<li>Bug fixes to royal mail standard parcels modules.</li>
-		<li>Undefined constants errors removed in all Airmail modules.</li>
-		<li>Beta - ability to exclude countries added to Airmail Small Packets</li>
-		<li>Beta - Server Time correction now added to Special Delivery Saturday.</li>
-	</ul>
-	<h3>version 2.3.5</h3>
-	<ul>
-		<li class="da">13/05/2009</li>
-		<li>Bug fixes to royal mail standard parcels modules.</li>
-		<li>optional shipping estimator code now upgraded to Zen Cart version 1.3.8a 
-		and re-arranged in directory to enable easier installation.</li>
-	</ul>
-	<h3>version 2.3.4</h3>
-	<ul>
-		<li class="da">06/04/2009</li>
-		<li>Minor bug fix to Airmail Small Packets, when uninstalled and error was 
-		displayed in admin.</li>
-		<li>Major change in that parcelforce and all courier modules have now been 
-		removed and are to be found under ParcelForce shipping modules.</li>
-	</ul>
-	<h3>version 2.3.3</h3>
-	<ul>
-		<li class="da">29/03/2009 :</li>
-		<li>Major change - all modules when installed are now "disabled" by default. 
-		The majority of "shop owners" are installing on live sites and so if they 
-		install a module it would appear on a customer's shopping trolley and checkout 
-		before the owner had a chance to check the figures or that the handling 
-		fees are correct.</li>
-		<li>New Modules - ukcourier, this is a very basic module for shop owners 
-		that want a basic courier module without going to the trouble of setting 
-		up zones and placing the Scottish Highlands in a separate pricing zone.</li>
-		<li>specialdeliverysat - This is BETA CODE, this module will appear to the 
-		customer after the post office has shut on a Thursday through to when it 
-		closes on a Friday, giving the option of Saturday Special Delivery, but 
-		it does rely on the server having the correct time and being in the UK, 
-		in the next release this will be corrected.</li>
-		<li>Module Update - Standard Parcels now has a minimum weight setting. The 
-		royal mail calculates the price in a band from 0 to 2Kg, whereas some shop 
-		owners may prefer to send items by 1st Class up to a kilo and then offer 
-		standard parcels, this new setting enables this scenario and will be migrated 
-		across all modules.</li>
-		<li>Removals - the sql that removed all the royal mail details from the 
-		database and the sql for when people upgraded version that were 2~3 years 
-		old has been removed from the optional section after a newbie ran it on 
-		his live site by mistake and damaged his installation.</li>
-	</ul>
-	<h3>version 2.3.2</h3>
-	<ul>
-		<li class="da">15/03/2009</li>
-		<li>All airmail countries have been altered to move from Royal Mail's 2006 
-		definitions to 2009. Airsure countries have been corrected, The code base 
-		for Airmail and International Signed has been altered to create a cleaner 
-		more accurate code, reflecting the Royal Mail's change from Europe, World 
-		Zone 1 &amp; World Zone 2, to Europe &amp; the Rest of the World.</li>
-		<li class="da">12/03/2009 </li>
-		<li>International Datapost, International Standard and Eurozone 48 all have 
-		to be upgraded because or a bug in the filename and bigroyal mail will not 
-		work unless the old files are removed before installing this release. See 
-		INSTALL.txt for the files to remove.</li>
-	</ul>
-	<h3>version 2.3.1</h3>
-	<ul>
-		<li class="da">11/03/2009</li>
-		<li>Airsure &pound;500 insurance had debugging information left in it that 
-		caused the zone tables to appear on the pages in Heading 2 format.</li>
-	</ul>
-	<h3>version 2.3</h3>
-	<ol class="ul">
-		<li class="da">9/03/2009 - 2009 (c) Philip Clarke (original author), Bouncing 
-		Ltd T/a ExploitingIt.co.uk<br />
-		</li>
-		<li>Rates correct to April 5 2009, SQL patch will be released for the 2009 
-		rate increase,</li>
-		<li>Works with Zen Cart version 1.3.5 to 1.3.8</li>
-		<li>Airmail, Airsure, Airsure 500, International Signed for, ISF 500 Rates 
-		all corrected.</li>
-		<li>Standard Parcels, 100, 250 and 500 corrected and cleaned up.</li>
-		<li>Security update
+	<div id="donate">
+		<h1>Big royal Mail</h1>
+		<p>
+			If you have found this useful and would like to reward the maintainer
+			you can make a donation through paypal sending your donation to
+			info@inner-light.co.uk or follow this link <a
+				href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>"
+		</p>
+	</div>
+	<div id="main">
+		<h1>Version History and Credits</h1>
+		<p>
+			The support thread is at <a
+				href="http://www.zen-cart.com/showthread.php?198005-Big-Royal-Mail-3-0">http://www.zen-cart.com/showthread.php?198005-Big-Royal-Mail-3-0</a>
+		</p>
+		<h2>BigRoyalMail version 3.2.2 Updated by Mark Brittain</h2>
+		<p>
+			Releases under GPL, Please send donations via paypal to
+			info@inner-light.co.uk, or click <a
+				href="http://www.innerlightworkers.co.uk/donate.htm">to Donate</a>
+			Thanks.
+		</p>
+		<h3>Version 3.2.2</h3>
+		<ul>
+			<li>Added Royal Mail special delivery&reg; next day Saturday</li>
+			<li>Added Royal Mail special delivery&reg; next day Saturday 9AM</li>
+		</ul>
+		<h3>Version 3.2.1</h3>
+		<ul>
+			<li>Added International Tracked and International Tacked and
+				Signed</li>
+			<li>Added International Tracked EU</li>
+			<li>Removed Airsure</li>
+			<li>Removed Surface Mail Signed for</li>
+			<li>Re-branded Surface Mail as International economy</li>
+			<li>Re-branded Airmail as International Standard</li>
+			<li>Re-branded Airmail signed for as International Signed</li>
+			<li>Update all Prices for 2014 prices</li>
+			<li>Provided Sql rate update for printed papers 2014</li>
+		</ul>
+		<h3>Version 3.2</h3>
+		<ul>
+			<li>Added read only Minimum Delivery Method attributes to allow
+				items to exclude lower delivery methods.</li>
+			<li>Separated out main function and quote function.</li>
+			<li>Added Parcel Force delivery methods for uk.</li>
+			<li>Added Parcel Force delivery methods for worldwide.</li>
+			<li>Changed insurance to be included when required in the
+				special delivery and air mail methods.</li>
+			<li>Changed "Confirmed" back to "Signed For" in delivery method
+				descriptions.</li>
+			<li>Standardised all modules.</li>
+		</ul>
+		<h3>Version 3.1.1</h3>
+		<ul>
+			<li>Corrected bug that forced icons to be present.</li>
+		</ul>
+		<h3>Version 3.1.0</h3>
+		<ul>
+			<li>Renamed modules to create a consistent naming convention.</li>
+			<li>Adjusted code to use the TEXT_PRODUCT_WEIGHT_UNIT to display
+				weight units (note all prices are based on Kg)</li>
+			<li>Update prices to April 2012</li>
+			<li>Added exclusion of CHAD "TD" to surface mail</li>
+			<li>Made all modules consistent in using Module_name "removed
+				all hard coded names from modules"</li>
+			<li>Removed weight unit from language file</li>
+			<li>Added icon to language file to allow you to use your own
+				icon</li>
+			<li>Changed all modules to use one expiry date.</li>
+			<li>Changed all modules to allow the expiry date to be edited.</li>
+			<li>Changed expiry date to readable format.</li>
+			<li>Reduced all UK delivery to single field for costs.</li>
+			<li>Standardised all overseas modules.</li>
+			<li><strong style="color: red">Special delivery
+					Saturday has been removed as I have not had time to test it.</strong></li>
+			<li>All the modules are now created from 4 standard modules.</li>
+			<li>One for UK internal mail using single zone.</li>
+			<li>One for Airsure using 3 zones (Europe and rest of world zone
+				1 and 2)</li>
+			<li>One for all other Airmail using 3 zones (Europe and rest of
+				world zone 1 and 2)</li>
+			<li>One for overseas Surface mail using 1 zone for Europe and
+				and exception list for zone 2 the rest of the world.</li>
+		</ul>
+		<hr />
+		<h2>Big_royalmail version 2.3.x - originally authored by Philip
+			Mohan-Clarke aka Philip Clarke</h2>
+		<p>Released under the GPL.</p>
+		<h3>version 2.3.8</h3>
+		<ul>
+			<li class="da">06/07/2009</li>
+			<li>Added Royal Mail Surface Mail and Royal Mail Surface Mail
+				International Signed For Modules.</li>
+			<li class="da">03/06/2009</li>
+			<li>Standard parcels (all 4 insurance versions) had a bug with
+				the minimum weight for Guests using the shipping estimator so it
+				would quote inappropriate rates and then when they logged in the
+				rates would disappear.</li>
+		</ul>
+		<h3>version 2.3.7</h3>
+		<ul>
+			<li class="da">18/05/2009</li>
+			<li>Airsure bug fixed where it was not detecting the "rest of
+				the world countries"</li>
+			<li>International Signed for upgraded to be able to exclude
+				countries.</li>
+		</ul>
+		<h3>version 2.3.6</h3>
+		<ul>
+			<li class="da">17/05/2009</li>
+			<li>Bug fixes to royal mail standard parcels modules.</li>
+			<li>Undefined constants errors removed in all Airmail modules.</li>
+			<li>Beta - ability to exclude countries added to Airmail Small
+				Packets</li>
+			<li>Beta - Server Time correction now added to Special Delivery
+				Saturday.</li>
+		</ul>
+		<h3>version 2.3.5</h3>
+		<ul>
+			<li class="da">13/05/2009</li>
+			<li>Bug fixes to royal mail standard parcels modules.</li>
+			<li>optional shipping estimator code now upgraded to Zen Cart
+				version 1.3.8a and re-arranged in directory to enable easier
+				installation.</li>
+		</ul>
+		<h3>version 2.3.4</h3>
+		<ul>
+			<li class="da">06/04/2009</li>
+			<li>Minor bug fix to Airmail Small Packets, when uninstalled and
+				error was displayed in admin.</li>
+			<li>Major change in that parcelforce and all courier modules
+				have now been removed and are to be found under ParcelForce shipping
+				modules.</li>
+		</ul>
+		<h3>version 2.3.3</h3>
+		<ul>
+			<li class="da">29/03/2009 :</li>
+			<li>Major change - all modules when installed are now "disabled"
+				by default. The majority of "shop owners" are installing on live
+				sites and so if they install a module it would appear on a
+				customer's shopping trolley and checkout before the owner had a
+				chance to check the figures or that the handling fees are correct.</li>
+			<li>New Modules - ukcourier, this is a very basic module for
+				shop owners that want a basic courier module without going to the
+				trouble of setting up zones and placing the Scottish Highlands in a
+				separate pricing zone.</li>
+			<li>specialdeliverysat - This is BETA CODE, this module will
+				appear to the customer after the post office has shut on a Thursday
+				through to when it closes on a Friday, giving the option of Saturday
+				Special Delivery, but it does rely on the server having the correct
+				time and being in the UK, in the next release this will be
+				corrected.</li>
+			<li>Module Update - Standard Parcels now has a minimum weight
+				setting. The royal mail calculates the price in a band from 0 to
+				2Kg, whereas some shop owners may prefer to send items by 1st Class
+				up to a kilo and then offer standard parcels, this new setting
+				enables this scenario and will be migrated across all modules.</li>
+			<li>Removals - the sql that removed all the royal mail details
+				from the database and the sql for when people upgraded version that
+				were 2~3 years old has been removed from the optional section after
+				a newbie ran it on his live site by mistake and damaged his
+				installation.</li>
+		</ul>
+		<h3>version 2.3.2</h3>
+		<ul>
+			<li class="da">15/03/2009</li>
+			<li>All airmail countries have been altered to move from Royal
+				Mail's 2006 definitions to 2009. Airsure countries have been
+				corrected, The code base for Airmail and International Signed has
+				been altered to create a cleaner more accurate code, reflecting the
+				Royal Mail's change from Europe, World Zone 1 &amp; World Zone 2, to
+				Europe &amp; the Rest of the World.</li>
+			<li class="da">12/03/2009</li>
+			<li>International Datapost, International Standard and Eurozone
+				48 all have to be upgraded because or a bug in the filename and
+				bigroyal mail will not work unless the old files are removed before
+				installing this release. See INSTALL.txt for the files to remove.</li>
+		</ul>
+		<h3>version 2.3.1</h3>
+		<ul>
+			<li class="da">11/03/2009</li>
+			<li>Airsure &pound;500 insurance had debugging information left
+				in it that caused the zone tables to appear on the pages in Heading
+				2 format.</li>
+		</ul>
+		<h3>version 2.3</h3>
 		<ol class="ul">
-			<li>Prior to this release, optional components for shipping estimator 
-			had XSS and possible SQL insertion flaws</li>
+			<li class="da">9/03/2009 - 2009 (c) Philip Clarke (original
+				author), Bouncing Ltd T/a ExploitingIt.co.uk<br />
+			</li>
+			<li>Rates correct to April 5 2009, SQL patch will be released
+				for the 2009 rate increase,</li>
+			<li>Works with Zen Cart version 1.3.5 to 1.3.8</li>
+			<li>Airmail, Airsure, Airsure 500, International Signed for, ISF
+				500 Rates all corrected.</li>
+			<li>Standard Parcels, 100, 250 and 500 corrected and cleaned up.</li>
+			<li>Security update
+				<ol class="ul">
+					<li>Prior to this release, optional components for shipping
+						estimator had XSS and possible SQL insertion flaws</li>
+				</ol>
+			</li>
+			<li>New for 2.3
+				<ol class="ul">
+					<li>Added Special delivery &pound;1000 and &pound;2500
+						insurance options.</li>
+					<li>confirmed working with ZC versions 1.3.0 to 1.3.8</li>
+				</ol>
+			</li>
 		</ol>
-		</li>
-		<li>New for 2.3
-		<ol class="ul">
-			<li>Added Special delivery &pound;1000 and &pound;2500 insurance options.</li>
-			<li>confirmed working with ZC versions 1.3.0 to 1.3.8</li>
-		</ol>
-		</li>
-	</ol>
-	<h3>Credits</h3>
-	<ul>
-		<li>2009 Works with cart version 1.3.8 - Robert @ HappyClili.com</li>
-		<li>2008 rates Added by Robert (@) happychili.com</li>
-		<li>2007 May Couple of edits to fix errors/omissions CR Kudos to TFB for 
-		dedicated proofreading</li>
-		<li>2007 rates Added April 2007 Chuck Redman -E&amp;OE.</li>
-		<li>Copyright (c) 2006 Dave (Pixxi), Philip Clarke, Jim Barrington (JollyJim), 
-		Stewart Faulkner</li>
-		<li>Portions Copyright (c) 2004 Josh Dechant</li>
-		<li>Portions Copyright (c) 2004 Merlin Beedell</li>
-		<li>Portions Copyright (c) 2004 The zen-cart developers</li>
-		<li>Portions Copyright (c) 2003 osCommerce</li>
-		<li>Special Mention to JSR for spotting a serious flaw in the standard parcels 
-		modules.</li>
-		<li>Original Support thread at:
-		<a href="http://www.zen-cart.com/forum/showthread.php?t=46450">http://www.zen-cart.com/forum/showthread.php?t=46450</a></li>
-	</ul>
-</div>
+		<h3>Credits</h3>
+		<ul>
+			<li>2009 Works with cart version 1.3.8 - Robert @ HappyClili.com</li>
+			<li>2008 rates Added by Robert (@) happychili.com</li>
+			<li>2007 May Couple of edits to fix errors/omissions CR Kudos to
+				TFB for dedicated proofreading</li>
+			<li>2007 rates Added April 2007 Chuck Redman -E&amp;OE.</li>
+			<li>Copyright (c) 2006 Dave (Pixxi), Philip Clarke, Jim
+				Barrington (JollyJim), Stewart Faulkner</li>
+			<li>Portions Copyright (c) 2004 Josh Dechant</li>
+			<li>Portions Copyright (c) 2004 Merlin Beedell</li>
+			<li>Portions Copyright (c) 2004 The zen-cart developers</li>
+			<li>Portions Copyright (c) 2003 osCommerce</li>
+			<li>Special Mention to JSR for spotting a serious flaw in the
+				standard parcels modules.</li>
+			<li>Original Support thread at: <a
+				href="http://www.zen-cart.com/forum/showthread.php?t=46450">http://www.zen-cart.com/forum/showthread.php?t=46450</a></li>
+		</ul>
+	</div>
 
 </body>
 

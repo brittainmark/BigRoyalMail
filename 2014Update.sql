@@ -84,6 +84,8 @@ UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuratio
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESSAM_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AMSAT_MAX_ORDERVALUE' ;
 
 /* Postage and Packing Handling Charges */
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTER_ZONES_HANDLING_1' ;
@@ -109,6 +111,8 @@ UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_k
 UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESSAM_ZONES_HANDLING_1' ;
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_HANDLING_1' ;
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_HANDLING_1' ;
+UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_HANDLING_1' ;
+UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_ZONES_HANDLING_1' ;
 
 /* Postage rates comma separated, format weight:cost e.g. 0.1:0.46, 0.2:1.78 is 100g £0.46, 200g £1.78 (assuming Kg for weight)  
 *  First Class Letter */
@@ -163,13 +167,25 @@ UPDATE configuration SET configuration_value = '1:6.3, 2:9.1, 5:14.85, 10:21.35,
 UPDATE configuration SET configuration_value = '0.1:6.4, 0.5:7.15, 1:8.45, 2:11, 10:26.6, 20:41.2' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_COST0_1' ;
 
 /* Special Delivery Insurance rates */
-UPDATE configuration SET configuration_value = '500:0,1000:1,2500:3' WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS24_ZONES_INSURE' ;
+UPDATE configuration SET configuration_value = '500:0,1000:1,2500:3' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_INSURE' ;
 
 /* Special Delivery 9am */
 UPDATE configuration SET configuration_value = '0.1:18.18, 0.5:20.52, 1:22.26, 2:26.94' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_COST0_1' ;
 
 /* Special Delivery 9am Insurance  */
-UPDATE configuration SET configuration_value = '50:0,1000:2.2,2500:5.7' WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS24_ZONES_INSURE' ;
+UPDATE configuration SET configuration_value = '50:0,1000:2.2,2500:5.7' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_INSURE' ;
+
+/* Special Delivery Saturday*/
+UPDATE configuration SET configuration_value = '0.1:10.68, 0.5:11.58, 1:13.14, 2:16.20, 10:34.92, 20:52.44' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_COST0_1' ;
+
+/* Special Delivery Saturday Insurance rates */
+UPDATE configuration SET configuration_value = '500:0,1000:1.2,2500:3.6' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_INSURE' ;
+
+/* Special Delivery Saturday 9am */
+UPDATE configuration SET configuration_value = '0.1:21.18, 0.5:23.52, 1:25.26, 2:29.94' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_ZONES_COST0_1' ;
+
+/* Special Delivery Saturday 9am Insurance  */
+UPDATE configuration SET configuration_value = '50:0,1000:2.2,2500:5.7' WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_ZONES_INSURE' ;
 
 /* Parcel Force Express 48 */
 UPDATE configuration SET configuration_value = '2:11.99, 5:12.98, 10:16.4, 15:23.14, 20:28.51, 25:39.64, 30:43.78, 1+:1.5' WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS48_ZONES_COST0_1' ;
