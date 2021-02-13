@@ -13,6 +13,8 @@ $dest_country_title = $order->delivery['country']['title'];
 $dest_zone = 0;
 $error = 0;
 $module = strtoupper($this->code);
+$shipping_method = '';
+$shipping_cost = 0;
 
 for ($i=1; $i<=$this->num_zones; $i++) {
 	//ensure the zone is defined
@@ -85,8 +87,8 @@ if ($dest_zone == 0) {
 
 		// Check for insurance
 		$insurance = -1;
-
-		$zones_insure = @constant('MODULE_SHIPPING_' . $module . '_ZONES_INSURE');
+		
+		$zones_insure = defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')?@constant('MODULE_SHIPPING_' . $module . '_ZONES_INSURE'):Null;
 		// Check we have values
 		if($zones_insure <> Null) {
 			$zones_table = preg_split("/[:, ]/" , preg_replace('/\s*/', '', $zones_insure) );
@@ -120,18 +122,8 @@ if ($dest_zone == 0) {
 
 		$shipping = -1;
 
-		//12 FEB 04 MBeedell	'glue' together the rates from the cost data entry boxes
-		$zones_cost="";
-		for ($i=0;$i<6;$i+=1){
-			if (@constant('MODULE_SHIPPING_' . $module . '_ZONES_COST'.$i.'_' . $dest_zone) <> NULL){
-				$cost=trim(constant('MODULE_SHIPPING_' . $module . '_ZONES_COST'.$i.'_' . $dest_zone));
-				if ($cost <> ""){
-					$zones_cost .=", ".$cost;
-				}
-			}
-		}
-		$zones_cost = substr($zones_cost, 1);
 
+		$zones_cost = trim(constant('MODULE_SHIPPING_' . $module . '_ZONES_COST0_' . $dest_zone));
 		$zones_table = preg_split("/[:, ]/" , preg_replace('/\s*/', '', $zones_cost) );
 		$size = sizeof($zones_table);
 		// Check to see if oversize for shipping weights
@@ -183,8 +175,8 @@ if ($dest_zone == 0) {
 
 		} else {
 			//Add on the handling cost (either the destination zone or generic rate)
-			$shipping_cost = ($shipping * $shipping_num_boxes) + @constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $dest_zone) +
-			@constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING');
+		    $shipping_cost = ($shipping * $shipping_num_boxes) + (defined('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $dest_zone)?constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $dest_zone):0) +
+		                     (defined('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING')?constant('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING'):0);
 
 
 		}
@@ -220,7 +212,7 @@ if (@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True' 
 		case 5:
 
 			$this->quotes['error'] = @constant('MODULE_SHIPPING_' . $module . '_UNDEFINED_RATE');
-			$this->quotes['methods']['cost']=0;
+
 
 	}
 
