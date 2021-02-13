@@ -17,7 +17,7 @@ class rmamparcelsf {
 	function __construct() {
 
 		global $order, $total_weight;
-		$this->version = '3.5.0';
+		$this->version = '3.5.1';
 		$this->code = 'rmamparcelsf';
 		// CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
 		//Currently Europe and the rest of the world

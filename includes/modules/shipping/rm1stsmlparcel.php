@@ -20,11 +20,11 @@ class rm1stsmlparcel {
 /*
  *Only in this module to check the expires date and report if the rates have expired
  */
-		if(defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true && (@constant('MODULE_SHIPPING_RM_EXPIRES') <= date('Y-m-d H:i:s') || !defined('MODULE_SHIPPING_RM_EXPIRES')) ){
+		if(defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true && (defined('MODULE_SHIPPING_RM_EXPIRES') && constant('MODULE_SHIPPING_RM_EXPIRES') <= date('Y-m-d H:i:s')) ){
 			$messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on '.@constant('MODULE_SHIPPING_RM_EXPIRES').'. Please check your rates<br /><a href="https://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
 		}
 
-		$this->version = '3.5.0';
+		$this->version = '3.5.1';
 		$this->code = 'rm1stsmlparcel';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');

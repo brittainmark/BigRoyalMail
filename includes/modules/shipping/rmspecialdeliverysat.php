@@ -13,7 +13,7 @@ class rmspecialdeliverysat {
 	function __construct() {
 		global $order, $total_weight;
 
-		$this->version = '3.5.0';
+		$this->version = '3.5.1';
 		$this->code = 'rmspecialdeliverysat';
 		$this->num_zones = 1;
 		require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php');
