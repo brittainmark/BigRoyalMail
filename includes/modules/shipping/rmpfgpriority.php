@@ -18,7 +18,7 @@ class rmpfgpriority {
 
 		global $order, $total_weight;
 
-		$this->version = '3.5.0';
+		$this->version = '3.5.1';
 		$this->code = 'rmpfgpriority';
 		$this->num_zones = 9;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
@@ -110,7 +110,7 @@ class rmpfgpriority {
 			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 9 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_6', 'AL, AD, AM, BY, BA, CV, FO, GE, GI, GL, IS, LI, MK, MD, ME, NO, RU, SM, RS, CH, TR, UA, VA, AL, AT, BG, HR, CY, CZ, EE, FI, HU, LV, LT, MT, PL, RO, SK, SI, SE', 'Two character ISO country codes for Zone 9 EU ', '6', '0', now())");
 		}
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_6')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 9 Europe\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_6\', \'0.5:42.2, 1:45.45, 1.5:48.7, 2:51.95, 2.5:54.7, 3:57.45, 3.5:60.2, 4:62.95, 4.5:65.7, 5:68.45, 5.5:70.8, 6:73.15, 6.5:75.5, 7:77.85, 7.5:80.2, 8:82.55, 8.5:84.9, 9:87.25, 9.5:89.6, 10:91.95, 10.5:93.2, 11:94.45, 11.5:95.7, 12:96.95, 12.5:98.2, 13:99.45, 13.5:100.7, 14:101.95, 14.5:103.2, 15:104.45, .5+:1.25\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+		  $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 9 Europe\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_6\', \'0.5:42.18, 1:45.42, 1.5:48.66, 2:51.9, 2.5:54.66, 3:57.42, 3.5:60.18, 4:62.94, 4.5:65.7, 5:68.46, 5.5:70.8, 6:73.14, 6.5:75.48, 7:77.82, 7.5:80.16, 8:82.5, 8.5:84.84, 9:87.18, 9.5:89.52, 10:91.86, 10.5:93.12, 11:94.38, 11.5:95.64, 12:96.9, 12.5:98.16, 13:99.42, 13.5:100.68, 14:101.94, 14.5:103.2, 15:104.46, .5+:1.26\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_7')) {
@@ -124,7 +124,7 @@ class rmpfgpriority {
 			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 11 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_8', 'AS, AU, BN, KH, CN, CX, CC, CK, FJ, PF, GU, HK, ID, JP, KI, KP, KR, LA, MO, MY, MH, FM, MN, MM, NR, NC, NZ, NU, NF, MP, PG, PH, PN, WS, SG, SB, TW, TH, TL, TK, TO, TV, VU, VN, WF', 'Two character ISO country codes for Zone 11 ', '6', '0', now())");
 		}
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_8')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 11 Far East, Australasia\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_8\', \'0.5:47.5, 1:53.5, 1.5:59.5, 2:65.5, 2.5:71.5, 3:77.5, 3.5:83.5, 4:89.5, 4.5:95.5, 5:101.5, 5.5:106.05, 6:110.6, 6.5:115.15, 7:119.7, 7.5:124.25, 8:128.8, 8.5:133.35, 9:137.9, 9.5:142.45, 10:147, 10.5:150.45, 11:153.9, 11.5:157.35, 12:160.8, 12.5:164.25, 13:167.7, 13.5:171.15, 14:174.6, 14.5:178.05, 15:181.5, .5+:3.35\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+		  $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 11 Far East, Australasia\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_8\', \'0.5:47.5, 1:53.5, 1.5:59.5, 2:65.5, 2.5:71.5, 3:77.5, 3.5:83.5, 4:89.5, 4.5:95.5, 5:101.5, 5.5:106.05, 6:110.6, 6.5:115.15, 7:119.7, 7.5:124.25, 8:128.8, 8.5:133.35, 9:137.9, 9.5:142.45, 10:147, 10.5:150.45, 11:153.9, 11.5:157.35, 12:160.8, 12.5:164.25, 13:167.7, 13.5:171.15, 14:174.6, 14.5:178.05, 15:181.5, .5+:3.35\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_9')) {

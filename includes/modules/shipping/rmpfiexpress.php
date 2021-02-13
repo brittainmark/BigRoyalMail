@@ -18,7 +18,7 @@ class rmpfiexpress {
 
 		global $order, $total_weight;
 
-		$this->version = '3.5.0';
+		$this->version = '3.5.1';
 		$this->code = 'rmpfiexpress';
 		$this->num_zones = 1;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
@@ -75,7 +75,7 @@ class rmpfiexpress {
 			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 5 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'IE', 'Two character ISO country codes for Zone 5 ', '6', '0', now())");
 		}
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_1')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 5 Republic of Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'2:16.68, 5:17.7, 10:21.18, 15:28.2, 20:33.48, 25:44.76, 30:48.96\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
+		  $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'Shipping rates to Zone 5 Republic of Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'2:16.68, 5:17.7, 10:21.12, 15:26.96, 20:32.36, 25:43.58, 30:47.78\', \'example: 0.1:1.14 means weights less than or equal to 0.1 kg would cost &pound;1.14. 1+:1.38 means each additional 1kg costs &pound;1.38.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
 		}
 
 		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')){
