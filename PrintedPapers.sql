@@ -36,9 +36,6 @@ UPDATE configuration SET configuration_value = '0.1:12, 0.25:12.95, 0.5:16.6, 0.
 # Airmail Rest of World Zone 2 Signed For 
 UPDATE configuration SET configuration_value = '0.1:13.05, 0.25:14.4, 0.5:18.8, 0.75:21.6, 1:24.75, 1.25:27.15, 1.5:29.65, 1.75:30.7, 2:0, 2.25:2.35, 2.5:4.7, 2.75:7.05, 3:9.4, 3.25:11.75, 3.5:14.1, 3.75:16.45, 4:18.8, 4.25:21.15, 4.5:23.5, 4.75:25.85, 5:28.2' WHERE configuration_key = 'MODULE_SHIPPING_RMAMPARCELSF_ZONES_COST0_3' ;
 
-# International Tracked Europe EU
-UPDATE configuration SET configuration_value = '0.1:0, 0.25:0, 0.5:0, 0.75:0, 1:0, 1.25:0, 1.5:0, 1.75:0, 2:0, 2.25:0, 2.5:0, 2.75:0, 3:0, 3.25:0, 3.5:0, 3.75:0, 4:0, 4.25:0, 4.5:0, 4.75:0, 5:0' WHERE configuration_key = 'MODULE_SHIPPING_RMAMTEUPARCEL_ZONES_COST0_1' ;
-
 # International Tracked Europe 
 UPDATE configuration SET configuration_value = '0.1:10.1, 0.25:10.25, 0.5:11.7, 0.75:12.75, 1:13.7, 1.25:14.1, 1.5:14.85, 1.75:15.25, 2:0, 2.25:1.4, 2.5:2.8, 2.75:4.2, 3:5.6, 3.25:7, 3.5:8.4, 3.75:9.8, 4:11.2, 4.25:12.6, 4.5:14, 4.75:15.4, 5:16.8' WHERE configuration_key = 'MODULE_SHIPPING_RMAMTPARCEL_ZONES_COST0_1' ;
 
