@@ -32,7 +32,7 @@ class rmamletter {
 		global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
 		$postage_check = array(0);
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/quote.php');
-		if (@constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True' && $error > 0) {
+		if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True' && $error > 0) {
 			return ;
 		}
 		return $this->quotes;

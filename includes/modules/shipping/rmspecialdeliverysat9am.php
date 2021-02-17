@@ -19,13 +19,13 @@ class rmspecialdeliverysat9am {
 		require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php');
 		if ($this->enabled == true) {
 			// Check time and date
-			if (@constant ( 'MODULE_SHIPPING_' . $module . '_DISPLAY_DAYS' ) != 7) {
+			if (constant ( 'MODULE_SHIPPING_' . $module . '_DISPLAY_DAYS' ) != 7) {
 				$day = date ( "w" );
 				if ($day != 6) {
 					$day = 5 - $day;
 				}
-				$day = $day - @constant ( 'MODULE_SHIPPING_' . $module . '_DISPLAY_DAYS' );
-				$checkDate = strtotime ( date ( 'y-m-d', strtotime ( $day . " days" ) ) . " " . @constant ( 'MODULE_SHIPPING_' . $module . '_FRIDAY_CUTOFF' ) );
+				$day = $day - constant ( 'MODULE_SHIPPING_' . $module . '_DISPLAY_DAYS' );
+				$checkDate = strtotime ( date ( 'y-m-d', strtotime ( $day . " days" ) ) . " " . constant ( 'MODULE_SHIPPING_' . $module . '_FRIDAY_CUTOFF' ) );
 				$this->enabled = $checkDate < time ();
 			}
 		}
@@ -36,7 +36,7 @@ class rmspecialdeliverysat9am {
 		global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
 		$postage_check = array(40);
 		require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php');
-		if (@constant ( 'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS' ) == 'True' && $error > 0) {
+		if (constant ( 'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS' ) == 'True' && $error > 0) {
 			return;
 		}
 		return $this->quotes;
@@ -71,7 +71,7 @@ class rmspecialdeliverysat9am {
 
 			$db->Execute ( 'INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '0.00', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())" );
 			$db->Execute ( 'INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '2500.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())" );
-			$db->Execute ( 'INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for " . @constant ( 'MODULE_SHIPPING_' . (strtoupper ( $this->code )) . '_TEXT_TITLE' ) . " delivery.', '6', '0', now())" );
+			$db->Execute ( 'INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for " . constant ( 'MODULE_SHIPPING_' . (strtoupper ( $this->code )) . '_TEXT_TITLE' ) . " delivery.', '6', '0', now())" );
 		}
 
 		if (! defined ( 'MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1' )) {
