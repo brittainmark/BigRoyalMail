@@ -53,12 +53,12 @@ SELECT products_options_values_id INTO @MediumParcel_id FROM products_options_va
 # 
 SELECT ifnull(max(products_options_values_id)+1,1) INTO @ParcelForce_id FROM products_options_values;
 
-SELECT ifnull(products_options_values_id, @ParcelForce_id) INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivary or Parcel Force' ;
+SELECT ifnull(products_options_values_id, @ParcelForce_id) INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivery or Parcel Force' ;
 
-REPLACE INTO products_options_values (products_options_values_id, language_id, products_options_values_name, products_options_values_sort_order) VALUES (@ParcelForce_id, 1, 'Special Delivary or Parcel Force', 40);
+REPLACE INTO products_options_values (products_options_values_id, language_id, products_options_values_name, products_options_values_sort_order) VALUES (@ParcelForce_id, 1, 'Special Delivery or Parcel Force', 40);
 
 
-SELECT products_options_values_id INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivary or Parcel Force' ;
+SELECT products_options_values_id INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivery or Parcel Force' ;
 
 # 
 #  Link the option and option values.
