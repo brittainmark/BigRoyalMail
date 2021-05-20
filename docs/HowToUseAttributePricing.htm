@@ -1,9 +1,8 @@
 <!DOCTYPE HTML >
 <html lang="en-gb">
-
 <head>
 <title>How to use Attribute Pricing</title>
-<style media="screen" >
+<style media="screen">
 .l1 {
 	list-style-type: lower-alpha;
 }
@@ -35,7 +34,7 @@
 	height: 8em;
 	background-color: #eee;
 	border: solid #000 1px;
-	overflow:auto;
+	overflow: auto;
 }
 
 h1, h2, p {
@@ -54,23 +53,22 @@ h1, h2, p {
 td, th, table {
 	border: 1px solid black;
 	border-collapse: collapse;
-	height:1em;
-	padding:5px;
+	height: 1em;
+	padding: 5px;
 }
+
 td {
-	text-align:center;
-	}
+	text-align: center;
+}
+
 td:first-child {
-	text-align:left;
-	}	
-	
+	text-align: left;
+}
 </style>
 </head>
-
 <body>
-
 	<div id="donate">
-		<h1>Big royal Mail</h1>
+		<h1>Big Royal Mail</h1>
 		<p>
 			If you have found this useful and would like to reward the maintainer
 			you can make a donation through paypal sending your donation to
@@ -79,7 +77,7 @@ td:first-child {
 		</p>
 	</div>
 	<div id="main">
-		<h1>How to use Big royal Mail</h1>
+		<h1>How to use Big Royal Mail</h1>
 		<p>If all you want to do is send items based on their value and
 			weight then just install the modules you want to use and all will be
 			well.</p>
@@ -97,774 +95,776 @@ td:first-child {
 			<li>If the pricing criteria determine that the shipping method
 				needs to be higher than the method selected then that method will be
 				used unless you have set exact attributes in all modules then you
-				run the risk of no shipping modules being available.&nbsp; The
-				tables below shows What methods will be available for different
-				attribute settings.</li>
+				run the risk of no shipping modules being available. <br> <strong>If
+					you wish to exclude an item from being shipped by any Big Royal
+					Mail method select the &quot;Do Not Use Any Big Royal Mail
+					Modules.&quot;</strong> <br>The tables below shows what methods will be
+				available for different attribute settings.
+			</li>
 		</ol>
-		<p>&nbsp;If Attribute match is set to false (the default value)</p>
-		<table >
-			
+		<p>If Attribute match is set to false (the default value)</p>
+		<table>
 			<tr>
-				<td   rowspan="2">Module</td>
-				<td  colspan="5">Attribute</td>
+				<td rowspan="2">Module</td>
+				<td colspan="5">Attribute</td>
 			</tr>
 			<tr>
-				<td >None</td>
-				<td >Large Letter</td>
-				<td >Small Parcel</td>
-				<td >Medium Parcel</td>
-				<td >Special Delivery &amp; Parcel Force</td>
+				<td>None</td>
+				<td>Large Letter</td>
+				<td>Small Parcel</td>
+				<td>Medium Parcel</td>
+				<td>Special Delivery &amp; Parcel Force</td>
 			</tr>
 			<tr>
-				<td  >rm1stlargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stlargelettersf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlargelettersf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stlettersf.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlettersf.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stmedparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rm1stmedparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stmedparcelsf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rm1stmedparcelsf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stsmlparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stsmlparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stsmlparcelsf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stsmlparcelsf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rm2ndlargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlargelettersf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rm2ndlargelettersf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rm2ndletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlettersf.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rm2ndlettersf.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndmedparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rm2ndmedparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndmedparcelsf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rm2ndmedparcelsf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndsmlparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndsmlparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndsmlparcelsf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndsmlparcelsf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamlargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlargelettersf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamlargelettersf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlettersf.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamlettersf.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rmamparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamparcelsf.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rmamparcelsf.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteulargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamteulargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteuletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamteuletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteuparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rmamteuparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtlargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamtlargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamtletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
+				<td>rmamtparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtslargeletter.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N<br></td>
-				<td >N</td>
+				<td>rmamtslargeletter.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N<br></td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtsletter.php</td>
-				<td >Y<br></td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamtsletter.php</td>
+				<td>Y<br></td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtsparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamtsparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress10.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfexpress10.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress24.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfexpress24.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress48.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfexpress48.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress9.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfexpress9.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfexpressam.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfexpressam.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfgeconomy.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfgeconomy.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfgexpress.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfgexpress.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfgpriority.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfgpriority.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfgvalue.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfgvalue.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmpfiexpress.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmpfiexpress.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmsmparcel.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmsmparcel.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmspecialdelivery.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmspecialdelivery.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmspecialdelivery9am.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmspecialdelivery9am.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmspecialdeliverysat.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmspecialdeliverysat.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 			<tr>
-				<td  >rmspecialdeliverysat9am.php</td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
-				<td >Y<br></td>
+				<td>rmspecialdeliverysat9am.php</td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
+				<td>Y<br></td>
 			</tr>
 		</table>
 		<p>If Attribute match is set to True for all postage methods the
 			following methods are available for each attribute.</p>
-		<table >
+		<table>
 			<tr>
-				<td   rowspan="2" >Module</td>
-				<td  colspan="5">Attribute</td>
+				<td rowspan="2">Module</td>
+				<td colspan="5">Attribute</td>
 			</tr>
 			<tr>
-				<td >None</td>
-				<td >Large Letter</td>
-				<td >Small Parcel</td>
-				<td >Medium Parcel</td>
-				<td >Special Delivery &amp; Parcel Force</td>
+				<td>None</td>
+				<td>Large Letter</td>
+				<td>Small Parcel</td>
+				<td>Medium Parcel</td>
+				<td>Special Delivery &amp; Parcel Force</td>
 			</tr>
 			<tr>
-				<td  >rm1stlargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stlargelettersf.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlargelettersf.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stlettersf.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stlettersf.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stmedparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rm1stmedparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stmedparcelsf.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rm1stmedparcelsf.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stsmlparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stsmlparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm1stsmlparcelsf.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm1stsmlparcelsf.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndlargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlargelettersf.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndlargelettersf.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndlettersf.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndlettersf.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndmedparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rm2ndmedparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndmedparcelsf.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rm2ndmedparcelsf.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndsmlparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndsmlparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rm2ndsmlparcelsf.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rm2ndsmlparcelsf.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamlargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlargelettersf.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamlargelettersf.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamlettersf.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamlettersf.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamparcelsf.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamparcelsf.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteulargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamteulargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteuletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamteuletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamteuparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamteuparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtlargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamtlargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamtletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamtparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtslargeletter.php</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
+				<td>rmamtslargeletter.php</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtsletter.php</td>
-				<td >Y</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamtsletter.php</td>
+				<td>Y</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmamtsparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >N</td>
+				<td>rmamtsparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>N</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress10.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfexpress10.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress24.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfexpress24.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress48.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfexpress48.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpress9.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfexpress9.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfexpressam.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfexpressam.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfgeconomy.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfgeconomy.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfgexpress.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfgexpress.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfgpriority.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfgpriority.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfgvalue.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfgvalue.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmpfiexpress.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmpfiexpress.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmsmparcel.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
-				<td >Y</td>
-				<td >Y</td>
+				<td>rmsmparcel.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
+				<td>Y</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmspecialdelivery.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmspecialdelivery.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmspecialdelivery9am.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmspecialdelivery9am.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmspecialdeliverysat.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmspecialdeliverysat.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 			<tr>
-				<td  >rmspecialdeliverysat9am.php</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >N</td>
-				<td >Y</td>
+				<td>rmspecialdeliverysat9am.php</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>N</td>
+				<td>Y</td>
 			</tr>
 		</table>
 		<p>Set up the products</p>
@@ -885,6 +885,7 @@ td:first-child {
 					<li>Small Parcel</li>
 					<li>Medium Parcel</li>
 					<li>Special Delivery or Parcel Force</li>
+					<li>Do Not Use Any Big Royal Mail Modules</li>
 				</ol>
 			</li>
 		</ol>
@@ -892,15 +893,13 @@ td:first-child {
 			examples of what to expect.</p>
 		<ul>
 			<li>For default operation &quot;Attribute Exact Match&quot; =
-				False<br>
-			<br>If you select Large letter only standard letter and airmail
-				letter will be excluded.<br />If you select Medium Parcel then
-				standard letter, Large Letter, Small Parcel&nbsp; and Airmail Letter
-				and Large Letter will be excluded.<br>
-			<br>
+				False<br> <br>If you select Large letter only standard
+				letter and airmail letter will be excluded.<br />If you select
+				Medium Parcel then standard letter, Large Letter, Small Parcel&nbsp;
+				and Airmail Letter and Large Letter will be excluded.<br> <br>
 			</li>
 			<li>For &quot;Attribute Exact Match&quot; = True on all module.<br>
-			<br>If you select Large letter only Large Letter and airmail
+				<br>If you select Large letter only Large Letter and airmail
 				Large Letter will be displayed.<br>If you select Medium Parcel
 				then only Medium Parcel&nbsp; and Airmail Small Parcel will be
 				Displayed. <br>
@@ -909,9 +908,8 @@ td:first-child {
 		<p>I therefore suggest that you leave Special Delivery and one of
 			the Parcel Force Global delivery methods set to False as this will
 			supply a catch all for all deliveries when the value is too high for
-			the default desired method.</p>
+			the default desired method. Alternatively set up another delivery
+			method to be used alongside Big Royal Mail.</p>
 	</div>
-
 </body>
-
 </html>
