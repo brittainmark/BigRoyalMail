@@ -50,7 +50,9 @@ SELECT products_options_values_id INTO @MediumParcel_id FROM products_options_va
 
 # 
 #  Parcel Force
-# 
+#
+UPDATE products_options_values SET products_options_values_name='Special Delivery or Parcel Force' WHERE products_options_values_name='Special Delivary or Parcel Force';
+
 SELECT ifnull(max(products_options_values_id)+1,1) INTO @ParcelForce_id FROM products_options_values;
 
 SELECT ifnull(products_options_values_id, @ParcelForce_id) INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivery or Parcel Force' ;
