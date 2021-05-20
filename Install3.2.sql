@@ -60,6 +60,18 @@ REPLACE INTO products_options_values (products_options_values_id, language_id, p
 
 SELECT products_options_values_id INTO @ParcelForce_id FROM products_options_values WHERE products_options_values_name='Special Delivery or Parcel Force' ;
 
+#
+# Do not use BigRoyalMail
+#
+SELECT ifnull(max(products_options_values_id)+1,1) INTO @NoBigRoylMail_id FROM products_options_values;
+
+SELECT ifnull(products_options_values_id,  @NoBigRoylMail_id) INTO  @NoBigRoylMail_id FROM products_options_values WHERE products_options_values_name='Do Not Use Any Big Royal Mail Modules' ;
+
+REPLACE INTO products_options_values (products_options_values_id, language_id, products_options_values_name, products_options_values_sort_order) VALUES ( @NoBigRoylMail_id, 1, 'Do Not Use Any Big Royal Mail Modules', 100);
+
+
+SELECT products_options_values_id INTO @NoBigRoylMail_id FROM products_options_values WHERE products_options_values_name='Do Not Use Any Big Royal Mail Modules' ;
+
 # 
 #  Link the option and option values.
 # 
@@ -82,6 +94,11 @@ SELECT ifnull(max(products_options_values_to_products_options_id)+1,1) INTO @Pov
 
 SELECT ifnull(products_options_values_to_products_options_id, @Pov2po_id) INTO @Pov2po_id FROM products_options_values_to_products_options WHERE products_options_id= @options_id AND products_options_values_id = @ParcelForce_id;
 REPLACE INTO products_options_values_to_products_options (products_options_values_to_products_options_id, products_options_id, products_options_values_id) VALUES (@Pov2po_id, @options_id, @ParcelForce_id);
+
+SELECT ifnull(max(products_options_values_to_products_options_id)+1,1) INTO @Pov2po_id FROM products_options_values_to_products_options;
+
+SELECT ifnull(products_options_values_to_products_options_id, @Pov2po_id) INTO @Pov2po_id FROM products_options_values_to_products_options WHERE products_options_id= @options_id AND products_options_values_id = @NoBigRoylMail_id;
+REPLACE INTO products_options_values_to_products_options (products_options_values_to_products_options_id, products_options_id, products_options_values_id) VALUES (@Pov2po_id, @options_id, @NoBigRoylMail_id);
 
 #  
 #  Add the insurance rates for Special delivery if installed
