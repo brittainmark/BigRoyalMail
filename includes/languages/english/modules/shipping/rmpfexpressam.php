@@ -7,7 +7,7 @@ see CREDITS.txt for the contributors and support forum.
 
 */
 
-define('MODULE_SHIPPING_RMPFEXPRESSAM_TEXT_TITLE', 'Royal Mail <b style ="color:#025299">Parcel Force</b> <span style="font-weight: normal; font-style: italic">&quot;express AM&quot;</span>');
+define('MODULE_SHIPPING_RMPFEXPRESSAM_TEXT_TITLE', 'Royal Mail <b style ="color:#025299">Parcel Force</strong> <span style="font-weight: normal; font-style: italic">&quot;express AM&quot;</span>');
 define('MODULE_SHIPPING_RMPFEXPRESSAM_TEXT_WAY', 'Great Britain and Northern Ireland only');
 define('MODULE_SHIPPING_RMPFEXPRESSAM_INVALID_ZONE', 'GB &amp; Northern Ireland only for this service');
 define('MODULE_SHIPPING_RMPFEXPRESSAM_UNDEFINED_RATE', 'The shipping rate cannot be determined at this time');
