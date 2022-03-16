@@ -1,34 +1,21 @@
 <?php
 /*
-
 GPL released as part of the big_royalmail_v3 package
-
 see CREDITS.txt for the contributors and support forum.
-
 */
-
-
-
 class rmamparcel {
 	var $code, $title, $description, $enabled, $num_zones, $valid_country ;
-
-
 	// class constructor
 	function __construct() {
-
 		global $order, $total_weight;
-		$this->version = '3.5.1';
+		$this->version = '3.6.0';
 		$this->code = 'rmamparcel';
-		// CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
-		//Currently Europe and the rest of the world
-		$this->num_zones = 4;
+		$this->num_zones = 6;
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/main.php');
 		return ;
 	}
-
 	// class methods
 	function quote($method = '') {
-
 		global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
 		$postage_check = array(20,30);
 		require(DIR_FS_CATALOG.DIR_WS_MODULES.'shipping/BigRoyalMail/quote.php');
@@ -37,10 +24,8 @@ class rmamparcel {
 		}
 		return $this->quotes;
 	}
-
 	function check() {
 		global $db;
-
 		if (!isset($this->_check)) {
 			$check_query = $db->Execute('select configuration_value from ' . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_" . strtoupper($this->code) . "_STATUS'");
 			$this->_check = $check_query->RecordCount();
@@ -50,81 +35,60 @@ class rmamparcel {
 
 	function install() {
 		global $db;
-
 		$module=strtoupper($this->code);
-
 		$this->remove();
-
-		$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Enable this shipping option', 'MODULE_SHIPPING_" . $module . "_STATUS', 'False', 'If you need to adjust your shipping rates, you can use this option to disable it in your shop, instead of re-installing', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order VALUES).', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('Tax Class', 'MODULE_SHIPPING_" . $module . "_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'zen_get_tax_class_title', 'zen_cfg_pull_down_tax_classes(', now())");
-		$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '315', 'Sort order of display.', '6', '0', now())");
-		$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Attribute Exact Match', 'MODULE_SHIPPING_" . $module . "_ATTRIBUTE_MATCH', 'False', 'Used to only display this shipping method if the attribute shipping is exact match', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-
-
-		if(!defined('MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE')){
-
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '0.00', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())");
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '20.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())");
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('European Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for European Air Mail delivery.', '6', '0', now())");
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('&quot;Rest of World&quot; Zone 1 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_2', '0', 'The amount it costs you to package the items for &quot;Rest of World&quot; Air Mail Zone 1 delivery.', '6', '0', now())");
-
-		}
-
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_3')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('&quot;Rest of World&quot; Zone 2 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_3', '0', 'The amount it costs you to package the items for &quot;Rest of World&quot; Air Mail Zone 2 delivery.', '6', '0', now())");
-		}
-
-		// European Rates
-
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined European Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'Two character ISO country codes for Europe.', '6', '0', 'zen_cfg_textarea(', now())");
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'European rates from GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1\', \'0.1:5.8, 0.25:5.95, 0.5:7.8, 0.75:9.05, 1:10.2, 1.25:11.05, 1.5:12.1, 2:13\', \'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
-		}
-
-
-		// Rest of World Zone 1 RATES
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_2')){
-
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', 'AX, AF, DZ, AO, AI, AQ, AG, AR, AW, BS, BH, BD, BB, BZ, BJ, BM, BT, BO, BW, BV, BR, BN, BF, BI, KH, CM, CA, CV, KY, CF, TD, CL, CN, CO, KM, CG, CR, CI, CU, DJ, DM, DO, TL, EC, EG, SV, GQ, ER, ET, FK, GF, GA, GM, GH, GD, GP, GU, GT, GN, GW, GY, HT, HM, HN, HK, IN, ID, IR, IQ, IE, IL, JM, JP, JO, KE, KP, KR, KW, LB, LS, LR, LY, MG, MW, MY, MV, ML, MH, MQ, MR, MU, YT, MX, FM, MN, MS, MA, MZ, MM, NA, NP, AN, NI, NE, NG, MP, OM, PK, PA, PY, PE, PH, PR, QA, RE, RW, KN, LC, VC, ST, SA, SN, SC, SL, SO, ZA, GS, LK, SH, PM, SD, SR, SJ, SZ, SY, TW, TZ, TH, TG, TT, TN, TC, UG, AE, UM, UY, VU, VE, VN, VG, VI, WF, EH, YE, ZM, ZW', 'Two character ISO country codes for Zone 1.', '6', '0', 'zen_cfg_textarea(', now())");
-		}
-		// to cope with old royal mail version
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COST0_2' )){
-		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'&quot;Rest of World&quot; Zone 1 rates from GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_2\', \'0.1:7.15, 0.25:8.3, 0.5:12.1, 0.75:14.85, 1:17.65, 1.25:19.85, 1.5:22.1, 2:23.3\', \'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
-		}
-
-		// Rest of World Zone 2 RATES
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_3')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_3', 'AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS', 'Two character ISO country codes for Zone 2.', '6', '0', 'zen_cfg_textarea(', now())");
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'&quot;Rest of World&quot; Zone 2 rates from GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_3\', \'0.1:8.35, 0.25:9.9, 0.5:14.5, 0.75:17.6, 1:20.85, 1.25:23.75, 1.5:26.85, 2:28.55\', \'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
-		}
-		// Rest of World Zone 3 RATES
-		if(!defined('MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_4')){
-		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail defined &quot;Rest of World&quot; Zone 3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_4', 'US', 'Two character ISO country codes for Zone 3.', '6', '0', 'zen_cfg_textarea(', now())");
-		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . ' (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES (\'&quot;Rest of World&quot; Zone 3 rates from GB &amp; Northern Ireland\', \'MODULE_SHIPPING_' . $module . '_ZONES_COST0_4\', \'0.1:9.35, 0.25:10.95, 0.5:16.6, 0.75:19.35, 1:23, 1.25:26.45, 1.5:29.2, 2:30.45\', \'Example: 0.1:1.58 means weights less than or equal to 0.1 Kg would cost &pound;1.58.\', \'6\', \'0\', \'zen_cfg_textarea(\', now())');
-		    $db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('&quot;Rest of World&quot; Zone 3 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_4', '0', 'The amount it costs you to package the items for &quot;Rest of World&quot; Air Mail Zone 3 delivery.', '6', '0', now())");
-		}
-
-		/*
-		 * Add the expires date if it does not exist
-		*/
-		if(!defined('MODULE_SHIPPING_RM_EXPIRES')){
-			$db->Execute('INSERT INTO ' . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2021-03-22 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
-		}
-
+		// General values
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Enable this shipping option', 'MODULE_SHIPPING_" . $module . "_STATUS', 'False', 'If you need to adjust your shipping rates, you can use this option to disable it in your shop, instead of re-installing', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order values).', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('Tax Class', 'MODULE_SHIPPING_" . $module . "_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'zen_get_tax_class_title', 'zen_cfg_pull_down_tax_classes(', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '315', 'Sort order of display.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Attribute Exact Match', 'MODULE_SHIPPING_" . $module . "_ATTRIBUTE_MATCH', 'False', 'Used to only display this shipping method if the attribute shipping is exact match', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		// Value range
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Minimum Order Value', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', '0.00', 'Minimum order value in &pound; GBP for this shipping option.<br />Set to 0 for no minimum order value.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Maximum Order Value', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE', '20.00', 'Maximum order value in &pound; GBP for this shipping option.<br />Set to -1 if there is no Maximum', '6', '0', now())");
+		// Handling fees
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Europe Zone 1 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_1', '0', 'The amount it costs you to package the items for Europe Zone 1 delivery.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Europe Zone 2 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_2', '0', 'The amount it costs you to package the items for Europe Zone 2 delivery.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Europe Zone 3 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_3', '0', 'The amount it costs you to package the items for Europe Zone 3 delivery.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('World Zone 1 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_4', '0', 'The amount it costs you to package the items for World Zone 1 delivery.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('World Zone 2 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_5', '0', 'The amount it costs you to package the items for World Zone 2 delivery.', '6', '0', now())");
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('World Zone 3 Handling Fee', 'MODULE_SHIPPING_" . $module . "_ZONES_HANDLING_6', '0', 'The amount it costs you to package the items for World Zone 3 delivery.', '6', '0', now())");
+		//Countries
+		// Europe Countries Zone 1
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail Europe Zones 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'DE, DK, FR, IE, MC', 'Two character ISO country codes for Europe Zones 1 destinations. ', '6', '0', 'zen_cfg_textarea(', now())");
+		// Europe Countries Zone 2
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail Europe Zones 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', 'AT, BE, BG, CY, CZ, EE, ES, FI, GR, HR, HU, IT, LT, LU, LV, MT, NL, PL, PT, RO, SE, SI, SK', 'Two character ISO country codes for Europe Zones 2 destinations.', '6', '0', 'zen_cfg_textarea(', now())");
+		// Europe Countries Zone 3
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail Europe Zones 3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_3', 'AD, AL, AM, AZ, BA, BY, CH, FO, GE, GI, GL, IS, KG, LI, MD, ME, MK, NO, RS, RU, SM, SZ, TJ, TM, TR, UA, UZ, VA, XK', 'Two character ISO country codes for Europe Zones 3 destinations. ', '6', '0', 'zen_cfg_textarea(', now())");
+		// WORLDWIDE Countries zone 1
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail World Zones 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_4', 'AE, AF, AG, AI, AO, AQ, AR, AW, AX, BB, BD, BF, BH, BI, BJ, BM, BN, BO, BQ, BR, BS, BT, BV, BW, BZ, CA, CF, CG, CI, CL, CM, CN, CO, CR, CU, CV, DJ, DM, DO, DZ, EC, EG, EH, ER, ET, FK, FM, GA, GD, GF, GH, GM, GN, GP, GQ, GS, GT, GU, GW, GY, HK, HM, HN, HT, ID, IL, IN, IQ, IR, JM, JO, JP, KE, KH, KM, KN, KP, KR, KW, KY, KZ, LB, LC, LK, LR, LS, LY, MA, MG, MH, ML, MM, MN, MP, MQ, MR, MS, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NP, OM, PA, PE, PH, PK, PM, PR, PW, PY, QA, RE, RW, SA, SC, SD, SH, SJ, SL, SN, SO, SR, SS, ST, SV, SX, SY, TC, TD, TG, TH, TL, TN, TT, TW, TZ, UG, UY, VC, VE, VG, VI, VN, VU, WF, YE, YT, ZA, ZM, ZW', 'Two character ISO country codes for World Zones 1 destinations.', '6', '0', 'zen_cfg_textarea(', now())");
+		// WORLDWIDE Countries zone 2
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail World Zones 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_5', 'AU, CX, CC, CK, FJ, IO, KI, MO, NC, NF, NR, NU, NZ, PF, PG, LA, PN, SG, SB, TF, TK, TO, TV, WS, AS', 'Two character ISO country codes for World Zones 2 destinations. ', '6', '0', 'zen_cfg_textarea(', now())");
+		// WORLDWIDE Countries zone 3
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail World Zones 3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_6', 'US', 'Two character ISO country codes for World Zones 3 destinations.', '6', '0', 'zen_cfg_textarea(', now())");
+		//Prices
+		// Europe Zone Zone 1
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zone 1 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '0.25:5.85,0.5:7.5,0.75:8.7,1:9.9,1.5:10.9,2:12.4', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// Europe Zone 2
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zone 2 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_2', '0.25:5.95,0.5:7.8,0.75:9.05,1:10.2,1.5:11.4,2:12.9', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// Europe Zone 3
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zone 3 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_3', '0.25:6.3,0.5:8.2,0.75:9.55,1:10.9,1.25:11.95,1.5:13.05,2:14.05', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// World Zone 1
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 1 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_4', '0.1:7.15,0.25:8.3,0.5:12.1,0.75:14.85,1:17.65,1.25:19.85,1.5:22.1,2:23.3', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// World Zone 2
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 2 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_5', '0.1:8.35,0.25:9.9,0.5:14.5,0.75:17.6,1:20.85,1.25:23.75,1.5:26.85,2:28.55', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// World Zone 3
+		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 3 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_6', '0.1:9.35,0.25:10.95,0.5:16.6,0.75:19.35,1:23,1.25:26.45,1.5:29.2,2:30.45', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+		// Expires date
+		$db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2023-04-03 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2015-03-30 00:00:01 or 2013-04-29<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 	}
-
 	function remove() {
-		global $db;
-		$module=strtoupper($this->code);
-
-		$db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key IN ('" . implode("', '", $this->keys()) . "') AND configuration_key NOT IN ( 'MODULE_SHIPPING_RM_EXPIRES', 'MODULE_SHIPPING_" . $module . "_MIN_ORDERVALUE', 'MODULE_SHIPPING_" . $module . "_MAX_ORDERVALUE') AND configuration_key NOT LIKE 'MODULE_SHIPPING_" . $module . "_ZONES%'");
+	    global $db;
+	    $module = strtoupper($this->code);
+	    $db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
 	}
-
 	function keys() {
-
 		$module=strtoupper($this->code);
-
 		$keys = array('MODULE_SHIPPING_RM_EXPIRES',
 				'MODULE_SHIPPING_' . $module . '_STATUS',
 				'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS',
@@ -132,8 +96,7 @@ class rmamparcel {
 				'MODULE_SHIPPING_' . $module . '_TAX_CLASS',
 				'MODULE_SHIPPING_' . $module . '_SORT_ORDER',
 				'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE',
-				'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE');
-
+		        'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE');
 		for ($i=1; $i<=$this->num_zones; $i++) {
 			$keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_' . $i;
 			$keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_' . $i;
@@ -143,4 +106,3 @@ class rmamparcel {
 		return $keys;
 	}
 }
-?>

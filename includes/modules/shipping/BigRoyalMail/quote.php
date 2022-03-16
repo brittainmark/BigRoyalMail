@@ -88,10 +88,10 @@ if ($dest_zone == 0) {
 		// Check for insurance
 		$insurance = -1;
 
-		$zones_insure = defined('MODULE_SHIPPING_' . $module . '_ZONES_INSURE')?constant('MODULE_SHIPPING_' . $module . '_ZONES_INSURE'):Null;
+		$insurance_rates = defined('MODULE_SHIPPING_' . $module . '_INSURANCE')?constant('MODULE_SHIPPING_' . $module . '_INSURANCE'):Null;
 		// Check we have values
-		if($zones_insure <> Null) {
-			$zones_table = preg_split("/[:, ]/" , preg_replace('/\s*/', '', $zones_insure) );
+		if($insurance_rates <> Null) {
+		    $zones_table = preg_split("/[:, ]/" , preg_replace('/\s*/', '', $insurance_rates) );
 			$size = sizeof($zones_table);
 			// Check to see if Addition size for last entry
 			if ($size > 1) {
