@@ -4,50 +4,54 @@
 <title>Read Me Big royal Mail for Zen Cart</title>
 <style media="screen">
 .l2 {
-	list-style-type: lower-alpha;
+    list-style-type: lower-alpha;
 }
 
 .l1 {
-	list-style-type: decimal;
-	margin-left: 10px;
+    list-style-type: decimal;
+    margin-left: 10px;
 }
 
+.l3 {
+    list-style-type: upper-roman;
+    margin-left: 10px;
+}
 .ul {
-	list-style-type: disc;
+    list-style-type: disc;
 }
 
 .l1 li {
-	padding-top: 6px;
+    padding-top: 6px;
 }
 
 .ul li {
-	padding-top: 0;
+    padding-top: 0;
 }
 
 .l2 li {
-	padding-top: 0px;
+    padding-top: 0px;
 }
 
 #donate {
-	position: fixed;
-	top: 0px;
-	height: 8em;
-	background-color: #eee;
-	border: solid #000 1px;
-	overflow: auto;
+    position: fixed;
+    top: 0px;
+    height: 8em;
+    background-color: #eee;
+    border: solid #000 1px;
+    overflow: auto;
 }
 
 h1, h2, p {
-	margin-left: 5px;
-	margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #main {
-	top: 8.1em;
-	position: fixed;
-	overflow-x: auto;
-	overflow-y: scroll;
-	height: calc(99% - 8em);
+    top: 8.1em;
+    position: fixed;
+    overflow-x: auto;
+    overflow-y: scroll;
+    height: calc(99% - 8em);
 }
 </style>
 </head>
@@ -118,8 +122,8 @@ h1, h2, p {
         </p>
         <h2>INSTALLATION</h2>
         <ol class="l1">
-            <li>Copy the files from BigRoyalMail_V3.6.0/includes/* and
-                BigRoyalMail_V3.6.0/images/* onto your server into:
+            <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
+                BigRoyalMail_V3.7.0/images/* onto your server into:
                 <ul>
                     <li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
                     <li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
@@ -147,12 +151,10 @@ h1, h2, p {
                     </li>
                     <li>Press send button to execute script</li>
                 </ol>
-                <strong>NB. If you are running zen cart 1.5.7 this
-                will generate 2 'Query incomplete: missing closing
-                semicolon.' error messages before the final 'Success: 36
-                statement(s) processed.' message. These errors are because
-                multiline SQL statements are being incorrectly flagged as
-                errors. <br>This has been fixed in 1.5.7a and above.</strong>
+                <strong>NB. Version 3.7.0 onwards are designed to work with 
+                    Zen Cart 1.5.8 upwards. Use version 3.6.0 for any lower 
+                    versions of Zen cart. You can still use the yyyyUpdate.sql 
+                    file from this release for the latest rates.</strong>
             </li>
             <li>If you want to force a minimum delivery method then set the
                 appropriate attributes for each product. This can be done by
@@ -166,7 +168,7 @@ h1, h2, p {
                     <li>Select Minimum Delivery Method: [Read only]...</li>
                     <li>Select the appropriate option value. <br>The
                         order is: <br>
-                        <ol class="l1">
+                        <ol class="l3">
                             <li>Large Letter</li>
                             <li>Small Parcel</li>
                             <li>Medium Parcel</li>
@@ -224,7 +226,8 @@ h1, h2, p {
         <p>If you wish to modify any of the text in the language files please
             use the template overrides system. Copy the file to your template
             folder in the <strong>includes &gt; language &gt; english &gt; modules &gt; shipping &gt; YOUR_TEMPLATE</strong>
-            this way you will not loose any changes if you install updates.
+            this way you will not loose any changes if you install updates. As of Zen Cart 1.5.8 you only need to define the values you are changing.
+            See <a href="https://tutorials.zen-cart.com/dev/code/158_language_files/">Zen Cart documentation</a>.
         </p>
         <p></p>
         <hr>
@@ -235,8 +238,8 @@ h1, h2, p {
         <p></p>
         <hr>
         <p></p>
-        <p>If you are using printer papers you can ship upto 5kg overseas.
-            The upgrade Sql PrintedPapers.sql will apply the rates.</p>
+        <p>If you are using printer papers you can ship up to 5kg overseas.
+            The upgrade SQL PrintedPapers.sql will apply the rates.</p>
         <p><strong>NOTE:</strong> It will not differentiate between printed
             papers and other types of post so do not use this unless you know
             you are shipping printed papers. <br>Additionally you must have

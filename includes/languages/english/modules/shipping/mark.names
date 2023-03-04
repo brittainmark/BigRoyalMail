@@ -1,0 +1,53 @@
+ Volume in drive D is DATA
+ Volume Serial Number is C8A5-4E3A
+
+ Directory of D:\Mark\git\BigRoyalMail\includes\languages\english\modules\shipping
+
+04/03/2023  18:54    <DIR>          .
+04/03/2023  18:54    <DIR>          ..
+04/03/2023  16:56             1,375 lang.rm1stlargeletter.php
+04/03/2023  16:56             1,501 lang.rm1stlargelettersf.php
+04/03/2023  16:56             1,301 lang.rm1stletter.php
+04/03/2023  16:56             1,409 lang.rm1stlettersf.php
+04/03/2023  16:56             1,545 lang.rm1stmedparcel.php
+04/03/2023  16:56             1,674 lang.rm1stmedparcelsf.php
+04/03/2023  16:56             1,541 lang.rm1stsmlparcel.php
+04/03/2023  16:56             1,668 lang.rm1stsmlparcelsf.php
+04/03/2023  16:56             1,557 lang.rm2ndlargeletter.php
+04/03/2023  16:56             1,685 lang.rm2ndlargelettersf.php
+04/03/2023  16:56             1,493 lang.rm2ndletter.php
+04/03/2023  16:56             1,565 lang.rm2ndlettersf.php
+04/03/2023  16:56             1,545 lang.rm2ndmedparcel.php
+04/03/2023  16:56             1,617 lang.rm2ndmedparcelsf.php
+04/03/2023  16:56             1,541 lang.rm2ndsmlparcel.php
+04/03/2023  16:56             1,613 lang.rm2ndsmlparcelsf.php
+04/03/2023  16:56             1,711 lang.rmamlargeletter.php
+04/03/2023  16:56             1,611 lang.rmamlargelettersf.php
+04/03/2023  16:56             1,642 lang.rmamletter.php
+04/03/2023  16:56             1,542 lang.rmamlettersf.php
+04/03/2023  16:56             1,666 lang.rmamparcel.php
+04/03/2023  16:56             1,566 lang.rmamparcelsf.php
+04/03/2023  16:56             1,549 lang.rmamtlargeletter.php
+04/03/2023  16:56             1,497 lang.rmamtletter.php
+04/03/2023  16:56             1,509 lang.rmamtparcel.php
+04/03/2023  16:56             1,622 lang.rmamtslargeletter.php
+04/03/2023  16:56             1,570 lang.rmamtsletter.php
+04/03/2023  16:56             1,582 lang.rmamtsparcel.php
+04/03/2023  16:56             1,530 lang.rmpfexpress10.php
+04/03/2023  16:56             1,530 lang.rmpfexpress24.php
+04/03/2023  16:56             1,530 lang.rmpfexpress48.php
+04/03/2023  16:56             1,518 lang.rmpfexpress9.php
+04/03/2023  16:56             1,530 lang.rmpfexpressam.php
+04/03/2023  16:56             1,526 lang.rmpfgeconomy.php
+04/03/2023  16:56             1,603 lang.rmpfgexpress.php
+04/03/2023  16:56             1,568 lang.rmpfgpriority.php
+04/03/2023  16:56             1,499 lang.rmpfgvalue.php
+04/03/2023  16:56             1,559 lang.rmpfiexpress.php
+04/03/2023  16:56             1,748 lang.rmsmparcel.php
+04/03/2023  16:56             1,286 lang.rmspecialdelivery.php
+04/03/2023  16:56             1,310 lang.rmspecialdelivery9am.php
+04/03/2023  16:56             1,518 lang.rmspecialdeliverysat.php
+04/03/2023  16:56             1,537 lang.rmspecialdeliverysat9am.php
+04/03/2023  18:54                 0 mark.names
+              44 File(s)         66,489 bytes
+               2 Dir(s)  703,591,505,920 bytes free
