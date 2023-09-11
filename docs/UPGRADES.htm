@@ -72,13 +72,10 @@
             <p><strong>IMPORTANT:</strong> Version 3.7.0 onwards has been designed 
                 to work with Zen Cart V1.5.8 upwards If you are using a version of 
                 zen cart before this it will not function correctly.<br>However 
-                you can still use the YYYYUpdate.sql files to update your rates.</p> 
-            <p><strong>Note:</strong> this upgrade will remove all handling fees
-                and override changes to country codes you may have made. So please
-                note any changes you have made before you begin.
-            </p>
+                you can still use the YYYYUpdate.sql files to update your rates.</p>
             <p>Choose your current version</p>
             <ul>
+                <li><a href="#3.7.0">3.7 any</a></li>
                 <li><a href="#3.5.0">3.6 any</a></li>
                 <li><a href="#3.5.0">3.5 any</a></li>
                 <li><a href="#3.2.1">3.4.1</a></li>
@@ -107,6 +104,75 @@
                         need to use the script in 1.3.8_scripts and not the one in
                         the top level.</strong></li>
             </ul>
+            <h2 id="3.7.0">From Version 3.7 any</h2>
+            <ol class="l1">
+                <li>If you are using zen cart 1.5.7 or below BigRoyalMail may still work if you do not remove the current language files.</li>
+                <li>If you are using zen cart 1.5.8 or above and have not deleted the old language files see <a href="#3.5.0">From Version 3.5.0 to 3.6 any</a> below.
+                    <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                    <br>YOUR_SHOPPING_CART_DIRECTORY/images/
+                </li>
+                <li>To apply the latest rates either
+                    <ol class="l2">
+                        <li>Run oct2023Update.sql
+                            <ol class="l3">
+                                <li><strong>Backup your database before
+                                running update.</strong></li>
+                                <li>Login to your zen cart admin</li>
+                                <li>Use Tools &gt; Install SQL Patches</li>
+                                <li>Copy the contents of oct2023Update.sql and paste
+                                    into the text window <br> or <br>Use the
+                                    Browse button to load oct2023Update.sql into zen cart.
+                                </li>
+                                <li>Press send button to execute script</li>
+                            </ol>
+                        </li>
+                        <li>OR Uninstall and reinstall all the Royal mail shipping modules
+                            you are using.<br><strong>Note:</strong> this will remove all handling fees
+                and override changes to country codes you may have made. So please
+                note any changes you have made before you begin.
+                            <ol class="l3">
+                                <li>Login to your zen cart admin</li>
+                                <li>Use Admin &gt; Modules &gt; Shipping</li>
+                                <li>For each of the modules installed. <br>Green
+                                    dot in sort order: installed and in use. <br>Yellow
+                                    dot in sort order: Installed not in use.
+                                </li>
+                                <li>Highlight by clicking the module line.</li>
+                                <li>Click Remove Module</li>
+                                <li>Click Remove Module on the confirmation message</li>
+                                <li>Click Install Module <br>NB. If the dot after
+                                    status was Yellow you do not need to reinstall as you
+                                    were not using it so skip remaining steps for that
+                                    module.
+                                </li>
+                                <li>Modify Enable this shipping option to True to turn
+                                    the module on</li>
+                                <li>If you do not want to display invalid shipping
+                                    options <br>Modify Hide Invalid Shipping to True
+                                </li>
+                                <li>Check the Handling fee/s and modify if necessary</li>
+                                <li>Click Update</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+                <li>If you use printed paper rates <br>After You have
+                    installed all the modules you need. <br>Run
+                    PrintedPapers.sql
+                    <ol class="l2">
+                        <li><strong>Backup your database before
+                                running update.</strong></li>
+                        <li>Login to your zen cart admin</li>
+                        <li>Use Tools &gt; Install SQL Patches</li>
+                        <li>Copy the contents of PrintedPapers.sql and paste
+                            into the text window <br> or <br>Use the
+                            Browse button to load PrintedPapers.sql into zen cart.
+                        </li>
+                        <li>Press send button to execute script</li>
+                    </ol>
+                </li>
+            </ol>
             <h2 id="3.5.0">From Version 3.5.0 to 3.6 any</h2>
             <ol class="l1">
                 <li> If you are using zen cart 1.5.7 or below BigRoyalMail may still work if you do not remove the current language files</li>
@@ -159,14 +225,16 @@
                 <li>If you have modified and of the files language files and saved 
                     them to your template these will need changing to 'lang.' files 
                     and modifying to the zen cart 1.5.8 standard See 
-                    <a href="https://tutorials.zen-cart.com/dev/code/158_language_files/">Zen Cart documentation</a>
+                    <a href="https://tutorials.zen-cart.com/user/localization/basic_158_language_customizations/">Zen Cart documentation</a>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Uninstall and reinstall all the Royal mail shipping modules
-                    you are using.
+                    you are using.<br><strong>Note:</strong> this will remove all handling fees
+                and override changes to country codes you may have made. So please
+                note any changes you have made before you begin.
                     <ol class="l2">
                         <li>Login to your zen cart admin</li>
                         <li>Use Admin &gt; Modules &gt; Shipping</li>
@@ -200,7 +268,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -312,7 +380,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -321,8 +389,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -348,7 +416,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -455,7 +523,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -464,8 +532,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -490,7 +558,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -618,7 +686,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -627,8 +695,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -653,7 +721,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -791,7 +859,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -800,8 +868,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -826,7 +894,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -837,7 +905,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of Install3.2.sql and paste into
-                            the text window <br> or <br>User the Browse
+                            the text window <br> or <br>Use the Browse
                             button to load Install3.2.sql into zen cart. <br>
                         </li>
                         <li>Press send button to execute script</li>
@@ -986,7 +1054,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -995,8 +1063,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -1021,7 +1089,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -1032,7 +1100,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of Install3.2.sql and paste into
-                            the text window <br> or <br>User the Browse
+                            the text window <br> or <br>Use the Browse
                             button to load Install3.2.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -1183,7 +1251,7 @@
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
                                 <li>Copy the contents of RemoveAll.sql and
-                                    paste into the text window <br> or <br>User
+                                    paste into the text window <br> or <br>Use
                                     the Browse button to load RemoveAll.sql into zen
                                     cart.
                                 </li>
@@ -1192,8 +1260,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.7.0/includes/* and
-                    BigRoyalMail_V3.7.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
+                    BigRoyalMail_V3.8.0/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -1218,7 +1286,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of PrintedPapers.sql and paste
-                            into the text window <br> or <br>User the
+                            into the text window <br> or <br>Use the
                             Browse button to load PrintedPapers.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>
@@ -1229,7 +1297,7 @@
                         <li>Login to your zen cart admin</li>
                         <li>Use Tools &gt; Install SQL Patches</li>
                         <li>Copy the contents of Install3.2.sql and paste into
-                            the text window <br> or <br>User the Browse
+                            the text window <br> or <br>Use the Browse
                             button to load Install3.2.sql into zen cart.
                         </li>
                         <li>Press send button to execute script</li>

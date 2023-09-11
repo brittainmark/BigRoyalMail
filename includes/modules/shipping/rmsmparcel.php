@@ -72,22 +72,22 @@ class rmsmparcel
     // class constructor
     function __construct()
     {
-        global $order, $total_weight;
-        $this->version = '3.7.0';
+        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
+        $this->version = '3.8.0 rates: ' . $rVersion;
         $this->code = 'rmsmparcel';
         $this->num_zones = 2;
-        require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php');
+        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
         return;
     }
 
     // class methods
     function quote($method = '')
     {
-        global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
+        
         $postage_check = array(
             30
         );
-        require (DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php');
+        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
             return;
         }
@@ -126,12 +126,14 @@ class rmsmparcel
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail Europe Zones 1/2/3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'Two character ISO country codes for Europe Zones 1/2/3.', '6', '0', 'zen_cfg_textarea(', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail World Zones 1/2/3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', ' AE, AF, AG, AI, AN, AO, AQ, AR, AS, AU, AW, AX, BB, BD, BF, BH, BI, BJ, BM, BN, BO, BR, BS, BT, BV, BW, BZ, CA, CC, CF, CG, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, DJ, DM, DO, DZ, EC, EG, EH, ER, ET, FJ, FK, FM, GA, GD, GF, GH, GM, GN, GP, GQ, GS, GT, GU, GW, GY, HK, HM, HN, HT, ID, IE, IL, IN, IO, IQ, IR, JM, JO, JP, KE, KH, KI, KM, KN, KP, KR, KW, KY, LA, LB, LC, LK, LR, LS, LY, MA, MG, MH, ML, MM, MN, MO, MP, MQ, MR, MS, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NF, NG, NI, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PM, PN, PR, PW, PY, QA, RE, RW, SA, SB, SC, SD, SG, SH, SJ, SL, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TF, TG, TH, TK, TL, TN, TO, TT, TV, TW, TZ, UG, UM, US, UY, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW', 'Two character ISO country codes for World Zones 1/2/3.', '6', '0', 'zen_cfg_textarea(', now())");
         // Rates
+        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rates.php';
+        $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_';
         // Europe Zones 1/2/3 Rates
-        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zones 1/2/3 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_1', '0.25:6.75,0.5:9.4,0.75:10.6,1:11.8,1.5:12.8,2:14.3', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zones 1/2/3 rates', '" . $rateName . '1' . "', '" . $rates[$rateName . '1'] . "', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
         // World Zone 1/2/3 Rates
-        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Would Zones 1/2/3 rates', 'MODULE_SHIPPING_" . $module . "_ZONES_COST0_2', '0.25:6.75,0.5:9.4,0.75:10.6,1:11.8,1.5:12.8,2:14.3', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Would Zones 1/2/3 rates', '" . $rateName . '2' . "', '" . $rates[$rateName . '2'] . "', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
         // Expires date
-        $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '2024-04-01 00:00:01', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
+        $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '" . $rateExpires . "', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
     }
 
     function remove()

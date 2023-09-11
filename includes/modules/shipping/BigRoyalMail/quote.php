@@ -4,6 +4,7 @@
  */
 // class methods
 //function quote($method = '') {
+global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
 $currencies = new currencies();
 $dest_country_code = $order->delivery['country']['iso_code_2'];
 $dest_country_title = $order->delivery['country']['title'];
