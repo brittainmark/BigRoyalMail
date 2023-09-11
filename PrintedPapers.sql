@@ -1,5 +1,5 @@
 # 
-# Update for Big royal Mail postage rates valid from 3 April 2023 for latest rates visit  http://www.royalmail.com  
+# Update for Big royal Mail postage rates valid from 2 October for latest rates visit  http://www.royalmail.com  
 # 
 # This update puts in the rates for printed papers 5 kg. Again it will not differentiate between printed papers
 # and other types of post so do not use this unless you know you are shipping printed papers.
