@@ -44,7 +44,7 @@ if ($dest_zone === 0) {
 } elseif ($sales_value < constant('MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE')) {
     // order does not have enough value
     $error = 3;
-} elseif (constant('MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE') !== -1 && $sales_value > constant('MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE')) {
+} elseif (constant('MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE') !== '-1' && $sales_value > constant('MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE')) {
     // order too expensive for method
     $error = 4;
 } else {
