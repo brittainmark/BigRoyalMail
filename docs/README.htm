@@ -122,14 +122,14 @@ h1, h2, p {
         </p>
         <h2>INSTALLATION</h2>
         <ol class="l1">
-            <li>Copy the files from BigRoyalMail_V3.8.0/includes/* and
-                BigRoyalMail_V3.8.0/images/* onto your server into:
+            <li>Copy the files from BigRoyalMail_V3.9.0/includes/* and
+                BigRoyalMail_V3.9.0/images/* onto your server into:
                 <ul>
                     <li>YOUR_SHOPPING_CART_DIRECTORY/includes/</li>
                     <li>YOUR_SHOPPING_CART_DIRECTORY/images/</li>
                 </ul>
             </li>
-            <li>Set up the modules you want
+            <li>Set up the modules you want<br><strong>Note:</strong>If you intend to use the UK tracked 24 or 48 modules please check that your post office is accepting these.
                 <ol class="l2">
                     <li>Login to your zen cart admin.</li>
                     <li>Go to admin- &gt; Modules- &gt; Shipping</li>
@@ -154,7 +154,7 @@ h1, h2, p {
                 <strong>NB. Version 3.7.0 onwards is designed to work with 
                     Zen Cart 1.5.8 upwards. Use version 3.6.0 for any lower 
                     versions of Zen cart. You can still use the yyyyUpdate.sql 
-                    file from this release for the latest rates.</strong>
+                    file from this release for the latest rates.<br>UK tracked 24 and 48 are not available in that release.</strong>
             </li>
             <li>If you want to force a minimum delivery method then set the
                 appropriate attributes for each product. This can be done by
@@ -213,21 +213,23 @@ h1, h2, p {
                 using Lbs as your weight measure you will either have to adjust
                 your product weights to Kg or recalculate the weights to Lbs.</li>
             <li>If you are using Kg and have not already done so adjust the
-                <strong> TEXT_PRODUCTS_WEIGHT_UNIT</strong> to Kg to display the
-                correct information in zen cart admin. This can be found in <strong>YOUR_SHOPPING_CART_DIRECTORY &gt; YOUR_ADMIN &gt; include &gt; language &gt; english.php</strong>
+                <strong>TEXT_PRODUCTS_WEIGHT_UNIT</strong> and <strong>TEXT_SHIPPING_WEIGHT</strong> to Kg to display the
+                correct information in zen cart admin. This can be found in <strong>YOUR_SHOPPING_CART_DIRECTORY &gt; YOUR_ADMIN &gt; include &gt; language &gt; lang.english.php</strong>
             </li>
-            <li>As for 3) adjust the weight to TEXT_PRODUCTS_WEIGHT_UNIT to
-                Kg. this should be found in <strong>CATALOG_SITE &gt; include &gt; language &gt; english.php</strong>
-                or <strong>YOUR_SHOPPING_CART_DIRECTORY &gt; include &gt; language &gt; YOUR_TEMPLATE &gt; english.php</strong>.
-                you should always save the changes to the second location to
-                avoid them being lost on update.
+            <li>As for 3) adjust the weight to <strong>TEXT_PRODUCTS_WEIGHT_UNIT</strong> and <strong>TEXT_SHIPPING_WEIGHT</strong> to
+                Kg. This should be found in <strong>CATALOG_SITE &gt; include &gt; language &gt; lang.english.php</strong>
+                or <strong>YOUR_SHOPPING_CART_DIRECTORY &gt; include &gt; language &gt; YOUR_TEMPLATE &gt; lang.english.php</strong>.
+                You should always save the changes to the second location to
+                avoid them being lost on upgrade.
             </li>
         </ol>
         <p>If you wish to modify any of the text in the language files please
-            use the template overrides system. Copy the file to your template
+            use the template overrides system. Prior to Zen Cart V1.5.8. Copy the file to your template
             folder in the <strong>includes &gt; language &gt; english &gt; modules &gt; shipping &gt; YOUR_TEMPLATE</strong>
             this way you will not loose any changes if you install updates. As of Zen Cart 1.5.8 you only need to define the values you are changing.
             See <a href="https://tutorials.zen-cart.com/dev/code/158_language_files/">Zen Cart documentation</a>.
+        </p>
+        <p>Zen Cart 2.0 has a new method. See Zen Cart documentation <a href="https://docs.zen-cart.com/user/shipping/shipping_dimensions/">Storeowner Docs\Shipping\Shipping Dimensions</a> 
         </p>
         <p></p>
         <hr>

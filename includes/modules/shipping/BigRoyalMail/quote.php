@@ -154,11 +154,11 @@ if ($dest_zone === 0) {
     }
 }
 // Prepare the quote information
-$this->quotes = array('id' => $this->code,
+$this->quotes = ['id' => $this->code,
     'module' => constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE'),
-    'methods' => array(array('id' => $this->code,
-            'title' => $shipping_method,
-            'cost' => $shipping_cost)));
+    'methods' => [['id' => $this->code,
+        'title' => $shipping_method,
+        'cost' => $shipping_cost]]];
 // Process the error if any
 if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
 // Hide error so return without method information

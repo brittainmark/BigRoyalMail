@@ -73,7 +73,7 @@ class rmspecialdeliverysat9am
     function __construct()
     {
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
-        $this->version = '3.8.0 rates: ' . $rVersion;
+        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmspecialdeliverysat9am';
         $this->num_zones = 1;
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
@@ -95,9 +95,9 @@ class rmspecialdeliverysat9am
     function quote($method = '')
     {
         
-        $postage_check = array(
+        $postage_check = [
             40
-        );
+        ];
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') == 'True' && $error > 0) {
             return;
@@ -120,11 +120,11 @@ class rmspecialdeliverysat9am
         global $db;
         $module = strtoupper($this->code);
         $this->remove();
-        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Enable this shipping option', 'MODULE_SHIPPING_" . $module . "_STATUS', 'False', 'If you need to adjust your shipping rates, you can use this option to disable it in your shop, instead of re-installing', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order values).', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Enable this shipping option', 'MODULE_SHIPPING_" . $module . "_STATUS', 'False', 'If you need to adjust your shipping rates, you can use this option to disable it in your shop, instead of re-installing', '6', '0', 'zen_cfg_select_option([\'True\', \'False\'], ', now())");
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Hide Invalid Shipping', 'MODULE_SHIPPING_" . $module . "_HIDE_SHIPPING_ERRORS', 'False', 'Hide this shipping service if it is not valid (either due to exceeding the maximum weight or the min &amp; max order values).', '6', '0', 'zen_cfg_select_option([\'True\', \'False\'], ', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('Tax Class', 'MODULE_SHIPPING_" . $module . "_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'zen_get_tax_class_title', 'zen_cfg_pull_down_tax_classes(', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Sort Order', 'MODULE_SHIPPING_" . $module . "_SORT_ORDER', '200', 'Sort order of display.', '6', '0', now())");
-        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Attribute Exact Match', 'MODULE_SHIPPING_" . $module . "_ATTRIBUTE_MATCH', 'False', 'Used to only display this shipping method if the attribute shipping is exact match', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Attribute Exact Match', 'MODULE_SHIPPING_" . $module . "_ATTRIBUTE_MATCH', 'False', 'Used to only display this shipping method if the attribute shipping is exact match', '6', '0', 'zen_cfg_select_option([\'True\', \'False\'], ', now())");
         // Saturday Delivery Options
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Friday Cutoff', 'MODULE_SHIPPING_" . $module . "_FRIDAY_CUTOFF', '12:00', 'Cutoff time for last delivery hh:mm.', '6', '0', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Display for ? days before', 'MODULE_SHIPPING_" . $module . "_DISPLAY_DAYS', '7', 'Enter number of days before cutoff to display Saturday delivery. 7 = always display', '6', '0', now())");
@@ -156,7 +156,7 @@ class rmspecialdeliverysat9am
     {
         $module = strtoupper($this->code);
 
-        $keys = array(
+        $keys = [
             'MODULE_SHIPPING_RM_EXPIRES',
             'MODULE_SHIPPING_' . $module . '_STATUS',
             'MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS',
@@ -169,7 +169,7 @@ class rmspecialdeliverysat9am
             'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE',
             'MODULE_SHIPPING_' . $module . '_ZONES_HANDLING',
             'MODULE_SHIPPING_' . $module . '_INSURANCE'
-        );
+        ];
         $keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1';
         $keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1';
         return $keys;
