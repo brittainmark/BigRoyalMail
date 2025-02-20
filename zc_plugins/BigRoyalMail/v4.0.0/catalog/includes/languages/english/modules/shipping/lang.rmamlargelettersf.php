@@ -15,7 +15,7 @@ $define = [
     'MODULE_SHIPPING_RMAMLARGELETTERSF_TEXT_EXCLUDED' => 'International Signed shipping is not currently available to ',
     'MODULE_SHIPPING_RMAMLARGELETTERSF_TEXT_UNDERMINTOTAL' => 'International Signed &quot;Large Letter&quot; delivery is only available for orders over &pound;',
     'MODULE_SHIPPING_RMAMLARGELETTERSF_TEXT_OVERMAXTOTAL' => 'International Signed &quot;Large Letter&quot; delivery is only available for orders under &pound;',
-    'MODULE_SHIPPING_RMAMLARGELETTERSF_TEXT_DESCRIPTION' => 'RM International Signed &quot;Large Letter&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>',
+    'MODULE_SHIPPING_RMAMLARGELETTERSF_TEXT_DESCRIPTION' => 'RM International Signed &quot;Large Letter&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until %s</span>',
     'MODULE_SHIPPING_RMAMLARGELETTERSF_ICON' => 'shipping_ukrm.jpg',
 ];
 

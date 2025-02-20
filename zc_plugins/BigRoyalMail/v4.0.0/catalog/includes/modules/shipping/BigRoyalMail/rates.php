@@ -6,7 +6,6 @@
  * 
  * Version : 3.9.0 - 20240401 - BrittainMark
  */
-        $rateExpires = '2025-04-01 00:00:01';
         $rates = [
             'MODULE_SHIPPING_RM1STLETTER_ZONES_COST0_1' => '0.1:1.35',
             'MODULE_SHIPPING_RM2NDLETTER_ZONES_COST0_1' => '0.1:0.85',

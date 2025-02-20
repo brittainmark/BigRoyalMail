@@ -14,7 +14,7 @@ $define = [
     'MODULE_SHIPPING_RMT24SMLPARCELSF_UNDEFINED_RATE' => 'The shipping rate cannot be determined at this time',
     'MODULE_SHIPPING_RMT24SMLPARCELSF_TEXT_UNDERMINTOTAL' => 'The Tracked 24 <strong>Signed </strong> &quot;Small Parcel&quot; service is only available for orders over &pound;',
     'MODULE_SHIPPING_RMT24SMLPARCELSF_TEXT_OVERMAXTOTAL' => 'The Tracked 24 <strong>Signed </strong> &quot;Small Parcel&quot; service is only available for orders under &pound;',
-    'MODULE_SHIPPING_RMT24SMLPARCELSF_TEXT_DESCRIPTION' => 'Royal Mail Tracked 24 <strong>Signed </strong> &quot;Small Parcel&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset').'</span>',
+    'MODULE_SHIPPING_RMT24SMLPARCELSF_TEXT_DESCRIPTION' => 'Royal Mail Tracked 24 <strong>Signed </strong> &quot;Small Parcel&quot; Rates.  Weights in ' . TEXT_PRODUCT_WEIGHT_UNIT . '. <span style="font-style: italic">Rates valid until %s</span>',
     'MODULE_SHIPPING_RMT24SMLPARCELSF_ICON' => 'shipping_ukrm.jpg',
 ];
 

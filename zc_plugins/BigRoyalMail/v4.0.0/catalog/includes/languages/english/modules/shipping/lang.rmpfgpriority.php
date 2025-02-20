@@ -15,7 +15,7 @@ $define = [
     'MODULE_SHIPPING_RMPFGPRIORITY_TEXT_UNDERMINTOTAL' => '<strong>Parcel Force Global Prioriy</strong> delivery is only available for orders over &pound;',
     'MODULE_SHIPPING_RMPFGPRIORITY_TEXT_OVERMAXTOTAL' => '<strong>Parcel Force Global Prioriy</strong> delivery is only available for orders under &pound;',
     'MODULE_SHIPPING_RMPFGPRIORITY_ICON' => 'shipping_pf.jpg',
-    'MODULE_SHIPPING_RMPFGPRIORITY_TEXT_DESCRIPTION' => 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Global Prioriy&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until ' . (defined('MODULE_SHIPPING_RM_EXPIRES')?MODULE_SHIPPING_RM_EXPIRES:'Unset') . '</span>',
+    'MODULE_SHIPPING_RMPFGPRIORITY_TEXT_DESCRIPTION' => 'Royal Mail Parcel Force <span style="font-weight: normal; font-style: italic">&quot; Global Prioriy&quot;</span> Rates.  Weights in '.constant('TEXT_PRODUCT_WEIGHT_UNIT').'. <span style="font-style: italic">Rates valid until %s</span>',
 ];
 
 return $define;
