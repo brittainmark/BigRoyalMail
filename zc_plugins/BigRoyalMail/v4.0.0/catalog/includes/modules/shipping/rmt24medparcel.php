@@ -4,7 +4,7 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
-class rmt24medparcel
+class rmt24medparcel extends ZenShipping
 {
 
     /**
