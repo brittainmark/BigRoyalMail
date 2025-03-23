@@ -84,7 +84,7 @@ class rmt24medparcel
     {
         
         $postage_check = [
-            10
+            30
         ];
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
