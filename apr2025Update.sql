@@ -239,19 +239,19 @@ UPDATE configuration SET configuration_value = "150:0, 200:1.8, 100+:4.5" WHERE 
 UPDATE configuration SET configuration_value = "5:18.35,10:21.5,20:25.15,20:29.35" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESSAM_ZONES_COST0_1" ;
 
 # Parcel Force Express AM Insurance Rates  
-UPDATE configuration SET configuration_value = "200:0, 300:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESSAM_INSURANCE" ;
+UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESSAM_INSURANCE" ;
 
 # Parcel Force Express 10   
 UPDATE configuration SET configuration_value = "5:28.85,10:32,20:35.65,30:39.85" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS10_ZONES_COST0_1" ;
 
 # Parcel Force Express 10 Insurance Rates  
-UPDATE configuration SET configuration_value = "200:0, 300:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS10_INSURANCE" ;
+UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS10_INSURANCE" ;
 
 # Parcel Force Express 9   
 UPDATE configuration SET configuration_value = "5:74.7,10:85.1,20:96.15,30:114.35" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS9_ZONES_COST0_1" ;
 
 # Parcel Force Express 9 Insurance Rates  
-UPDATE configuration SET configuration_value = "200:0, 300:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS9_INSURANCE" ;
+UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS9_INSURANCE" ;
 
 
 # Overseas Mailing 
@@ -526,7 +526,7 @@ UPDATE configuration SET configuration_value = "0.5:75.96, 1:83.81, 1.5:91.67, 2
 UPDATE configuration SET configuration_value = "0.5:86.74, 1:97.19, 1.5:107.63, 2:118.08, 2.5:127.71, 3:137.34, 3.5:146.98, 4:156.61, 4.5:166.24, 5:175.87, 5.5:183.43, 6:190.98, 6.5:198.54, 7:206.09, 7.5:213.65, 8:221.2, 8.5:228.76, 9:236.31, 9.5:243.87, 10:251.42" WHERE configuration_key = "MODULE_SHIPPING_RMPFGEXPRESS_ZONES_COST0_1" ;
 
 # Parcel Force Global Express Insurance Rates 
-UPDATE configuration SET configuration_value = "200:0, 300:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGEXPRESS_INSURANCE" ;
+UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGEXPRESS_INSURANCE" ;
 
 # Parcel Force Global Priority 
 UPDATE configuration SET configuration_value = "0.5:26, 1:27.04, 1.5:28.08, 2:29.12, 2.5:31.22, 3:33.32, 3.5:35.42, 4:37.52, 4.5:39.62, 5:41.72, 5.5:42.16, 6:42.6, 6.5:43.04, 7:43.48, 7.5:43.92, 8:44.36, 8.5:44.8, 9:45.24, 9.5:45.68, 10:46.12" WHERE configuration_key = "MODULE_SHIPPING_RMPFGPRIORITY_ZONES_COST0_1" ;
@@ -540,7 +540,7 @@ UPDATE configuration SET configuration_value = "0.5:49.4, 1:54.25, 1.5:59.1, 2:6
 UPDATE configuration SET configuration_value = "0.5:62.56, 1:69.79, 1.5:77.02, 2:84.25, 2.5:91.43, 3:98.61, 3.5:105.79, 4:112.97, 4.5:120.15, 5:127.33, 5.5:133.78, 6:140.23, 6.5:146.68, 7:153.13, 7.5:159.58, 8:166.03, 8.5:172.48, 9:178.93, 9.5:185.38, 10:191.83" WHERE configuration_key = "MODULE_SHIPPING_RMPFGPRIORITY_ZONES_COST0_1" ;
 
 # Parcel Force Global Priority Insurance Rates 
-UPDATE configuration SET configuration_value = "100:0, 200:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGPRIORITY_INSURANCE" ;
+UPDATE configuration SET configuration_value = "100:0, 150:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGPRIORITY_INSURANCE" ;
 
 # Parcel Force Global Value 
 UPDATE configuration SET configuration_value = "0.5:11.91, 1:13.07, 1.5:14.23, 2:15.39, 2.5:16.28, 3:17.17, 3.5:18.06, 4:18.95, 4.5:19.84, 5:20.73, 5.5:21.18, 6:21.63, 6.5:22.08, 7:22.53, 7.5:22.98, 8:23.43, 8.5:23.88, 9:24.33, 9.5:24.78, 10:25.23" WHERE configuration_key = "MODULE_SHIPPING_RMPFGVALUE_ZONES_COST0_1" ;
@@ -554,13 +554,13 @@ UPDATE configuration SET configuration_value = "0.5:37.01, 1:43.71, 1.5:50.41, 2
 UPDATE configuration SET configuration_value = "0.5:38.3, 1:45.96, 1.5:53.62, 2:61.28, 2.5:68.94, 3:76.6, 3.5:84.26, 4:91.92, 4.5:99.58, 5:107.24, 5.5:114.21, 6:121.18, 6.5:128.15, 7:135.12, 7.5:142.09, 8:149.06, 8.5:156.03, 9:163, 9.5:169.97, 10:176.94" WHERE configuration_key = "MODULE_SHIPPING_RMPFGVALUE_ZONES_COST0_1" ;
 
 # Parcel Force Global Value Insurance Rates 
-UPDATE configuration SET configuration_value = "100:0, 200:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGVALUE_INSURANCE" ;
+UPDATE configuration SET configuration_value = "100:0, 150:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFGVALUE_INSURANCE" ;
 
 # Parcel Force Ireland Express 
 UPDATE configuration SET configuration_value = "2:16.68, 5:17.7, 10:21.12" WHERE configuration_key = "MODULE_SHIPPING_RMPFIEXPRESS_ZONES_COST0_1" ;
 
 # Parcel Force Ireland Express Insurance Rates 
-UPDATE configuration SET configuration_value = "200:0, 300:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFIEXPRESS_INSURANCE" ;
+UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFIEXPRESS_INSURANCE" ;
 
 # Surface mail Europe 
 UPDATE configuration SET configuration_value = "0.25:9.3,0.5:14,0.75:14.45,1:15.6,1.5:17.15,2:20.25" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_1" ;
