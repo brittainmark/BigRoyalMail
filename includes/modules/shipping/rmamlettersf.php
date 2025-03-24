@@ -73,7 +73,7 @@ class rmamlettersf
     function __construct()
     {
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
+        $this->version = '3.9.1 rates: ' . $rVersion;
         $this->code = 'rmamlettersf';
         // CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
         // Currently Europe and the rest of the world

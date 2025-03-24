@@ -2,4 +2,4 @@
 /*
  * The current rates version of Big royal mail
  */
-$rVersion = '3.9.0';
+$rVersion = '3.9.1';

@@ -73,7 +73,7 @@ class rm2ndmedparcel
     function __construct()
     {
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
+        $this->version = '3.9.1 rates: ' . $rVersion;
         $this->code = 'rm2ndmedparcel';
         $this->num_zones = 1;
         require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
