@@ -16,22 +16,22 @@
 
 # Postage Rates 
 #  Airmail Europe Zone 1
-UPDATE configuration SET configuration_value = "0.25:8.95,0.5:11.25,0.75:12.4,1:13.55,1.5:14.25,2:16.25,2.25:17.8,2.5:19.35,2.75:20.9,3:22.45,3.25:24,3.5:25.55,3.75:27.1,4:28.65,4.25:30.2,4.5:31.75,4.75:33.3,5:34.85" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.25:8.95,0.5:11.25,0.75:12.4,1:13.55,1.5:14.25,2:16.25,2.25:17.9,2.5:19.55,2.75:21.2,3:22.85,3.25:24.5,3.5:26.15,3.75:27.8,4:29.45,4.25:31.1,4.5:32.75,4.75:34.4,5:36.05" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_1" ;
 
 #  Airmail Europe Zone 2
-UPDATE configuration SET configuration_value = "0.25:9.7,0.5:12.35,0.75:13.9,1:15.35,1.5:16.9,2:18.8,2.25:20.35,2.5:21.9,2.75:23.45,3:25,3.25:26.55,3.5:28.1,3.75:29.65,4:31.2,4.25:32.75,4.5:34.3,4.75:35.85,5:37.4" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_2" ;
+UPDATE configuration SET configuration_value = "0.25:9.7,0.5:12.35,0.75:13.9,1:15.35,1.5:16.9,2:18.8,2.25:20.45,2.5:22.1,2.75:23.75,3:25.4,3.25:27.05,3.5:28.7,3.75:30.35,4:32,4.25:33.65,4.5:35.3,4.75:36.95,5:38.6" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_2" ;
 
 #  Airmail Europe Zone 3
-UPDATE configuration SET configuration_value = "0.25:10.65,0.5:13.1,0.75:14.9,1:16.6,1.25:18.1,1.5:19.55,2:21.25,2.25:22.8,2.5:24.35,2.75:25.9,3:27.45,3.25:29,3.5:30.55,3.75:32.1,4:33.65,4.25:35.2,4.5:36.75,4.75:38.3,5:39.85" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_3" ;
+UPDATE configuration SET configuration_value = "0.25:10.65,0.5:13.1,0.75:14.9,1:16.6,1.25:18.1,1.5:19.55,2:21.25,2.25:22.9,2.5:24.55,2.75:26.2,3:27.85,3.25:29.5,3.5:31.15,3.75:32.8,4:34.45,4.25:36.1,4.5:37.75,4.75:39.4,5:41.05" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_3" ;
 
 # Airmail Rest of World  Zone 1
-UPDATE configuration SET configuration_value = "0.1:13.05,0.25:14.05,0.5:19.3,0.75:22.7,1:26.2,1.25:29.25,1.5:32,2:33.55,2.25:35.65,2.5:37.75,2.75:39.85,3:41.95,3.25:44.05,3.5:46.15,3.75:48.25,4:50.35,4.25:52.45,4.5:54.55,4.75:56.65,5:58.75" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_4" ;
+UPDATE configuration SET configuration_value = "0.1:13.05,0.25:14.05,0.5:19.3,0.75:22.7,1:26.2,1.25:29.25,1.5:32,2:33.55,2.25:35.8,2.5:38.05,2.75:40.3,3:42.55,3.25:44.8,3.5:47.05,3.75:49.3,4:51.55,4.25:53.8,4.5:56.05,4.75:58.3,5:60.55" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_4" ;
 
 # Airmail Rest of World  Zone 2
-UPDATE configuration SET configuration_value = "0.1:14.55,0.25:15.2,0.5:21.2,0.75:25.1,1:29.15,1.25:32.9,1.5:36.75,2:38.85,2.25:41.45,2.5:44.05,2.75:46.65,3:49.25,3.25:51.85,3.5:54.45,3.75:57.05,4:59.65,4.25:62.25,4.5:64.85,4.75:67.45,5:70.05" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_5" ;
+UPDATE configuration SET configuration_value = "0.1:14.55,0.25:15.2,0.5:21.2,0.75:25.1,1:29.15,1.25:32.9,1.5:36.75,2:38.85,2.25:41.6,2.5:44.35,2.75:47.1,3:49.85,3.25:52.6,3.5:55.35,3.75:58.1,4:60.85,4.25:63.6,4.5:66.35,4.75:69.1,5:71.85" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_5" ;
 
 # Airmail Rest of World  Zone 3
-UPDATE configuration SET configuration_value = "0.25:16.95,0.5:23.85,0.75:26.95,1:30.05,1.5:34.15,2:35.7,2.25:38.55,2.5:41.4,2.75:44.25,3:47.1,3.25:49.95,3.5:52.8,3.75:55.65,4:58.5,4.25:61.35,4.5:64.2,4.75:67.05,5:69.9" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_6" ;
+UPDATE configuration SET configuration_value = "0.25:16.95,0.5:23.85,0.75:26.95,1:30.05,1.5:34.15,2:35.7,2.25:38.7,2.5:41.7,2.75:44.7,3:47.7,3.25:50.7,3.5:53.7,3.75:56.7,4:59.7,4.25:62.7,4.5:65.7,4.75:68.7,5:71.7" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCEL_ZONES_COST0_6" ;
 
 # Airmail Europe zone 1 Signed For 
 UPDATE configuration SET configuration_value = "0.25:14.25,0.5:15.8,0.75:17,1:18.1,1.25:18.7,1.5:18.8,2:19,2.25:20.65,2.5:22.3,2.75:23.95,3:25.6,3.25:27.25,3.5:28.9,3.75:30.55,4:32.2,4.25:33.85,4.5:35.5,4.75:37.15,5:38.8" WHERE configuration_key = "MODULE_SHIPPING_RMAMPARCELSF_ZONES_COST0_1" ;
@@ -86,7 +86,7 @@ UPDATE configuration SET configuration_value = "0.25:19.95,0.5:25.5,0.75:28.75,1
 UPDATE configuration SET configuration_value = "0.1:19.5,0.25:20.8,0.5:27.2,0.75:29.5,1:33.2,1.25:38.3,1.5:39.95,2:40.9,2.25:43.9,2.5:46.9,2.75:49.9,3:52.9,3.25:55.9,3.5:58.9,3.75:61.9,4:64.9,4.25:67.9,4.5:70.9,4.75:73.9,5:76.9" WHERE configuration_key = "MODULE_SHIPPING_RMAMTSPARCEL_ZONES_COST0_6" ;
 
 # Surface mail Europe 
-UPDATE configuration SET configuration_value = "0.1:9.3, 0.25:9.3, 0.5:14, 0.75:14.45, 1:15.6, 1.25:17.15, 1.5:17.15, 1.75:20.25, 2:20.25, 2.25:22.15, 2.5:24.05, 2.75:25.95, 3:27.85, 3.25:29.75, 3.5:31.65, 3.75:33.55, 4:35.45, 4.25:37.35, 4.5:39.25, 4.75:41.15, 5:43.05" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.1:11.45, 0.25:11.45, 0.5:16.4, 0.75:18.35, 1:20.65, 1.25:24.35, 1.5:24.35, 1.75:26.26, 2:26.65, 2.25:28.55, 2.5:30.45, 2.75:32.35, 3:34.25, 3.25:36.15, 3.5:38.05, 3.75:39.95, 4:41.85, 4.25:43.75, 4.5:45.65, 4.75:47.55, 5:49.45" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_1" ;
 
 # Surface World Zones 1/2/3 
-UPDATE configuration SET configuration_value = "0.1:9.3, 0.25:9.3, 0.5:14, 0.75:14.45, 1:15.6, 1.25:17.15, 1.5:17.15, 1.75:20.25, 2:20.25, 2.25:22.15, 2.5:24.05, 2.75:25.95, 3:27.85, 3.25:29.75, 3.5:31.65, 3.75:33.55, 4:35.45, 4.25:37.35, 4.5:39.25, 4.75:41.15, 5:43.05" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_2" ;
+UPDATE configuration SET configuration_value = "0.1:11.45, 0.25:11.45, 0.5:16.4, 0.75:18.35, 1:20.65, 1.25:24.35, 1.5:24.35, 1.75:26.26, 2:26.65, 2.25:28.55, 2.5:30.45, 2.75:32.35, 3:34.25, 3.25:36.15, 3.5:38.05, 3.75:39.95, 4:41.85, 4.25:43.75, 4.5:45.65, 4.75:47.55, 5:49.45" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_2" ;

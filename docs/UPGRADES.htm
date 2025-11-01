@@ -75,6 +75,7 @@
                 you can still use the mmmYYYYUpdate.sql files to update your rates.</p>
             <p>Choose your current version</p>
             <ul>
+                <li><a href="#3.7.0">3.9.1</a></li>
                 <li><a href="#3.7.0">3.9.0</a></li>
                 <li><a href="#3.7.0">3.8 any</a></li>
                 <li><a href="#3.7.0">3.7 any</a></li>
@@ -106,33 +107,39 @@
                         need to use the script in 1.3.8_scripts and not the one in
                         the top level.</strong></li>
             </ul>
-            <h2 id="3.7.0">From Version 3.7 to 3.9.0</h2>
+            <h2 id="3.7.0">From Version 3.7 to 3.9.1</h2>
             <ol class="l1">
+                <li>If installed please uninstall first. Delete the Parcel force 9 am module and language file from the server.
+                    <ol class="l2">
+                        <li>Delete YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
+                        <li>Delete YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/lang.rmpfexpress9.php</li>
+                    </ol>
+                </li>
                 <li>If you are using zen cart 1.5.7 or below BigRoyalMail may still work if you do not remove the current language files.</li>
-                <li>If you are using zen cart 1.5.8 or above and have not deleted the old language files see <a href="#3.5.0">From Version 3.5.0 to 3.6 any</a> below.
-                    <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>If you are using zen cart 1.5.8 or above and have not deleted the old language files see <a href="#3.5.0">From Version 3.5.0 to 3.6 any</a> below.</li>
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>To apply the latest rates either
                     <ol class="l2">
-                        <li>Run apr2025Update.sql
+                        <li>Run oct2025Update.sql
                             <ol class="l3">
                                 <li><strong>Backup your database before
-                                running update.</strong></li>
+                                        running update.</strong></li>
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Tools &gt; Install SQL Patches</li>
-                                <li>Copy the contents of apr2025Update.sql and paste
+                                <li>Copy the contents of oct2025Update.sql and paste
                                     into the text window <br> or <br>Use the
-                                    Browse button to load apr2025Update.sql into zen cart.
+                                    Browse button to load oct2025Update.sql into zen cart.
                                 </li>
                                 <li>Press send button to execute script</li>
                             </ol>
                         </li>
                         <li>OR Uninstall and reinstall all the Royal mail shipping modules
                             you are using.<br><strong>Note:</strong> this will remove all handling fees
-                and override changes to country codes you may have made. So please
-                note any changes you have made before you begin.
+                            and override changes to country codes you may have made. So please
+                            note any changes you have made before you begin.
                             <ol class="l3">
                                 <li>Login to your zen cart admin</li>
                                 <li>Use Admin &gt; Modules &gt; Shipping</li>
@@ -224,19 +231,24 @@
                         <li>rmspecialdeliverysat9am.php</li>
                     </ul>
                 </li>
+                <li> Delete the Parcel force 9 am module 
+                    <ol class="l2">
+                        <li> Delete YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
+                    </ol>
+                </li>
                 <li>If you have modified and of the files language files and saved 
                     them to your template these will need changing to 'lang.' files 
                     and modifying to the zen cart 1.5.8 standard See 
                     <a href="https://docs.zen-cart.com/user/languages/basic_158_language_customizations/">Zen Cart documentation</a>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Uninstall and reinstall all the Royal mail shipping modules
                     you are using.<br><strong>Note:</strong> this will remove all handling fees
-                and override changes to country codes you may have made. So please
-                note any changes you have made before you begin.
+                    and override changes to country codes you may have made. So please
+                    note any changes you have made before you begin.
                     <ol class="l2">
                         <li>Login to your zen cart admin</li>
                         <li>Use Admin &gt; Modules &gt; Shipping</li>
@@ -331,13 +343,14 @@
                     and modifying to the zen cart 1.5.8 standard See 
                     <a href="https://docs.zen-cart.com/user/languages/basic_158_language_customizations/">Zen Cart documentation</a>
                 </li>
-                <li>Remove EU modules.
+                <li>Remove EU modules and parcel force 9am.
                     <ol class="l2">
                         <li>Delete the following files
                             <ul>
                                 <li>rmamteuletter.php</li>
                                 <li>rmamteulargeletter.php</li>
                                 <li>rmamteuparcel.php</li>
+                                <li>rmpfexpress9.php</li>
                             </ul> from
                             YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping
                             and
@@ -391,8 +404,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -485,6 +498,7 @@
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmparcelsf.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/languages/english/modules/shipping/rmamasparcel.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmamasparcel.php</li>
+                        <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
                     </ol>
                 </li>
                 <li>Remove all the configuration values
@@ -534,8 +548,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -649,6 +663,7 @@
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am1000.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+                        <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
                     </ol>
                 </li>
                 <li>Remove all the configuration values
@@ -697,8 +712,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -822,6 +837,7 @@
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmspecialdelivery9am2500.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmsmsmallpacketsf.php</li>
+                        <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
                     </ol>
                 </li>
                 <li>Remove all the configuration values
@@ -870,8 +886,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -1017,6 +1033,7 @@
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels100.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels250.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmstdparcels500.php</li>
+                        <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
                     </ol>
                 </li>
                 <li>Remove all the configuration values
@@ -1065,8 +1082,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.
@@ -1214,6 +1231,7 @@
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am1000.php</li>
                         <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/specialdelivery9am2500.php</li>
+                        <li>YOUR_SHOPPING_CART_DIRECTORY/includes/modules/shipping/rmpfexpress9.php</li>
                     </ol>
                 </li>
                 <li>Remove all the configuration values
@@ -1262,8 +1280,8 @@
                         </li>
                     </ol>
                 </li>
-                <li>Copy the files from BigRoyalMail_V3.9.1/includes/* and
-                    BigRoyalMail_V3.9.1/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
+                <li>Copy the files from BigRoyalMail_V3.9.2/includes/* and
+                    BigRoyalMail_V3.9.2/images/* onto your server into: <br>YOUR_SHOPPING_CART_DIRECTORY/includes/
                     <br>YOUR_SHOPPING_CART_DIRECTORY/images/
                 </li>
                 <li>Reinstall all the Royal mail shipping modules you require.

@@ -1,5 +1,5 @@
 # 
-# Update for Big royal Mail postage rates valid from 7 April 2025 for latest rates visit  http://www.royalmail.com  
+# Update for Big royal Mail postage rates valid from 3 October 2025 for latest rates visit  http://www.royalmail.com  
 # Assumes weights in Kg costs in GBP. 
 # created by Mark Brittain.  
 # Donations via paypal to messages@inner-light.co.uk 
@@ -28,6 +28,9 @@ SET @AS_Insurance = "250.00";
 
 # @Max_Insurance Parcel force 
 SET @PFValue_Insurance = "500.00";
+
+# @Max_Insurance UK Tracked 24/48
+SET @UKTracked_Insurance = "75.00";
 
 # 
 # If you require different handling fees for each separate type of postage please either remove the handling fees section below or replace the @... values with 
@@ -74,12 +77,23 @@ UPDATE configuration SET configuration_value = @Signed_Insurance WHERE configura
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS10_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS24_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS48_MAX_ORDERVALUE' ;
-UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS9_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESSAM_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_MAX_ORDERVALUE' ;
 UPDATE configuration SET configuration_value = @Max_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24LARGELETTER_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24LARGELETTERSF_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24MEDPARCEL_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24MEDPARCELSF_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24SMLPARCEL_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT24SMLPARCELSF_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48LARGELETTER_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48LARGELETTERSF_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48MEDPARCEL_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48MEDPARCELSF_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48SMLPARCEL_MAX_ORDERVALUE' ;
+UPDATE configuration SET configuration_value = @UKTracked_Insurance WHERE configuration_key = 'MODULE_SHIPPING_RMT48SMLPARCELSF_MAX_ORDERVALUE' ;
 
 # Postage and Packing Handling Charges 
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RM1STLARGELETTER_ZONES_HANDLING' ;
@@ -101,7 +115,6 @@ UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_k
 UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS10_ZONES_HANDLING' ;
 UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS24_ZONES_HANDLING' ;
 UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS48_ZONES_HANDLING' ;
-UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESS9_ZONES_HANDLING' ;
 UPDATE configuration SET configuration_value = @PFHandling WHERE configuration_key = 'MODULE_SHIPPING_RMPFEXPRESSAM_ZONES_HANDLING' ;
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_HANDLING' ;
 UPDATE configuration SET configuration_value = @UKHandling WHERE configuration_key = 'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_HANDLING' ;
@@ -134,49 +147,49 @@ UPDATE configuration SET configuration_value = "0.1:1.55, 0.25:2, 0.5:2.4, 0.75:
 UPDATE configuration SET configuration_value = "0.1:3.45, 0.25:3.9, 0.5:4.3, 0.75:4.6" WHERE configuration_key = "MODULE_SHIPPING_RM2NDLARGELETTERSF_ZONES_COST0_1" ;
 
 # First Class Small Parcel 
-UPDATE configuration SET configuration_value = "2:4.99" WHERE configuration_key = "MODULE_SHIPPING_RM1STSMLPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:5.09" WHERE configuration_key = "MODULE_SHIPPING_RM1STSMLPARCEL_ZONES_COST0_1" ;
 
 # Second Class Small Parcel 
-UPDATE configuration SET configuration_value = "2:3.9" WHERE configuration_key = "MODULE_SHIPPING_RM2NDSMLPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:3.99" WHERE configuration_key = "MODULE_SHIPPING_RM2NDSMLPARCEL_ZONES_COST0_1" ;
 
 # First Class Small Parcel Signed For 
 UPDATE configuration SET configuration_value = "2:6.49" WHERE configuration_key = "MODULE_SHIPPING_RM1STSMLPARCELSF_ZONES_COST0_1" ;
 
 # Second Class Small Parcel Signed For 
-UPDATE configuration SET configuration_value = "2:5.4" WHERE configuration_key = "MODULE_SHIPPING_RM2NDSMLPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:5.49" WHERE configuration_key = "MODULE_SHIPPING_RM2NDSMLPARCELSF_ZONES_COST0_1" ;
 
 # First Class Medium Parcel 
-UPDATE configuration SET configuration_value = "2:7.19,10:8.99,20:13.69" WHERE configuration_key = "MODULE_SHIPPING_RM1STMEDPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:7.45,10:9.35,20:14.25" WHERE configuration_key = "MODULE_SHIPPING_RM1STMEDPARCEL_ZONES_COST0_1" ;
 
 # Second Class  Medium Parcel  
-UPDATE configuration SET configuration_value = "2:6.29,10:7.89,20:11.89" WHERE configuration_key = "MODULE_SHIPPING_RM2NDMEDPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:6.49,10:8.19,20:12.25" WHERE configuration_key = "MODULE_SHIPPING_RM2NDMEDPARCEL_ZONES_COST0_1" ;
 
 # First Class  Medium Parcel Signed For 
-UPDATE configuration SET configuration_value = "2:8.69,10:10.49,20:15.19" WHERE configuration_key = "MODULE_SHIPPING_RM1STMEDPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:8.95,10:10.85,20:15.75" WHERE configuration_key = "MODULE_SHIPPING_RM1STMEDPARCELSF_ZONES_COST0_1" ;
 
 # Second Class Medium Parcel Signed For 
-UPDATE configuration SET configuration_value = "2:7.79,10:9.39,20:13.39" WHERE configuration_key = "MODULE_SHIPPING_RM2NDMEDPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:7.99,10:9.69,20:13.75" WHERE configuration_key = "MODULE_SHIPPING_RM2NDMEDPARCELSF_ZONES_COST0_1" ;
 
 # Special Delivery 
-UPDATE configuration SET configuration_value = "0.1:8.75, 0.5:9.85, 1:10.95, 2:14.05, 10:19.95, 20:23.75" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.1:9.25, 0.5:10.25, 1:11.25, 2:14.75, 10:20.75, 20:24.75" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_COST0_1" ;
 
 # Special Delivery Insurance rates 
 UPDATE configuration SET configuration_value = "750:0,1000:3,2500:10" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY_INSURANCE" ;
 
 # Special Delivery 9am 
-UPDATE configuration SET configuration_value = "0.1:38.95, 0.5:43.95, 1:48.95, 2:60.95" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.1:49.95, 0.5:55.95, 1:55.95, 2:66.95" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY9AM_ZONES_COST0_1" ;
 
 # Special Delivery 9am Insurance  
 UPDATE configuration SET configuration_value = "50:0,1000:7,2500:15" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERY9AM_INSURANCE" ;
 
 # Special Delivery Saturday
-UPDATE configuration SET configuration_value = "0.1:13.5, 0.5:14.82, 1:16.14, 2:19.86, 10:26.94, 20:31.5" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.1:14.1, 0.5:15.3, 1:16.5, 2:20.7, 10:27.9, 20:32.7" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_COST0_1" ;
 
 # Special Delivery Saturday Insurance rates 
 UPDATE configuration SET configuration_value = "750:0,1000:3.6,2500:12" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT_INSURANCE" ;
 
 # Special Delivery Saturday 9am 
-UPDATE configuration SET configuration_value = "0.1:41.95, 0.5:46.95, 1:51.95, 2:63.95" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.1:52.95, 0.5:58.95, 1:58.95, 2:69.95" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_ZONES_COST0_1" ;
 
 # Special Delivery Satueday 9am Insurance  
 UPDATE configuration SET configuration_value = "500:0,1000:7,2500:15" WHERE configuration_key = "MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_INSURANCE" ;
@@ -194,28 +207,28 @@ UPDATE configuration SET configuration_value = "" WHERE configuration_key = "MOD
 UPDATE configuration SET configuration_value = "" WHERE configuration_key = "MODULE_SHIPPING_RMT48LARGELETTERSF_ZONES_COST0_1" ;
 
 # UK tracked 24 Small Parcel
-UPDATE configuration SET configuration_value = "2:5.15" WHERE configuration_key = "MODULE_SHIPPING_RMT24SMLPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:5.4" WHERE configuration_key = "MODULE_SHIPPING_RMT24SMLPARCEL_ZONES_COST0_1" ;
 
 #UK tracked 24 Small Parcel Signed
-UPDATE configuration SET configuration_value = "2:6.65" WHERE configuration_key = "MODULE_SHIPPING_RMT24SMLPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:6.9" WHERE configuration_key = "MODULE_SHIPPING_RMT24SMLPARCELSF_ZONES_COST0_1" ;
 
 # UK tracked 48 Small Parcel
-UPDATE configuration SET configuration_value = "2:4.05" WHERE configuration_key = "MODULE_SHIPPING_RMT48SMLPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:4.25" WHERE configuration_key = "MODULE_SHIPPING_RMT48SMLPARCEL_ZONES_COST0_1" ;
 
 #UK tracked 48 Small Parcel Signed
-UPDATE configuration SET configuration_value = "2:5.55" WHERE configuration_key = "MODULE_SHIPPING_RMT48SMLPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:5.75" WHERE configuration_key = "MODULE_SHIPPING_RMT48SMLPARCELSF_ZONES_COST0_1" ;
 
 #UK tracked 24 Medium Parcel
-UPDATE configuration SET configuration_value = "2:7.45,10:9.29,20:13.99" WHERE configuration_key = "MODULE_SHIPPING_RMT24MEDPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:7.8,10:9.7,20:14.65" WHERE configuration_key = "MODULE_SHIPPING_RMT24MEDPARCEL_ZONES_COST0_1" ;
 
 #UK tracked 24 Medium Parcel Signed
-UPDATE configuration SET configuration_value = "2:8.95,10:10.79,20:15.49" WHERE configuration_key = "MODULE_SHIPPING_RMT24MEDPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:9.3,10:11.2,20:16.15" WHERE configuration_key = "MODULE_SHIPPING_RMT24MEDPARCELSF_ZONES_COST0_1" ;
 
 #UK tracked 48 Medium Parcel
-UPDATE configuration SET configuration_value = "2:6.55,10:8.19,20:12.19" WHERE configuration_key = "MODULE_SHIPPING_RMT48MEDPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:6.9,10:8.6,20:12.85" WHERE configuration_key = "MODULE_SHIPPING_RMT48MEDPARCEL_ZONES_COST0_1" ;
 
 #UK tracked 48 Medium Parcel Signed
-UPDATE configuration SET configuration_value = "2:8.05,10:9.69,20:13.69" WHERE configuration_key = "MODULE_SHIPPING_RMT48MEDPARCELSF_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "2:8.4,10:10.1,20:14.35" WHERE configuration_key = "MODULE_SHIPPING_RMT48MEDPARCELSF_ZONES_COST0_1" ;
 
 # Parcel Force Express 48   
 UPDATE configuration SET configuration_value = "5:13.6,10:15.7,20:18.85,30:22" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS48_ZONES_COST0_1" ;
@@ -240,12 +253,6 @@ UPDATE configuration SET configuration_value = "5:28.85,10:32,20:35.65,30:39.85"
 
 # Parcel Force Express 10 Insurance Rates  
 UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS10_INSURANCE" ;
-
-# Parcel Force Express 9   
-UPDATE configuration SET configuration_value = "5:74.7,10:85.1,20:96.15,30:114.35" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS9_ZONES_COST0_1" ;
-
-# Parcel Force Express 9 Insurance Rates  
-UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFEXPRESS9_INSURANCE" ;
 
 
 # Overseas Mailing 
@@ -557,7 +564,7 @@ UPDATE configuration SET configuration_value = "2:16.68, 5:17.7, 10:21.12" WHERE
 UPDATE configuration SET configuration_value = "200:0, 250:1.8, 100+:4.5" WHERE configuration_key = "MODULE_SHIPPING_RMPFIEXPRESS_INSURANCE" ;
 
 # Surface mail Europe 
-UPDATE configuration SET configuration_value = "0.25:9.3,0.5:14,0.75:14.45,1:15.6,1.5:17.15,2:20.25" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_1" ;
+UPDATE configuration SET configuration_value = "0.25:11.45,0.5:16.4,0.75:18.35,1:20.65,1.5:24.35,1.75:26.26,2:26.65" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_1" ;
 
 # Surface mail Rest of World 
-UPDATE configuration SET configuration_value = "0.25:9.3,0.5:14,0.75:14.45,1:15.6,1.5:17.15,2:20.25" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_2" ;
+UPDATE configuration SET configuration_value = "0.25:11.45,0.5:16.4,0.75:18.35,1:20.65,1.5:24.35,1.75:26.26,2:26.65" WHERE configuration_key = "MODULE_SHIPPING_RMSMPARCEL_ZONES_COST0_2" ;
