@@ -4,93 +4,47 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
+use App\Models\PluginControl;
+use App\Models\PluginControlVersion;
+use Zencart\PluginManager\PluginManager;
+
 class rmamparcelsf extends ZenShipping
 {
 
     /**
-     * $_check is used to check the configuration key set up
-     * @var int
-     */
-    protected $_check;
-    /**
-     * $code determines the internal 'code' name used to designate "this" shipping module
-     *
-     * @var string
-     */
-    public $code;
-    /**
-     * $description is a soft name for this shipping method
-     * @var string 
-     */
-    public $description;
-    /**
-     * $enabled determines whether this module shows or not... during checkout.
-     * @var boolean
-     */
-    public $enabled;
-    /**
-     * $icon is the file name containing the Shipping method icon
-     * @var string
-     */
-    public $icon;
-    /**
      * $num_zones is the number of zones for shipping calculation
      * @var int
      */
-    protected $num_zones;
-    /** 
-     * $quotes is an array containing all the quote information for this shipping module
-     * @var array
-     */
-    public $quotes;
-    /**
-     * $sort_order is the order priority of this shipping module when displayed
-     * @var int
-     */
-    public $sort_order;
-    /**
-     * $tax_basis is used to indicate if tax is based on shipping, billing or store address.
-     * @var string
-     */
-    public $tax_basis;
-    /**
-     * $tax_class is the  Tax class to be applied to the shipping cost
-     * @var string
-     */
-    public $tax_class;
-    /**
-     * $title is the displayed name for this shipping method
-     * @var string
-     */
-    public $title;
+    protected int $num_zones;
+    
     /**
      * $version is the version of this shipping method
      * @var string
      */
-    protected $version;
+    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
+        require __DIR__ . '/BigRoyalMail/rVersion.php';
         $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmamparcelsf';
         $this->num_zones = 5;
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
+        require __DIR__ . '/BigRoyalMail/main.php';
         return;
     }
 
     // class methods
-    function quote($method = '')
+    function quote($method = ''): array
     {
         
         $postage_check = [
             20,
             30
         ];
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
+        require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
-            return;
+            return [];
         }
         return $this->quotes;
     }
@@ -105,7 +59,7 @@ class rmamparcelsf extends ZenShipping
         return $this->_check;
     }
 
-    function install()
+    function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -137,7 +91,7 @@ class rmamparcelsf extends ZenShipping
         // WORLDWIDE Countries zone 2
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Royal Mail World Zones 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_5', 'AU, CX, CC, CK, FJ, IO, KI, MO, NC, NF, NR, NU, NZ, PF, PG, LA, PN, SG, SB, TF, TK, TO, TV, WS, AS', 'Two character ISO country codes for World Zones 2 destinations.', '6', '0', 'zen_cfg_textarea(', now())");
         // Rates
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rates.php';
+        require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_';
         // Europe Zone Zone 1
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zone 1 rates', '" . $rateName . '1' . "', '" . $rates[$rateName . '1'] . "', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
@@ -154,14 +108,14 @@ class rmamparcelsf extends ZenShipping
         
     }
 
-    function remove()
+    function remove(): void
     {
         global $db;
         $module = strtoupper($this->code);
         $db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
     }
 
-    function keys()
+    function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [

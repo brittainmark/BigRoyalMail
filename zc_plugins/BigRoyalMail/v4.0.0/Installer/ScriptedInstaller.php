@@ -38,96 +38,15 @@ class ScriptedInstaller extends ScriptedInstallBase
          */
         $configuration = $this->getConfigurationKeyDetails('MODULE_SHIPPING_BIGROYALMAIL_VERSION', true);
         if ($configuration === false) {
-            /**
-             * check if old not encapsulated plugin is present
-             */
-            $brmModule = DIR_FS_CATALOG_MODULES . 'shipping/';
-            $brmLang = DIR_FS_CATALOG_LANGUAGES . '/modules/shipping/';
-            $brmFiles = [
-                'rm1stlargeletter.php',
-                'rm1stlargelettersf.php',
-                'rm1stletter.php',
-                'rm1stlettersf.php',
-                'rm1stmedparcel.php',
-                'rm1stmedparcelsf.php',
-                'rm1stsmlparcel.php',
-                'rm1stsmlparcelsf.php',
-                'rm2ndlargeletter.php',
-                'rm2ndlargelettersf.php',
-                'rm2ndletter.php',
-                'rm2ndlettersf.php',
-                'rm2ndmedparcel.php',
-                'rm2ndmedparcelsf.php',
-                'rm2ndsmlparcel.php',
-                'rm2ndsmlparcelsf.php',
-                'rmamlargeletter.php',
-                'rmamlargelettersf.php',
-                'rmamletter.php',
-                'rmamlettersf.php',
-                'rmamparcel.php',
-                'rmamparcelsf.php',
-                'rmamtlargeletter.php',
-                'rmamtletter.php',
-                'rmamtparcel.php',
-                'rmamtslargeletter.php',
-                'rmamtsletter.php',
-                'rmamtsparcel.php',
-                'rmpfexpress10.php',
-                'rmpfexpress24.php',
-                'rmpfexpress48.php',
-                'rmpfexpress9.php',
-                'rmpfexpressam.php',
-                'rmpfgeconomy.php',
-                'rmpfgexpress.php',
-                'rmpfgpriority.php',
-                'rmpfgvalue.php',
-                'rmpfiexpress.php',
-                'rmsmparcel.php',
-                'rmspecialdelivery9am.php',
-                'rmspecialdelivery.php',
-                'rmspecialdeliverysat9am.php',
-                'rmspecialdeliverysat.php',
-                'rmt24largeletter.php',
-                'rmt24largelettersf.php',
-                'rmt24medparcel.php',
-                'rmt24medparcelsf.php',
-                'rmt24smlparcel.php',
-                'rmt24smlparcelsf.php',
-                'rmt48largeletter.php',
-                'rmt48largelettersf.php',
-                'rmt48medparcel.php',
-                'rmt48medparcelsf.php',
-                'rmt48smlparcel.php',
-                'rmt48smlparcelsf.php',
-            ];
-            if (is_dir($brmModule . 'BigRoyalMail')) {
-                $GLOBALS['$messageStack']->add_session('<strong>Big Royal Mail Error:</strong> The non encapsulated Vewrsion of Big Royal mail is present. Please delete the Big Royal mail files [' . implode($brmFiles, ', ') . '] and the BigRoyalMail directory from ' . $brmModule . ' and lang.rm... files from' . $brmLang . ' then try again', 'error');
-                return false;
-            }
-           
-            $brmFilesList = '';
-            $brmLangFileList = '';
-            $brmFileError = false;
-            foreach ($brmFiles as $brmFile) {
-                if (file_exists($brmModule . $brmFile)) {
-                    $brmFileList .= $brmFile . ', ';
-                    $brmFileError = true;
-                }
-            }
-                        foreach ($brmFiles as $brmFile) {
-                if (file_exists($brmLang . 'lang.' . $brmFile)) {
-                    $brmLangFileList .= 'lang.' . $brmFile . ', ';
-                    $brmFileError = true;
-                }
-            }
-            if ($brmFileError) {
-                $GLOBALS['$messageStack']->add_session('<strong>Big Royal Mail Error:</strong> The non encapsulated Vewrsion of Big Royal mail is present. Please delete [' . $brmFileList . ' and the BigRoyalMail] directory from ' . $brmModule . ' and [' . $brmLangFileList . '] from ' . $brmLang . ' then try again', 'error');
+            $removed = $this->purgeOldFiles();
+
+            if (!$removed) {
                 return false;
             }
             /**
              * Set the configuration key
              */
-            $keyId = addConfigurationKey('MODULE_SHIPPING_BIGROYALMAIL_VERSION', [
+            $keyId = $this->addConfigurationKey('MODULE_SHIPPING_BIGROYALMAIL_VERSION', [
                     'configuration_title' => 'Version',
                     'configuration_value' => '4.0.0',
                     'configuration_description' => 'Version installed:',
@@ -150,12 +69,12 @@ class ScriptedInstaller extends ScriptedInstallBase
                 // Changes to the database from v4.0.0 should be put here.
                 break;
         }
-        
+
         // Update the version setting to match the new version. (This happens regardless of version, so this should sit outside version check.)
         $this->updateConfigurationKey('MODULE_SHIPPING_BIGROYALMAIL_VERSION', [
             'configuration_value' => $this->version,
             'set_function' => "zen_cfg_select_option([\'$this->version\'], "
-        ]);          
+        ]);
         return true;
 
     }
@@ -165,7 +84,7 @@ class ScriptedInstaller extends ScriptedInstallBase
         /**
          * List of big Royal Mail modules
          */
-    
+
         $brmModules = [
             'RM1STLARGELETTER',
             'RM1STLARGELETTERSF',
@@ -198,7 +117,6 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RMPFEXPRESS10',
             'RMPFEXPRESS24',
             'RMPFEXPRESS48',
-            'RMPFEXPRESS9',
             'RMPFEXPRESSAM',
             'RMPFGECONOMY',
             'RMPFGEXPRESS',
@@ -237,7 +155,7 @@ class ScriptedInstaller extends ScriptedInstallBase
              */
             $brmKeys =[
                 'MODULE_SHIPPING_' . $brmModule . '_STATUS',
-                'MODULE_SHIPPING_' . $brmModule . '__HIDE_SHIPPING_ERRORS',
+                'MODULE_SHIPPING_' . $brmModule . '_HIDE_SHIPPING_ERRORS',
                 'MODULE_SHIPPING_' . $brmModule . '_TAX_CLASS',
                 'MODULE_SHIPPING_' . $brmModule . '_SORT_ORDER',
                 'MODULE_SHIPPING_' . $brmModule . '_ATTRIBUTE_MATCH',
@@ -257,9 +175,9 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_9';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_9';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_9';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_7';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_7';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_7';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_8';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_8';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_8';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_7';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_7';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_7';
@@ -308,9 +226,124 @@ class ScriptedInstaller extends ScriptedInstallBase
         /**
          * Update shipping methods installed
          */
-            $this->executeInstallerSql("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $updated_listing . "' WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
+        $this->executeInstallerSql("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $updated_listing . "' WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
 
         return true;
 
     }
+    protected function purgeOldFiles():bool
+    {
+         /**
+         * check if old not encapsulated plugin is present
+         */
+        $brmModule = DIR_FS_CATALOG_MODULES . 'shipping/';
+        $brmLang = DIR_FS_CATALOG_LANGUAGES . 'modules/shipping/';
+        $brmFiles = [
+            'rm1stlargeletter.php',
+            'rm1stlargelettersf.php',
+            'rm1stletter.php',
+            'rm1stlettersf.php',
+            'rm1stmedparcel.php',
+            'rm1stmedparcelsf.php',
+            'rm1stsmlparcel.php',
+            'rm1stsmlparcelsf.php',
+            'rm2ndlargeletter.php',
+            'rm2ndlargelettersf.php',
+            'rm2ndletter.php',
+            'rm2ndlettersf.php',
+            'rm2ndmedparcel.php',
+            'rm2ndmedparcelsf.php',
+            'rm2ndsmlparcel.php',
+            'rm2ndsmlparcelsf.php',
+            'rmamlargeletter.php',
+            'rmamlargelettersf.php',
+            'rmamletter.php',
+            'rmamlettersf.php',
+            'rmamparcel.php',
+            'rmamparcelsf.php',
+            'rmamtlargeletter.php',
+            'rmamtletter.php',
+            'rmamtparcel.php',
+            'rmamtslargeletter.php',
+            'rmamtsletter.php',
+            'rmamtsparcel.php',
+            'rmpfexpress10.php',
+            'rmpfexpress24.php',
+            'rmpfexpress48.php',
+            'rmpfexpress9.php',
+            'rmpfexpressam.php',
+            'rmpfgeconomy.php',
+            'rmpfgexpress.php',
+            'rmpfgpriority.php',
+            'rmpfgvalue.php',
+            'rmpfiexpress.php',
+            'rmsmparcel.php',
+            'rmspecialdelivery9am.php',
+            'rmspecialdelivery.php',
+            'rmspecialdeliverysat9am.php',
+            'rmspecialdeliverysat.php',
+            'rmt24largeletter.php',
+            'rmt24largelettersf.php',
+            'rmt24medparcel.php',
+            'rmt24medparcelsf.php',
+            'rmt24smlparcel.php',
+            'rmt24smlparcelsf.php',
+            'rmt48largeletter.php',
+            'rmt48largelettersf.php',
+            'rmt48medparcel.php',
+            'rmt48medparcelsf.php',
+            'rmt48smlparcel.php',
+            'rmt48smlparcelsf.php',
+        ];
+        $brmDirectory = $brmModule . 'BigRoyalMail';
+        if (is_dir($brmDirectory)) {
+            /*
+             * remove the directory content then delete the directory
+             */
+            $removed = (unlink($brmDirectory . '/main.php') && unlink($brmDirectory . '/quote.php') && unlink($brmDirectory . '/rVersion.php') && unlink($brmDirectory . '/rates.php'));
+            if ($removed) {
+                $removed = rmdir($brmDirectory);
+            }
+            if (!$removed) {
+                $this->errorContainer->addError(
+                    0,
+                    'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' . 
+                        implode($brmFiles, ', ') . '] and the BigRoyalMail directory from ' . $brmModule . ' and lang.rm... files from' . 
+                        $brmLang . ' then try again',
+                    true);
+            }
+            return false;
+        }
+
+        $brmFilesList = '';
+        $brmLangFileList = '';
+        $brmFileError = false;
+        foreach ($brmFiles as $brmFile) {
+            $checkFile = $brmModule . $brmFile;
+            if (file_exists($checkFile)) {
+                if (!unlink($checkFile)) {
+                    $brmFileList .= $brmFile . ', ';
+                    $brmFileError = true;
+                }
+            }
+            $checkFile = $brmLang . 'lang.' . $brmFile;
+            if (file_exists($checkFile)) {
+                if (!unlink($checkFile)) {
+                    $brmLangFileList .= 'lang.' . $brmFile . ', ';
+                    $brmFileError = true;
+                }
+            }
+        }
+        if ($brmFileError) {
+            $this->errorContainer->addError(
+                    0,
+                    'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' .
+                       implode($brmFileList, ', ') . '] and the BigRoyalMail directory from ' . $brmModule .
+                       ' and language file [' . implode($brmLangFileList, ', ') . '] then try again',
+                    true);
+            return false;
+        }
+        return true;
+    }
+
 }

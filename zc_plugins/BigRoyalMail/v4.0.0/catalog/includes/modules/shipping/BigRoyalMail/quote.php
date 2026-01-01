@@ -3,7 +3,7 @@
  * Uk Quote methods for Big royal mail Parcel force
  */
 // class methods
-//function quote($method = '') {
+//function quote($method = ''): array {
 global $order, $shipping_weight, $shipping_num_boxes, $currency, $db;
 $currencies = new currencies();
 $dest_country_code = $order->delivery['country']['iso_code_2'];

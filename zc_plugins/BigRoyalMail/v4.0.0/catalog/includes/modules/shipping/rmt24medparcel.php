@@ -4,91 +4,43 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
+use App\Models\PluginControl;
+use App\Models\PluginControlVersion;
+use Zencart\PluginManager\PluginManager;
+
 class rmt24medparcel extends ZenShipping
 {
-
-    /**
-     * $_check is used to check the configuration key set up
-     * @var int
-     */
-    protected $_check;
-    /**
-     * $code determines the internal 'code' name used to designate "this" shipping module
-     *
-     * @var string
-     */
-    public $code;
-    /**
-     * $description is a soft name for this shipping method
-     * @var string 
-     */
-    public $description;
-    /**
-     * $enabled determines whether this module shows or not... during checkout.
-     * @var boolean
-     */
-    public $enabled;
-    /**
-     * $icon is the file name containing the Shipping method icon
-     * @var string
-     */
-    public $icon;
     /**
      * $num_zones is the number of zones for shipping calculation
      * @var int
      */
-    protected $num_zones;
-    /** 
-     * $quotes is an array containing all the quote information for this shipping module
-     * @var array
-     */
-    public $quotes;
-    /**
-     * $sort_order is the order priority of this shipping module when displayed
-     * @var int
-     */
-    public $sort_order;
-    /**
-     * $tax_basis is used to indicate if tax is based on shipping, billing or store address.
-     * @var string
-     */
-    public $tax_basis;
-    /**
-     * $tax_class is the  Tax class to be applied to the shipping cost
-     * @var string
-     */
-    public $tax_class;
-    /**
-     * $title is the displayed name for this shipping method
-     * @var string
-     */
-    public $title;
+    protected int $num_zones;
     /**
      * $version is the version of this shipping method
      * @var string
      */
-    protected $version;
+    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
+        require __DIR__ . '/BigRoyalMail/rVersion.php';
         $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmt24medparcel';
         $this->num_zones = 1;
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
+        require __DIR__ . '/BigRoyalMail/main.php';
     }
 
     // class methods
-    function quote($method = '')
+    function quote($method = ''): array
     {
         
         $postage_check = [
             10
         ];
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
+        require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
-            return;
+            return [];
         }
         return $this->quotes;
     }
@@ -103,7 +55,7 @@ class rmt24medparcel extends ZenShipping
         return $this->_check;
     }
 
-    function install()
+    function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -123,20 +75,20 @@ class rmt24medparcel extends ZenShipping
         // Countries
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Zone 1 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'GB', 'Two character ISO country codes for Great Britain and Northern Ireland ', '6', '0', now())");
         // Rates
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rates.php';
+        require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1';
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', '" . $rateName . "', '" . $rates[$rateName] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
         
     }
 
-    function remove()
+    function remove(): void
     {
         global $db;
         $module = strtoupper($this->code);
         $db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
     }
 
-    function keys()
+    function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [

@@ -4,6 +4,10 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
+use App\Models\PluginControl;
+use App\Models\PluginControlVersion;
+use Zencart\PluginManager\PluginManager;
+
 class rmamtsletter extends ZenShipping
 {
 
@@ -11,33 +15,33 @@ class rmamtsletter extends ZenShipping
      * $num_zones is the number of zones for shipping calculation
      * @var int
      */
-    protected $num_zones;
+    protected int $num_zones;
     /**
      * $version is the version of this shipping method
      * @var string
      */
-    protected $version;
+    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
+        require __DIR__ . '/BigRoyalMail/rVersion.php';
         $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmamtsletter';
         $this->num_zones = 4;
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
+        require __DIR__ . '/BigRoyalMail/main.php';
     }
 
     // class methods
-    function quote($method = '')
+    function quote($method = ''): array
     {
         
         $postage_check = [
             0
         ];
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
+        require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
-            return;
+            return [];
         }
         return $this->quotes;
     }
@@ -52,7 +56,7 @@ class rmamtsletter extends ZenShipping
         return $this->_check;
     }
 
-    function install()
+    function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -78,7 +82,7 @@ class rmamtsletter extends ZenShipping
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail World Zone 2 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_3', 'AU, IO, CX, CC, CK, FJ, PF, TF, KI, MO, NR, NC, NZ, NU, NF, PW, PG, LA, PN, SG, SB, TK, TO, TV, WS, AS', 'Two character ISO country codes for World Zone 2.', '6', '0', 'zen_cfg_textarea(', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail World Zone 3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_4', 'US', 'Two character ISO country codes for World Zone 3.', '6', '0', 'zen_cfg_textarea(', now())");
         // Rates
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rates.php';
+        require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_';
         // Europe Zones 1/2/3 Rates
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe zones 1/2/3 rates', '" . $rateName . '1' . "', '" . $rates[$rateName . '1'] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
@@ -93,7 +97,7 @@ class rmamtsletter extends ZenShipping
         
     }
 
-    function keys()
+    function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [

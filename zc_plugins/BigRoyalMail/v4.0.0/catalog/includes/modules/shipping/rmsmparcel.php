@@ -4,6 +4,10 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
+use App\Models\PluginControl;
+use App\Models\PluginControlVersion;
+use Zencart\PluginManager\PluginManager;
+
 class rmsmparcel extends ZenShipping
 {
 
@@ -11,34 +15,34 @@ class rmsmparcel extends ZenShipping
      * $num_zones is the number of zones for shipping calculation
      * @var int
      */
-    protected $num_zones;
+    protected int $num_zones;
     /**
      * $version is the version of this shipping method
      * @var string
      */
-    protected $version;
+    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rVersion.php';
+        require __DIR__ . '/BigRoyalMail/rVersion.php';
         $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmsmparcel';
         $this->num_zones = 2;
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/main.php';
+        require __DIR__ . '/BigRoyalMail/main.php';
         return;
     }
 
     // class methods
-    function quote($method = '')
+    function quote($method = ''): array
     {
         
         $postage_check = [
             30
         ];
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/quote.php';
+        require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
-            return;
+            return [];
         }
         return $this->quotes;
     }
@@ -53,7 +57,7 @@ class rmsmparcel extends ZenShipping
         return $this->_check;
     }
 
-    function install()
+    function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -75,7 +79,7 @@ class rmsmparcel extends ZenShipping
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail Europe Zones 1/2/3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_1', 'AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, ES, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IT, KZ, KG, LV, LI, LT, LU, ME, MK, MT, MD, MC, NL, NO, PL, PT, RO, RS, RU, SM, SK, SI, SE, CH, TJ, TR, TM, UA, UZ, VA', 'Two character ISO country codes for Europe Zones 1/2/3.', '6', '0', 'zen_cfg_textarea(', now())");
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Royal Mail World Zones 1/2/3 Countries', 'MODULE_SHIPPING_" . $module . "_ZONES_COUNTRIES_2', ' AE, AF, AG, AI, AN, AO, AQ, AR, AS, AU, AW, AX, BB, BD, BF, BH, BI, BJ, BM, BN, BO, BR, BS, BT, BV, BW, BZ, CA, CC, CF, CG, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, DJ, DM, DO, DZ, EC, EG, EH, ER, ET, FJ, FK, FM, GA, GD, GF, GH, GM, GN, GP, GQ, GS, GT, GU, GW, GY, HK, HM, HN, HT, ID, IE, IL, IN, IO, IQ, IR, JM, JO, JP, KE, KH, KI, KM, KN, KP, KR, KW, KY, LA, LB, LC, LK, LR, LS, LY, MA, MG, MH, ML, MM, MN, MO, MP, MQ, MR, MS, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NF, NG, NI, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PM, PN, PR, PW, PY, QA, RE, RW, SA, SB, SC, SD, SG, SH, SJ, SL, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TF, TG, TH, TK, TL, TN, TO, TT, TV, TW, TZ, UG, UM, US, UY, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW', 'Two character ISO country codes for World Zones 1/2/3.', '6', '0', 'zen_cfg_textarea(', now())");
         // Rates
-        require DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/BigRoyalMail/rates.php';
+        require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_';
         // Europe Zones 1/2/3 Rates
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Europe Zones 1/2/3 rates', '" . $rateName . '1' . "', '" . $rates[$rateName . '1'] . "', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
@@ -84,7 +88,7 @@ class rmsmparcel extends ZenShipping
         
     }
 
-    function keys()
+    function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [
