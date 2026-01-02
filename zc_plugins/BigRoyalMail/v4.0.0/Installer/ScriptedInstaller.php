@@ -164,11 +164,21 @@ class ScriptedInstaller extends ScriptedInstallBase
                 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING',
                 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_1',
                 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_1',
+                'MODULE_SHIPPING_' . $brmModule . '_INSURANCE',
+                'MODULE_SHIPPING_' . $brmModule . '_ZONES_INSURE',
+                
             ];
-            /**
-             * Deliberate fall through to add extra zones for different modules
-             */
+            
             switch ($brmModule) {
+                case 'RMSPECIALDELIVERYSAT':
+                case 'RMSPECIALDELIVERYSAT9AM':
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_DISPLAY_DAYS';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_FRIDAY_CUTOFF';
+                    break;
+                    
+             /**
+             * Deliberate fall through to add extra zones for different modules from here
+             */
                 case 'RMPFGEXPRESS':
                 case 'RMPFGPRIORITY':
                 case 'RMPFGVALUE':
@@ -221,7 +231,7 @@ class ScriptedInstaller extends ScriptedInstallBase
             /**
              *  remove module from shipping installed list
              */
-            $updated_listing = preg_replace("/" . strtolower($brmModule) . ".php;?/", '', $brmModule_listing->fields['configuration_value']);
+            $updated_listing = preg_replace("/" . strtolower($brmModule) . ".php;?/", '', $updated_listing);
         }
         /**
          * Update shipping methods installed
