@@ -234,6 +234,10 @@ class ScriptedInstaller extends ScriptedInstallBase
             $updated_listing = preg_replace("/" . strtolower($brmModule) . ".php;?/", '', $updated_listing);
         }
         /**
+         * remove expires date
+         */
+        $this->deleteConfigurationKeys('MODULE_SHIPPING_RM_EXPIRES');
+        /**
          * Update shipping methods installed
          */
         $this->executeInstallerSql("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $updated_listing . "' WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");

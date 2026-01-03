@@ -1,3 +1,7 @@
+<?php
+/**
+ * Module rates
+ */
         $rateExpires = '2026-04-06 00:00:01';
         $rates = [
             'MODULE_SHIPPING_RM1STLETTER_ZONES_COST0_1' => '0.1:1.7',
