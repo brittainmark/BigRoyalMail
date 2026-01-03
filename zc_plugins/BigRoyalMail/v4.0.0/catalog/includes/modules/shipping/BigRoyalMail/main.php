@@ -5,7 +5,7 @@
  */
 $module = strtoupper($this->code);
 $this->title = ((defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG === true) ? constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE') . ' <strong style="color:#ff4000">ver. ' . $this->version . '</strong>' : constant('MODULE_SHIPPING_' . $module . '_TEXT_TITLE'));
-$this->description = constant('MODULE_SHIPPING_' . $module . '_TEXT_DESCRIPTION');
+$this->description = sprintf(constant('MODULE_SHIPPING_' . $module . '_TEXT_DESCRIPTION'), (defined('MODULE_SHIPPING_RM_EXPIRES') ? MODULE_SHIPPING_RM_EXPIRES : 'Unset'));
 $this->sort_order = defined('MODULE_SHIPPING_' . $module . '_SORT_ORDER') ? constant('MODULE_SHIPPING_' . $module . '_SORT_ORDER') : '';
 $this->icon = constant('MODULE_SHIPPING_' . $module . '_ICON');
 if (zen_not_null($this->icon)) {
