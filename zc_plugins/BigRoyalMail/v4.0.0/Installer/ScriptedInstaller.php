@@ -236,7 +236,7 @@ class ScriptedInstaller extends ScriptedInstallBase
         /**
          * remove expires date
          */
-        $this->deleteConfigurationKeys('MODULE_SHIPPING_RM_EXPIRES');
+        $this->deleteConfigurationKeys(['MODULE_SHIPPING_RM_EXPIRES',]);
         /**
          * Update shipping methods installed
          */
