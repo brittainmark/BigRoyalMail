@@ -55,6 +55,128 @@ class ScriptedInstaller extends ScriptedInstallBase
                     'set_function' => 'zen_cfg_select_option([\'0.0.0\'], ', 
                 ]);
         }
+
+        /**
+         *  Create/update the main option: "Minimum Delivery Method:"
+         */
+        $languageId = 1;
+        $optionName = 'Minimum Delivery Method:';
+
+        // Get existing option ID (if any)
+        $result = $this->executeInstallerSelectQuery("
+            SELECT products_options_id
+            FROM " . TABLE_PRODUCTS_OPTIONS . "
+            WHERE products_options_name = '{$optionName}'
+              AND language_id = {$languageId}
+            LIMIT 1
+        ");
+
+        if ($result->EOF) {
+            // Get next ID once
+            $idResult = $this->executeInstallerSelectQuery("
+                SELECT COALESCE(MAX(products_options_id), 0) + 1 AS next_id
+                FROM " . TABLE_PRODUCTS_OPTIONS
+            );
+            $optionId = (int)$idResult->fields['next_id'];
+
+            $this->executeInstallerSql("
+                INSERT INTO " . TABLE_PRODUCTS_OPTIONS . "
+                    (products_options_id, language_id, products_options_name,
+                     products_options_sort_order, products_options_type,
+                     products_options_length, products_options_comment,
+                     products_options_size, products_options_images_per_row,
+                     products_options_images_style, products_options_rows)
+                VALUES
+                    ({$optionId}, {$languageId}, '{$optionName}', 0, 5, 32, '', 32, 0, 0, 0)
+            ");
+        } else {
+            $optionId = (int)$result->fields['products_options_id'];
+
+            $this->executeInstallerSql("
+                UPDATE " . TABLE_PRODUCTS_OPTIONS . "
+                SET products_options_sort_order = 0,
+                    products_options_type = 5,
+                    products_options_length = 32,
+                    products_options_size = 32
+                WHERE products_options_id = {$optionId}
+            ");
+        }
+        // create option values if required
+        $idResult = $this->executeInstallerSelectQuery("
+            SELECT COALESCE(MAX(products_options_values_id), 0) AS max_id
+            FROM " . TABLE_PRODUCTS_OPTIONS_VALUES
+        );
+        $nextValueId = (int)$idResult->fields['max_id'] + 1;
+
+        $values = [
+            'Large Letter' => 10,
+            'Small Parcel' => 20,
+            'Medium Parcel' => 30,
+            'Special Delivery or Parcel Force' => 40,
+            'Do Not Use Any Big Royal Mail Modules' => 100,
+        ];
+
+        $valueIds = [];
+
+        foreach ($values as $name => $sort) {
+
+            $result = $this->executeInstallerSelectQuery("
+                SELECT products_options_values_id
+                FROM " . TABLE_PRODUCTS_OPTIONS_VALUES . "
+                WHERE products_options_values_name = '{$name}'
+                  AND language_id = {$languageId}
+                LIMIT 1
+            ");
+
+            if ($result->EOF) {
+                $valueId = $nextValueId++;
+
+                $this->executeInstallerSql("
+                    INSERT INTO " . TABLE_PRODUCTS_OPTIONS_VALUES . "
+                        (products_options_values_id, language_id,
+                         products_options_values_name, products_options_values_sort_order)
+                    VALUES
+                        ({$valueId}, {$languageId}, '{$name}', {$sort})
+                ");
+            } else {
+                $valueId = (int)$result->fields['products_options_values_id'];
+
+                $this->executeInstallerSql("
+                    UPDATE " . TABLE_PRODUCTS_OPTIONS_VALUES . "
+                    SET products_options_values_sort_order = {$sort}
+                    WHERE products_options_values_id = {$valueId}
+                ");
+            }
+
+            $valueIds[] = $valueId;
+        }
+        // link options and values
+        $idResult = $this->executeInstallerSelectQuery("
+            SELECT COALESCE(MAX(products_options_values_to_products_options_id), 0) AS max_id
+            FROM " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS
+        );
+        $nextLinkId = (int)$idResult->fields['max_id'] + 1;
+        foreach ($valueIds as $valueId) {
+
+            $result = $this->executeInstallerSelectQuery("
+                SELECT products_options_values_to_products_options_id
+                FROM " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . "
+                WHERE products_options_id = {$optionId}
+                  AND products_options_values_id = {$valueId}
+                LIMIT 1
+            ");
+
+            if ($result->EOF) {
+                $this->executeInstallerSql("
+                    INSERT INTO " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . "
+                        (products_options_values_to_products_options_id,
+                         products_options_id, products_options_values_id)
+                    VALUES
+                        ({$nextLinkId}, {$optionId}, {$valueId})
+                ");
+                $nextLinkId++;
+            }
+        }
         return true;
 
     }
