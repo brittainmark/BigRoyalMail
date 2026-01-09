@@ -21,8 +21,6 @@ class rm1stlettersf extends ZenShipping
     // class constructor
     function __construct()
     {
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rm1stlettersf';
         $this->num_zones = 1;
         require __DIR__ . '/BigRoyalMail/main.php';

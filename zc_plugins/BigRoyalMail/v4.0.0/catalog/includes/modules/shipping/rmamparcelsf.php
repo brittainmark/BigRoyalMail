@@ -17,17 +17,10 @@ class rmamparcelsf extends ZenShipping
      */
     protected int $num_zones;
     
-    /**
-     * $version is the version of this shipping method
-     * @var string
-     */
-    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmamparcelsf';
         $this->num_zones = 5;
         require __DIR__ . '/BigRoyalMail/main.php';
@@ -105,15 +98,8 @@ class rmamparcelsf extends ZenShipping
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 2 rates', '" . $rateName . '5' . "', '" . $rates[$rateName . '5'] . "', 'Example: 0.1:1.19 means weights less than or equal to 0.1 Kg would cost &pound;1.19.', '6', '0', 'zen_cfg_textarea(', now())");
         // Insurance
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Insurance rates', 'MODULE_SHIPPING_" . $module . "_INSURANCE', '50:0,250:2.5', 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.', '6', '0', 'zen_cfg_textarea(', now())");
-        
-    }
 
-    function remove(): void
-    {
-        global $db;
-        $module = strtoupper($this->code);
-        $db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
-         // Expires date
+        // Expires date
         $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '" . $rateExpires . "', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 
 }

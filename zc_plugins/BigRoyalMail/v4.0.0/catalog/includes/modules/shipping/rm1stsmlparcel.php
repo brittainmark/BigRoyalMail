@@ -16,11 +16,6 @@ class rm1stsmlparcel extends ZenShipping
      * @var int
      */
     protected int $num_zones;
-    /**
-     * $version is the version of this shipping method
-     * @var string
-     */
-    protected string $version;
 
     // class constructor
     function __construct()
@@ -32,8 +27,6 @@ class rm1stsmlparcel extends ZenShipping
         if (defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG == true && (defined('MODULE_SHIPPING_RM_EXPIRES') && constant('MODULE_SHIPPING_RM_EXPIRES') <= date('Y-m-d H:i:s'))) {
             $messageStack->add_session('The rates for the Royal Mail Shipping Modules may be out of date on ' . constant('MODULE_SHIPPING_RM_EXPIRES') . '. Please check your rates<br /><a href="https://www.royalmail.com" target="_blank">Royal Mail</a>', 'warning');
         }
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rm1stsmlparcel';
         $this->num_zones = 1;
         require __DIR__ . '/BigRoyalMail/main.php';

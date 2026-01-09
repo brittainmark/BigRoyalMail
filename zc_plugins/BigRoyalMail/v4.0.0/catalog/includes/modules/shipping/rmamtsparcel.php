@@ -16,17 +16,10 @@ class rmamtsparcel extends ZenShipping
      * @var int
      */
     protected int $num_zones;
-    /**
-     * $version is the version of this shipping method
-     * @var string
-     */
-    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmamtsparcel';
         // CUSTOMIZE THIS SETTING FOR THE NUMBER OF ZONES NEEDED
         // Currently Europe and the rest of the world

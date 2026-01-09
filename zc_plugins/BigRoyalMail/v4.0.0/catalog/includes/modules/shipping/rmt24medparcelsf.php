@@ -16,17 +16,10 @@ class rmt24medparcelsf extends ZenShipping
      * @var int
      */
     protected int $num_zones;
-    /**
-     * $version is the version of this shipping method
-     * @var string
-     */
-    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmt24medparcelsf';
         $this->num_zones = 1;
         require __DIR__ . '/BigRoyalMail/main.php';
@@ -79,15 +72,8 @@ class rmt24medparcelsf extends ZenShipping
         require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1';
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', '" . $rateName . "', '" . $rates[$rateName] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
-        
-    }
 
-    function remove(): void
-    {
-        global $db;
-        $module = strtoupper($this->code);
-        $db->Execute('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
-         // Expires date
+        // Expires date
         $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '" . $rateExpires . "', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 
 }

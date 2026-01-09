@@ -16,17 +16,10 @@ class rmamlargeletter extends ZenShipping
      * @var int
      */
     protected int $num_zones;
-    /**
-     * $version is the version of this shipping method
-     * @var string
-     */
-    protected string $version;
 
     // class constructor
     function __construct()
     {
-        require __DIR__ . '/BigRoyalMail/rVersion.php';
-        $this->version = '3.9.0 rates: ' . $rVersion;
         $this->code = 'rmamlargeletter';
         $this->num_zones = 4;
         require __DIR__ . '/BigRoyalMail/main.php';
