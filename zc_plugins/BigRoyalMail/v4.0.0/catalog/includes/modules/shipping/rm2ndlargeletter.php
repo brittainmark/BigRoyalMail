@@ -4,13 +4,9 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
-use App\Models\PluginControl;
-use App\Models\PluginControlVersion;
-use Zencart\PluginManager\PluginManager;
 
 class rm2ndlargeletter extends ZenShipping
 {
-
     /**
      * $num_zones is the number of zones for shipping calculation
      * @var int
@@ -18,7 +14,7 @@ class rm2ndlargeletter extends ZenShipping
     protected int $num_zones;
 
     // class constructor
-    function __construct()
+    public function __construct()
     {
         $this->code = 'rm2ndlargeletter';
         $this->num_zones = 1;
@@ -26,11 +22,11 @@ class rm2ndlargeletter extends ZenShipping
     }
 
     // class methods
-    function quote($method = ''): array
+    public function quote($method = ''): array
     {
-        
+
         $postage_check = [
-            10
+            10,
         ];
         require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
@@ -39,17 +35,17 @@ class rm2ndlargeletter extends ZenShipping
         return $this->quotes;
     }
 
-    function check()
+    public function check()
     {
         global $db;
         if (! isset($this->_check)) {
-            $check_query = $db->Execute("SELECT configuration_value from " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_" . (strtoupper($this->code)) . "_STATUS'");
+            $check_query = $db->Execute("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_" . (strtoupper($this->code)) . "_STATUS'");
             $this->_check = $check_query->RecordCount();
         }
         return $this->_check;
     }
 
-    function install(): void
+    public function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -72,12 +68,12 @@ class rm2ndlargeletter extends ZenShipping
         require __DIR__ . '/BigRoyalMail/rates.php';
         $rateName = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1';
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Shipping rates to GB &amp; Northern Ireland', '" . $rateName . "', '" . $rates[$rateName] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
-         // Expires date
+        // Expires date
         $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '" . $rateExpires . "', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 
-}
+    }
 
-    function keys(): array
+    public function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [
@@ -90,7 +86,7 @@ class rm2ndlargeletter extends ZenShipping
             'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE',
             'MODULE_SHIPPING_' . $module . '_ZONES_HANDLING',
             'MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_1',
-            'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1'
+            'MODULE_SHIPPING_' . $module . '_ZONES_COST0_1',
         ];
         return $keys;
     }

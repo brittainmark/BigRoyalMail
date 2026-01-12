@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Uk Quote methods for Big royal mail Parcel force
  */
@@ -69,15 +70,15 @@ if ($dest_zone === 0) {
     if ($postage_max < $attribute_postage) {
         // attributes prevent postage
         $error = 2;
-    } else if (constant('MODULE_SHIPPING_' . $module . '_ATTRIBUTE_MATCH') === 'True' && in_array($attribute_postage, $postage_check) === False) {
+    } elseif (constant('MODULE_SHIPPING_' . $module . '_ATTRIBUTE_MATCH') === 'True' && in_array($attribute_postage, $postage_check) === false) {
         // attributes prevent postage as not exact match
         $error = 2;
     } else {
         // Check for insurance
         $insurance = -1;
-        $insurance_rates = defined('MODULE_SHIPPING_' . $module . '_INSURANCE') ? constant('MODULE_SHIPPING_' . $module . '_INSURANCE') : Null;
+        $insurance_rates = defined('MODULE_SHIPPING_' . $module . '_INSURANCE') ? constant('MODULE_SHIPPING_' . $module . '_INSURANCE') : null;
         // Check we have values
-        if ($insurance_rates <> Null) {
+        if ($insurance_rates <> null) {
             $zones_table = preg_split("/[:, ]/", preg_replace('/\s*/', '', $insurance_rates));
             $size = sizeof($zones_table);
             // Check to see if Addition size for last entry
@@ -85,7 +86,7 @@ if ($dest_zone === 0) {
                 $oversize = strpos($zones_table[$size - 2], "+");
                 if ($oversize) {
                     $size -= 2;
-                    $step = strstr($zones_table[$size], "+", TRUE);
+                    $step = strstr($zones_table[$size], "+", true);
                 }
             } else {
                 $oversize = false;
@@ -115,7 +116,7 @@ if ($dest_zone === 0) {
             $oversize = strpos($zones_table[$size - 2], "+");
             if ($oversize) {
                 $size -= 2;
-                $step = strstr($zones_table[$size], "+", TRUE);
+                $step = strstr($zones_table[$size], "+", true);
             }
         } else {
             $oversize = false;
@@ -161,7 +162,7 @@ $this->quotes = ['id' => $this->code,
         'cost' => $shipping_cost]]];
 // Process the error if any
 if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
-// Hide error so return without method information
+    // Hide error so return without method information
     $this->enabled = false;
 } elseif ($error > 0) {
     switch ($error) {
@@ -186,5 +187,6 @@ if ($this->tax_class > 0) {
     $this->quotes['tax'] = zen_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
 }
 // get the icon if available
-if (zen_not_null($this->icon))
+if (zen_not_null($this->icon)) {
     $this->quotes['icon'] = zen_image($this->icon, $this->title);
+}

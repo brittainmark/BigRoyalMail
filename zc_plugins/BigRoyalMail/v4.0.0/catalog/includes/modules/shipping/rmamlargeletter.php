@@ -4,13 +4,9 @@
  * GPL released as part of the big_royalmail_v3 package
  * see CREDITS.txt for the contributors and support forum.
  */
-use App\Models\PluginControl;
-use App\Models\PluginControlVersion;
-use Zencart\PluginManager\PluginManager;
 
 class rmamlargeletter extends ZenShipping
 {
-
     /**
      * $num_zones is the number of zones for shipping calculation
      * @var int
@@ -18,7 +14,7 @@ class rmamlargeletter extends ZenShipping
     protected int $num_zones;
 
     // class constructor
-    function __construct()
+    public function __construct()
     {
         $this->code = 'rmamlargeletter';
         $this->num_zones = 4;
@@ -27,11 +23,11 @@ class rmamlargeletter extends ZenShipping
     }
 
     // class methods
-    function quote($method = ''): array
+    public function quote($method = ''): array
     {
-        
+
         $postage_check = [
-            10
+            10,
         ];
         require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
@@ -40,18 +36,18 @@ class rmamlargeletter extends ZenShipping
         return $this->quotes;
     }
 
-    function check()
+    public function check()
     {
         global $db;
 
         if (! isset($this->_check)) {
-            $check_query = $db->Execute("select configuration_value from " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_" . strtoupper($this->code) . "_STATUS'");
+            $check_query = $db->Execute("select configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_" . strtoupper($this->code) . "_STATUS'");
             $this->_check = $check_query->RecordCount();
         }
         return $this->_check;
     }
 
-    function install(): void
+    public function install(): void
     {
         global $db;
         $module = strtoupper($this->code);
@@ -87,13 +83,13 @@ class rmamlargeletter extends ZenShipping
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 2 rates', '" . $rateName . '3' . "', '" . $rates[$rateName . '3'] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
         // World Zone 3 Rates
         $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('World Zone 3 rates', '" . $rateName . '4' . "', '" . $rates[$rateName . '4'] . "', 'Example: 0.1:1.14 means weights less than or equal to 0.1 Kg would cost &pound;1.14.', '6', '0', 'zen_cfg_textarea(', now())");
-        
+
         // Expires date
         $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Royal Mail Rates Expiry Date', 'MODULE_SHIPPING_RM_EXPIRES', '" . $rateExpires . "', 'The Date the current Royal Mail postage rates expire.<br />Format YYYY-MM-DD HH:MM:SS<br />e.g. 2013-04-30 00:00:01 or 2013-04-30<br />It is not necessary to put in the time.<br /> Set this to remind you to update the shipping costs.', '6', '0', now())");
 
     }
-    
-    function keys(): array
+
+    public function keys(): array
     {
         $module = strtoupper($this->code);
         $keys = [
@@ -103,9 +99,9 @@ class rmamlargeletter extends ZenShipping
             'MODULE_SHIPPING_' . $module . '_TAX_CLASS',
             'MODULE_SHIPPING_' . $module . '_SORT_ORDER',
             'MODULE_SHIPPING_' . $module . '_MIN_ORDERVALUE',
-            'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE'
+            'MODULE_SHIPPING_' . $module . '_MAX_ORDERVALUE',
         ];
-        for ($i = 1; $i <= $this->num_zones; $i ++) {
+        for ($i = 1; $i <= $this->num_zones; $i++) {
             $keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COUNTRIES_' . $i;
             $keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_COST0_' . $i;
             $keys[] = 'MODULE_SHIPPING_' . $module . '_ZONES_HANDLING_' . $i;

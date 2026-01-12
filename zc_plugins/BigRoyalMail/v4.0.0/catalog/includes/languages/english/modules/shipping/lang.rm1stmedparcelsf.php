@@ -1,4 +1,5 @@
 <?php
+
 /*
 
 GPL released as part of the big_royalmail_v3.3 package
@@ -19,4 +20,3 @@ $define = [
 ];
 
 return $define;
-

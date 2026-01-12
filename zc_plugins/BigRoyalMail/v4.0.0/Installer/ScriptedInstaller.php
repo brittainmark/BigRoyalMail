@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Big Royal Mail Shipping for Zen Cart
  * Version 4.0.0
@@ -47,13 +48,13 @@ class ScriptedInstaller extends ScriptedInstallBase
              * Set the configuration key
              */
             $keyId = $this->addConfigurationKey('MODULE_SHIPPING_BIGROYALMAIL_VERSION', [
-                    'configuration_title' => 'Version',
-                    'configuration_value' => '4.0.0',
-                    'configuration_description' => 'Version installed:',
-                    'configuration_group_id' => 6,
-                    'sort_order' => 0,
-                    'set_function' => 'zen_cfg_select_option([\'0.0.0\'], ', 
-                ]);
+                'configuration_title' => 'Version',
+                'configuration_value' => '4.0.0',
+                'configuration_description' => 'Version installed:',
+                'configuration_group_id' => 6,
+                'sort_order' => 0,
+                'set_function' => 'zen_cfg_select_option([\'0.0.0\'], ',
+            ]);
         }
 
         /**
@@ -73,7 +74,8 @@ class ScriptedInstaller extends ScriptedInstallBase
 
         if ($result->EOF) {
             // Get next ID once
-            $idResult = $this->executeInstallerSelectQuery("
+            $idResult = $this->executeInstallerSelectQuery(
+                "
                 SELECT COALESCE(MAX(products_options_id), 0) + 1 AS next_id
                 FROM " . TABLE_PRODUCTS_OPTIONS
             );
@@ -102,7 +104,8 @@ class ScriptedInstaller extends ScriptedInstallBase
             ");
         }
         // create option values if required
-        $idResult = $this->executeInstallerSelectQuery("
+        $idResult = $this->executeInstallerSelectQuery(
+            "
             SELECT COALESCE(MAX(products_options_values_id), 0) AS max_id
             FROM " . TABLE_PRODUCTS_OPTIONS_VALUES
         );
@@ -151,7 +154,8 @@ class ScriptedInstaller extends ScriptedInstallBase
             $valueIds[] = $valueId;
         }
         // link options and values
-        $idResult = $this->executeInstallerSelectQuery("
+        $idResult = $this->executeInstallerSelectQuery(
+            "
             SELECT COALESCE(MAX(products_options_values_to_products_options_id), 0) AS max_id
             FROM " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS
         );
@@ -195,7 +199,7 @@ class ScriptedInstaller extends ScriptedInstallBase
         // Update the version setting to match the new version. (This happens regardless of version, so this should sit outside version check.)
         $this->updateConfigurationKey('MODULE_SHIPPING_BIGROYALMAIL_VERSION', [
             'configuration_value' => $this->version,
-            'set_function' => "zen_cfg_select_option([\'$this->version\'], "
+            'set_function' => "zen_cfg_select_option([\'$this->version\'], ",
         ]);
         return true;
 
@@ -275,7 +279,7 @@ class ScriptedInstaller extends ScriptedInstallBase
             /**
              * Delete the keys set up general keys for all modules
              */
-            $brmKeys =[
+            $brmKeys = [
                 'MODULE_SHIPPING_' . $brmModule . '_STATUS',
                 'MODULE_SHIPPING_' . $brmModule . '_HIDE_SHIPPING_ERRORS',
                 'MODULE_SHIPPING_' . $brmModule . '_TAX_CLASS',
@@ -288,19 +292,19 @@ class ScriptedInstaller extends ScriptedInstallBase
                 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_1',
                 'MODULE_SHIPPING_' . $brmModule . '_INSURANCE',
                 'MODULE_SHIPPING_' . $brmModule . '_ZONES_INSURE',
-                
+
             ];
-            
+
             switch ($brmModule) {
                 case 'RMSPECIALDELIVERYSAT':
                 case 'RMSPECIALDELIVERYSAT9AM':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_DISPLAY_DAYS';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_FRIDAY_CUTOFF';
                     break;
-                    
-             /**
-             * Deliberate fall through to add extra zones for different modules from here
-             */
+
+                    /**
+                     * Deliberate fall through to add extra zones for different modules from here
+                     */
                 case 'RMPFGEXPRESS':
                 case 'RMPFGPRIORITY':
                 case 'RMPFGVALUE':
@@ -313,16 +317,19 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_7';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_7';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_7';
-                 case 'RMAMPARCEL':
-                 case 'RMAMTPARCEL':
-                 case 'RMAMTSPARCEL':
+                    // no break
+                case 'RMAMPARCEL':
+                case 'RMAMTPARCEL':
+                case 'RMAMTSPARCEL':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_6';
-                 case 'RMAMPARCELSF':
+                    // no break
+                case 'RMAMPARCELSF':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_5';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_5';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_5';                   
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_5';
+                    // no break
                 case 'RMAMLARGELETTER':
                 case 'RMAMLETTER':
                 case 'RMAMLETTERSF':
@@ -333,11 +340,13 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_4';
-                 case 'RMAMLARGELETTERSF':
-                 case 'RMPFGECONOMY':
+                    // no break
+                case 'RMAMLARGELETTERSF':
+                case 'RMPFGECONOMY':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_3';
+                    // no break
                 case 'RMSMPARCEL':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_2';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_2';
@@ -358,7 +367,7 @@ class ScriptedInstaller extends ScriptedInstallBase
         /**
          * remove expires date
          */
-        $this->deleteConfigurationKeys(['MODULE_SHIPPING_RM_EXPIRES',]);
+        $this->deleteConfigurationKeys(['MODULE_SHIPPING_RM_EXPIRES', ]);
         /**
          * Update shipping methods installed
          */
@@ -367,13 +376,13 @@ class ScriptedInstaller extends ScriptedInstallBase
         return true;
 
     }
-    protected function purgeOldFiles():bool
+    protected function purgeOldFiles(): bool
     {
-         /**
+        /**
          * check if old not encapsulated plugin is present
          */
         $brmModule = DIR_FS_CATALOG_MODULES . 'shipping/';
-        $brmLang = DIR_FS_CATALOG_LANGUAGES . 'modules/shipping/';
+        $brmLang = DIR_FS_CATALOG_LANGUAGES . 'english/modules/shipping/';
         $brmFiles = [
             'rm1stlargeletter.php',
             'rm1stlargelettersf.php',
@@ -436,17 +445,33 @@ class ScriptedInstaller extends ScriptedInstallBase
             /*
              * remove the directory content then delete the directory
              */
-            $removed = (unlink($brmDirectory . '/main.php') && unlink($brmDirectory . '/quote.php') && unlink($brmDirectory . '/rVersion.php') && unlink($brmDirectory . '/rates.php'));
+            $files = [
+                $brmDirectory . '/main.php',
+                $brmDirectory . '/quote.php',
+                $brmDirectory . '/rVersion.php',
+                $brmDirectory . '/rates.php',
+            ];
+
+            $removed = true;
+
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    if (!unlink($file)) {
+                        $removed = false;
+                    }
+                }
+            }
             if ($removed) {
                 $removed = rmdir($brmDirectory);
             }
             if (!$removed) {
                 $this->errorContainer->addError(
                     0,
-                    'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' . 
-                        implode($brmFiles, ', ') . '] and the BigRoyalMail directory from ' . $brmModule . ' and lang.rm... files from' . 
+                    'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' .
+                        implode(', ', $brmFiles) . '] and the BigRoyalMail directory from ' . $brmModule . ' and lang.rm... files from' .
                         $brmLang . ' then try again',
-                    true);
+                    true
+                );
             }
             return false;
         }
@@ -472,11 +497,12 @@ class ScriptedInstaller extends ScriptedInstallBase
         }
         if ($brmFileError) {
             $this->errorContainer->addError(
-                    0,
-                    'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' .
-                       implode($brmFileList, ', ') . '] and the BigRoyalMail directory from ' . $brmModule .
-                       ' and language file [' . implode($brmLangFileList, ', ') . '] then try again',
-                    true);
+                0,
+                'Unable to detele files from non encapsulated Version of Big Royal mail. Please delete the Big Royal mail files [' .
+                       implode(', ', $brmFileList) . '] and the BigRoyalMail directory from ' . $brmModule .
+                       ' and language file [' . implode(', ', $brmLangFileList) . '] then try again',
+                true
+            );
             return false;
         }
         return true;

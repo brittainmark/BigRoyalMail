@@ -11,5 +11,5 @@ return [
     'zcVersions' => ['v210'],
     'changelog' => '',
     'github_repo' => 'https://github.com/brittainmark/BigRoyalMail.git',
-    'pluginGroups' => [],  
+    'pluginGroups' => [],
 ];
