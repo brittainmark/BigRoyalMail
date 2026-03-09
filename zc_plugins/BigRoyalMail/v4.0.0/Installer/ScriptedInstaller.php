@@ -472,8 +472,8 @@ class ScriptedInstaller extends ScriptedInstallBase
                         $brmLang . ' then try again',
                     true
                 );
+                return false;
             }
-            return false;
         }
 
         $brmFilesList = '';
