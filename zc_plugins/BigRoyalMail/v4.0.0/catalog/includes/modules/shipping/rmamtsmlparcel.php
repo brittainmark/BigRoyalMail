@@ -16,7 +16,7 @@ class rmamtparcel extends ZenShipping
     // class constructor
     public function __construct()
     {
-        $this->code = 'rmamtparcel';
+        $this->code = 'rmamtsmlparcel';
         $this->num_zones = 6;
         require __DIR__ . '/BigRoyalMail/main.php';
     }
