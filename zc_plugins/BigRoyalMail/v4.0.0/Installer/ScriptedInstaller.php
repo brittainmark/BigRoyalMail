@@ -39,6 +39,7 @@ class ScriptedInstaller extends ScriptedInstallBase
          */
         $configuration = $this->getConfigurationKeyDetails('MODULE_SHIPPING_BIGROYALMAIL_VERSION', true);
         if ($configuration === false) {
+            $this->removeDefunctShippingModules();
             $removed = $this->purgeOldFiles();
 
             if (!$removed) {
@@ -229,17 +230,13 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RM2NDSMLPARCEL',
             'RM2NDSMLPARCELSF',
             'RMAMLARGELETTER',
-            'RMAMLARGELETTERSF',
             'RMAMLETTER',
-            'RMAMLETTERSF',
-            'RMAMPARCEL',
-            'RMAMPARCELSF',
+            'RMAMSMLPARCEL',
             'RMAMTLARGELETTER',
-            'RMAMTLETTER',
-            'RMAMTPARCEL',
+            'RMAMTMEDPARCEL',
             'RMAMTSLARGELETTER',
             'RMAMTSLETTER',
-            'RMAMTSPARCEL',
+            'RMAMTSMLPARCEL',
             'RMPFEXPRESS10',
             'RMPFEXPRESS24',
             'RMPFEXPRESS48',
@@ -249,11 +246,11 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RMPFGPRIORITY',
             'RMPFGVALUE',
             'RMPFIEXPRESS',
-            'RMSMPARCEL',
-            'RMSPECIALDELIVERY9AM',
+            'RMSMSMLPARCEL',
             'RMSPECIALDELIVERY',
-            'RMSPECIALDELIVERYSAT9AM',
+            'RMSPECIALDELIVERY9AM',
             'RMSPECIALDELIVERYSAT',
+            'RMSPECIALDELIVERYSAT9AM',
             'RMT24LARGELETTER',
             'RMT24LARGELETTERSF',
             'RMT24MEDPARCEL',
@@ -318,36 +315,29 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_7';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_7';
                     // no break
-                case 'RMAMPARCEL':
-                case 'RMAMTPARCEL':
+                case 'RMAMSMLPARCEL':
+                case 'RMAMTMEDPARCEL':
+                case 'RMAMTSMLPARCEL':
                 case 'RMAMTSPARCEL':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_6';
                     // no break
-                case 'RMAMPARCELSF':
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_5';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_5';
-                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_5';
-                    // no break
                 case 'RMAMLARGELETTER':
                 case 'RMAMLETTER':
-                case 'RMAMLETTERSF':
                 case 'RMAMTLARGELETTER':
-                case 'RMAMTLETTER':
                 case 'RMAMTSLARGELETTER':
                 case 'RMAMTSLETTER':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_4';
                     // no break
-                case 'RMAMLARGELETTERSF':
                 case 'RMPFGECONOMY':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_3';
                     // no break
-                case 'RMSMPARCEL':
+                case 'RMSMSMLPARCEL':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_2';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_2';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_2';
@@ -506,6 +496,26 @@ class ScriptedInstaller extends ScriptedInstallBase
             return false;
         }
         return true;
+    }
+    protected function removeDefunctShippingModules(): void
+    {
+        $defunctModules = [
+            'RMAMLARGELETTERSF',
+            'RMAMLETTERSF',
+            'RMAMPARCEL',
+            'RMAMPARCELSF',
+            'RMAMTLETTER',
+            'RMAMTPARCEL',
+            'RMAMTSPARCEL',
+            'RMSMPARCEL',
+        ];
+        $module_listing = $this->executeInstallerSelectQuery("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
+        $updated_listing = $module_listing->fields['configuration_value'] ?? '';
+        foreach ($defunctModules as $module) {
+            $this->executeInstallerSql('DELETE FROM ' . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE\_SHIPPING\_" . $module . "\_%'");
+            $updated_listing = preg_replace("/" . strtolower($module) . ".php;?/", '', $updated_listing);
+        }
+        $this->executeInstallerSql("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $updated_listing . "' WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
     }
 
 }
