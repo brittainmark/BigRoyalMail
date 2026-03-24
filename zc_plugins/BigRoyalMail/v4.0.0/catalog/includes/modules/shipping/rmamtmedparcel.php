@@ -26,7 +26,6 @@ class rmamtparcel extends ZenShipping
     {
 
         $postage_check = [
-            20,
             30,
         ];
         require __DIR__ . '/BigRoyalMail/quote.php';

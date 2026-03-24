@@ -27,7 +27,7 @@ class rmsmparcel extends ZenShipping
     {
 
         $postage_check = [
-            30,
+            20,
         ];
         require __DIR__ . '/BigRoyalMail/quote.php';
         if (constant('MODULE_SHIPPING_' . $module . '_HIDE_SHIPPING_ERRORS') === 'True' && $error > 0) {
