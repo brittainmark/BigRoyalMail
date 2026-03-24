@@ -13,6 +13,8 @@ Royal Mail Airmail International Signed For
 Royal Mail Airmail International Tracked
 Royal Mail Airmail International Tracked & Signed
 Parcel Force Worldwide UK delivery: 48hr, 24hr, AM, by 10am, by 9am
-Parcel Force Worldwide International delivery: Express, Value, Priority, Economy, Ireland Express.
+Parcel Force Worldwide International delivery: Express, Priority, Ireland Express.
 
 You can also use attributes to exclude certain postage methods for a product. 
+
+For documentation see [wiki](https://github.com/brittainmark/BigRoyalMail/wiki)
