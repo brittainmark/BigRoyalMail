@@ -182,6 +182,73 @@ class ScriptedInstaller extends ScriptedInstallBase
                 $nextLinkId++;
             }
         }
+        /*
+         * Update the rates (may be installing from none encapsulated plugin)
+         */
+        require __DIR__ . '../catalog/includes/modules/shipping/BigRoyalMail/rates.php';
+        /*
+         * Add insurance rate changes
+         */
+        $rates += [
+            'MODULE_SHIPPING_RMAMTLARGELETTER_INSURANCE' => '50:0, 250:3.1',
+            'MODULE_SHIPPING_RMAMTMEDPARCEL_INSURANCE' => '50:0, 250:3.1',
+            'MODULE_SHIPPING_RMAMTSMLPARCEL_INSURANCE' => '50:0, 250:3.1',
+            'MODULE_SHIPPING_RMPFEXPRESS10_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFEXPRESS24_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFEXPRESS48_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFEXPRESSAM_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFGEXPRESS_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFGPRIORITY_INSURANCE' => '100:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFGVALUE_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFGECONOMY_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMPFIEXPRESS_INSURANCE' => '150:0, 750:7, 1000:30, 2500:65',
+            'MODULE_SHIPPING_RMSPECIALDELIVERY_INSURANCE' => '750:0,1000:3,2500:10',
+            'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_INSURANCE' => '500:0,1000:3.6,2500:12',
+            'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_INSURANCE' => '50:0,1000:7,2500:15',
+            'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_INSURANCE' => '500:0,1000:7,2500:15',
+        ];
+        /*
+         * Add order values
+         */
+        $rates += [
+            'MODULE_SHIPPING_RM1STLARGELETTERSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM1STLETTERSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM1STMEDPARCELSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM1STSMLPARCELSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM2DNLARGELETTERSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM2DNLETTERSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM2DNMEDPARCELSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RM2DNSMLPARCELSF_MAX_ORDERVALUE' => '20.00',
+            'MODULE_SHIPPING_RMT24LARGELETTER_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT24LARGELETTERSF_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT24MEDPARCEL_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT24MEDPARCELSF_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT24SMLPARCEL_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT24SMLPARCELSF_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48LARGELETTER_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48LARGELETTERSF_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48MEDPARCEL_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48MEDPARCELSF_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48SMLPARCEL_MAX_ORDERVALUE' => '75.00',
+            'MODULE_SHIPPING_RMT48SMLPARCELSF_MAX_ORDERVALUE' => '75.00',
+        ];
+        foreach ($rates as $key => $value) {
+            $sql = "
+                UPDATE " . TABLE_CONFIGURATION . "
+                SET configuration_value = '" . zen_db_input($value) . "',
+                    last_modified = NOW()
+                WHERE configuration_key = '" . zen_db_input($key) . "'
+            ";
+
+            $this->executeInstallerSql($sql);
+
+            // Optional: check how many rows were updated
+            if ($db->affectedRows() == 0) {
+                // Key didn't exist — do nothing, or log it if you want
+                // echo "No row found for $key<br>";
+            }
+        }
+
         return true;
 
     }
@@ -304,7 +371,6 @@ class ScriptedInstaller extends ScriptedInstallBase
                      */
                 case 'RMPFGEXPRESS':
                 case 'RMPFGPRIORITY':
-                case 'RMPFGVALUE':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_9';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_9';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_9';
@@ -322,6 +388,9 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_6';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_6';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_5';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_5';
+                    $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_5';
                     // no break
                 case 'RMAMLARGELETTER':
                 case 'RMAMLETTER':
@@ -331,8 +400,6 @@ class ScriptedInstaller extends ScriptedInstallBase
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_4';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_4';
-                    // no break
-                case 'RMPFGECONOMY':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_HANDLING_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COUNTRIES_3';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_ZONES_COST0_3';
@@ -508,6 +575,8 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RMAMTPARCEL',
             'RMAMTSPARCEL',
             'RMSMPARCEL',
+            'RMPFGECONOMY',
+            'RMPFGVALUE'
         ];
         $module_listing = $this->executeInstallerSelectQuery("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
         $updated_listing = $module_listing->fields['configuration_value'] ?? '';
