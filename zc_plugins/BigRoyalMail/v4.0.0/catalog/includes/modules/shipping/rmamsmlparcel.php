@@ -5,7 +5,7 @@
  * see CREDITS.txt for the contributors and support forum.
  */
 
-class rmamparcel extends ZenShipping
+class rmamsmlparcel extends ZenShipping
 {
     /**
      * $num_zones is the number of zones for shipping calculation

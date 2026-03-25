@@ -183,9 +183,22 @@ class ScriptedInstaller extends ScriptedInstallBase
             }
         }
         /*
+         * Standardise insurance rates fields.
+         */
+        $this->executeInstallerSql("
+            UPDATE " . TABLE_CONFIGURATION .
+              " SET configuration_key = REPLACE(configuration_key, '_ZONES', '')
+                WHERE configuration_key IN (
+                    'MODULE_SHIPPING_RMPFGEXPRESS_ZONES_INSURE',
+                    'MODULE_SHIPPING_RMPFGPRIORITY_ZONES_INSURE',
+                    'MODULE_SHIPPING_RMSPECIALDELIVERY_ZONES_INSURE',
+                    'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_ZONES_INSURE'
+                )
+            ");
+        /*
          * Update the rates (may be installing from none encapsulated plugin)
          */
-        require __DIR__ . '../catalog/includes/modules/shipping/BigRoyalMail/rates.php';
+        require __DIR__ . '/../catalog/includes/modules/shipping/BigRoyalMail/rates.php';
         /*
          * Add insurance rate changes
          */
@@ -205,7 +218,6 @@ class ScriptedInstaller extends ScriptedInstallBase
             'MODULE_SHIPPING_RMSPECIALDELIVERY_INSURANCE' => '750:0,1000:3,2500:10',
             'MODULE_SHIPPING_RMSPECIALDELIVERYSAT_INSURANCE' => '500:0,1000:3.6,2500:12',
             'MODULE_SHIPPING_RMSPECIALDELIVERY9AM_INSURANCE' => '50:0,1000:7,2500:15',
-            'MODULE_SHIPPING_RMSPECIALDELIVERYSAT9AM_INSURANCE' => '500:0,1000:7,2500:15',
         ];
         /*
          * Add order values
@@ -241,14 +253,45 @@ class ScriptedInstaller extends ScriptedInstallBase
             ";
 
             $this->executeInstallerSql($sql);
+        }
+        /*
+         * Add missing insurance rates if needed
+         */
+        $missing = [
+            'RMAMTLARGELETTER' => '50:0, 250:3.1',
+        ];
+        $keyValues = [
+            'configuration_title' => 'Insurance rates',
+            'configuration_value' => '',
+            'configuration_description' => 'example: 200:1.2 means values less than or equal to &pound;200 would cost &pound;1.20. to insure. 100+:4.5 means that each additional &pound;100 costs &pound;4.50 to insure.',
+            'configuration_group_id' => '6',
+        ];
+        foreach ($missing as $key => $value) {
 
-            // Optional: check how many rows were updated
-            if ($db->affectedRows() == 0) {
-                // Key didn't exist — do nothing, or log it if you want
-                // echo "No row found for $key<br>";
+            if ($this->getConfigurationKeyDetails('MODULE_SHIPPING_' & $key & '_STATUS', true)) {
+                $keyname = 'MODULE_SHIPPING_' & $key & '_INSURANCE';
+                if (!$this->getConfigurationKeyDetails($keyname, true)) {
+                    $keyValues['configuration_value'] = $value;
+                    $this->addConfigurationKey($keyname, $keyValues);
+                }
             }
         }
 
+        /*
+         * Set the expires date
+         */
+        $expires = [
+            'configuration_title' => 'Royal Mail Rates Expiry Date',
+            'configuration_value' => '2025-04-01 00:00:01',
+            'configuration_description' => 'The Date the current Royal Mail postage rates expire.<br>Format YYYY-MM-DD HH:MM:SS<br>e.g. 2013-04-30 00:00:01 or 2013-04-30<br>It is not necessary to put in the time.<br> Set this to remind you to update the shipping costs.',
+            'configuration_group_id' => 6,
+            'sort_order' => 0,
+        ];
+        if ($this->getConfigurationKeyDetails('MODULE_SHIPPING_RM_EXPIRES',true) === true) {
+            $this->updateConfigurationKey('MODULE_SHIPPING_RM_EXPIRES', $expires);
+        } else {
+            $this->addConfigurationKey('MODULE_SHIPPING_RM_EXPIRES', $expires);
+        }
         return true;
 
     }
@@ -317,7 +360,6 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RMSPECIALDELIVERY',
             'RMSPECIALDELIVERY9AM',
             'RMSPECIALDELIVERYSAT',
-            'RMSPECIALDELIVERYSAT9AM',
             'RMT24LARGELETTER',
             'RMT24LARGELETTERSF',
             'RMT24MEDPARCEL',
@@ -361,7 +403,6 @@ class ScriptedInstaller extends ScriptedInstallBase
 
             switch ($brmModule) {
                 case 'RMSPECIALDELIVERYSAT':
-                case 'RMSPECIALDELIVERYSAT9AM':
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_DISPLAY_DAYS';
                     $brmKeys[] = 'MODULE_SHIPPING_' . $brmModule . '_FRIDAY_CUTOFF';
                     break;
@@ -463,6 +504,7 @@ class ScriptedInstaller extends ScriptedInstallBase
             'rmamlettersf.php',
             'rmamparcel.php',
             'rmamparcelsf.php',
+            'rmamsparcel.php',
             'rmamtlargeletter.php',
             'rmamtletter.php',
             'rmamtparcel.php',
@@ -480,6 +522,7 @@ class ScriptedInstaller extends ScriptedInstallBase
             'rmpfgvalue.php',
             'rmpfiexpress.php',
             'rmsmparcel.php',
+            'rmsmparcelsf.php',
             'rmspecialdelivery9am.php',
             'rmspecialdelivery.php',
             'rmspecialdeliverysat9am.php',
@@ -571,12 +614,15 @@ class ScriptedInstaller extends ScriptedInstallBase
             'RMAMLETTERSF',
             'RMAMPARCEL',
             'RMAMPARCELSF',
+            'RMAMASPARCEL',
             'RMAMTLETTER',
             'RMAMTPARCEL',
             'RMAMTSPARCEL',
             'RMSMPARCEL',
+            'RMSMPARCELSF',
             'RMPFGECONOMY',
-            'RMPFGVALUE'
+            'RMPFGVALUE',
+            'RMSPECIALDELIVERYSAT9AM',
         ];
         $module_listing = $this->executeInstallerSelectQuery("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
         $updated_listing = $module_listing->fields['configuration_value'] ?? '';
